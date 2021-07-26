@@ -1,6 +1,6 @@
 # React-Taquito app to interact with poll smart contract
 
-[DEMO](https://tezos-poll-app.vercel.app/)
+[Hicvote on Vercel](https://hicvote.vercel.app/)
 
 ## Prerequisite
 

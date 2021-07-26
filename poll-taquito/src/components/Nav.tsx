@@ -4,6 +4,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
+import { checkBadge } from './api';
+
 export default function Nav() {
   // const { ... } = useParams();
   const { disconnect, activeAccount, connect } = useWallet();
@@ -14,6 +16,9 @@ export default function Nav() {
         {activeAccount ? (
           <>
             {activeAccount.address}
+            <Button color="inherit" onClick={()=>checkBadge(activeAccount.address) }>
+              Check Badge
+            </Button>
             <Button color="inherit" onClick={disconnect}>
               Logout
             </Button>
