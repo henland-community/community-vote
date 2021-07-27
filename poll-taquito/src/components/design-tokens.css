@@ -24,7 +24,7 @@
   --base-font-family: 'Iosevka Web', 'Courier New', monospace;
 
   /**
-  * @tokens FontSizes
+  * @tokens FontSizesMobile
   * @presenter FontSize
   */
 
@@ -35,6 +35,11 @@
   --font-xl: 22px;
   --font-h2: 24px;
   --font-h1: 28px;
+
+  /**
+  * @tokens FontSizesDesktop
+  * @presenter FontSize
+  */
 
   @media screen and (min-width: 1024px) {
     --font-l: 20px;
