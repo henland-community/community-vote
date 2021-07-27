@@ -17,6 +17,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Faq from './pages/Faq';
 import Profile from './pages/Profile';
+import Polls from './pages/Polls';
 
 const RPC_URL =
   process.env.REACT_APP_RPC_URL || "https://florencenet.smartpy.io/";
@@ -48,6 +49,18 @@ function App() {
           </Route>
           <Route path="/profile">
             <Profile />
+          </Route>
+          <Route path="/proposals">
+            <Polls view="proposal"/>
+          </Route>
+          <Route path="/questions">
+            <Polls view="questions"/>
+          </Route>
+          <Route path="/past-votes">
+            <Polls view="past"/>
+          </Route>
+          <Route path="/my-votes">
+            <Polls view="my"/>
           </Route>
           <Route path="/vote/:poll">
             <VoteCard/>
