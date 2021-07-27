@@ -25,7 +25,7 @@ export const NavDumb = ({
           <Link to="/">Home</Link>
           <Link to="/faq">FAQ</Link>
           <Link to="/about">About</Link>
-          <a target="_blank" href="https://community.hicetnunc.xyz">Forum</a>
+          <a target="_blank" href="https://community.hicetnunc.xyz">Forum ↪</a>
         </nav>
       </section>
 
