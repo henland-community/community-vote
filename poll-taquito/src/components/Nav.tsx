@@ -11,7 +11,7 @@ export default function Nav() {
   const { disconnect, activeAccount, connect } = useWallet();
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar className="wrap">
         <Link to="/" style={{flex:1,color:'white',fontWeight:'bold',textDecoration:'none'}}>HICVOTE</Link>
         {activeAccount ? (
           <>

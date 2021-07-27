@@ -5,13 +5,18 @@ import CreatePollCard from "./components/CreatePollCard";
 import AddVoterCard from "./components/AddVoterCard";
 import RemoveVoterCard from "./components/RemoveVoterCard";
 import VoteCard from "./components/VoteCard";
-import Nav from "./components/Nav";
+import { NavDumb } from "./components/NavDumb";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+
+import Home from './pages/Home';
+import About from './pages/About';
+import Faq from './pages/Faq';
+import Profile from './pages/Profile';
 
 const RPC_URL =
   process.env.REACT_APP_RPC_URL || "https://florencenet.smartpy.io/";
@@ -29,20 +34,20 @@ function App() {
   }, [beaconWallet]);
   return (
     <Router>
-        <Nav/>
+      <NavDumb votes={3}/>
+      <div className="pageContent wrap">
         <Switch>
           <Route exact path="/">
-            <main>
-              <Link to="/vote/1">Vote on Poll 1</Link><br></br>
-              <Link to="/vote/2">Vote on Poll 2</Link><br></br>
-              <Link to="/vote/3">Vote on Poll 3</Link>
-            </main>
+            <Home />
           </Route>
           <Route path="/about">
-            {/* <About /> */}
+            <About />
           </Route>
-          <Route path="/dashboard">
-            {/* <Dashboard /> */}
+          <Route path="/faq">
+            <Faq />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
           <Route path="/vote/:poll">
             <VoteCard/>
@@ -53,6 +58,7 @@ function App() {
             <RemoveVoterCard />
           </Route>
         </Switch>
+      </div>
     </Router>
   );
 }

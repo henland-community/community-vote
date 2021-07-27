@@ -7,6 +7,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 code {
   font-family: 'Iosevka Web', 'Courier New', monospace;
+}
+
+.wrap {
+  margin: 0 auto;
+  width: 96%;
+}
+
+@media (min-width: 768px) {
+  .wrap { 
+    width: 70vw;
+    max-width: 1400px;
+  }
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+}
+.subtitle {
+  font-size: 1.5em;
+  text-align: center;
+  display: block;
+}
+h2 {
+  font-size: 2em;
 }
