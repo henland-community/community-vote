@@ -5,7 +5,7 @@ import CreatePollCard from "./components/CreatePollCard";
 import AddVoterCard from "./components/AddVoterCard";
 import RemoveVoterCard from "./components/RemoveVoterCard";
 import VoteCard from "./components/VoteCard";
-import { NavDumb } from "./components/NavDumb";
+import { Header } from "./components/Header";
 import {
   BrowserRouter as Router,
   Switch,

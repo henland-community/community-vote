@@ -1,16 +1,16 @@
 import React from 'react';
-import './design-tokens.css';
-import './nav.css';
 // import { Link } from "react-router-dom";
+import '../assets/styles/design-tokens.css';
+import './header.css';
 
-interface NavProps {
+interface HeaderProps {
   votes: number;
 }
 
-export const NavDumb = ({
+export const Header = ({
   votes = 0,
   ...props
-}: NavProps) => {
+}: HeaderProps) => {
   return (
     <header
       className="appHeader"
