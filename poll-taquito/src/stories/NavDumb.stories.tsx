@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { NavDumb } from '../components/NavDumb';
 
 export default {
-  title: 'Example/Nav',
+  title: 'Components/Nav',
   component: NavDumb,
   parameters: {
     layout: 'fullscreen',
