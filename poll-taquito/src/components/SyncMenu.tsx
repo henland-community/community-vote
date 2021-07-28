@@ -6,7 +6,7 @@ import { ReactComponent as Logo } from '../assets/icons/hen-vote-logo.svg';
 import { ReactComponent as MenuOpen } from '../assets/icons/menu-open.svg';
 import { ReactComponent as MenuClose } from '../assets/icons/menu-close.svg';
 import { useState } from 'react';
-import { truncateSync } from 'fs';
+// import { truncateSync } from 'fs';
 
 interface SyncProps {
   synced: boolean,
@@ -36,21 +36,21 @@ export const SyncMenu = ({
           </section>
           <section className="syncMenu-mainOptions">
             <section className="syncMenu-section">
-              <a className="syncMenu-item">my votes</a>
-              <a className="syncMenu-item">profile</a>
+              <a href="#hereandnow" className="syncMenu-item">my votes</a>
+              <a href="#hereandnow" className="syncMenu-item">profile</a>
             </section>
             { admin && 
             <section className="syncMenu-section">
-              <a className="syncMenu-item">create</a>
-              <a className="syncMenu-item">settings</a>
+              <a href="#hereandnow" className="syncMenu-item">create</a>
+              <a href="#hereandnow" className="syncMenu-item">settings</a>
             </section> }
             <section className="syncMenu-section mobileOnly">
-              <a className="syncMenu-item">About</a>
-              <a className="syncMenu-item">FAQ</a>
-              <a className="syncMenu-item">Discourse</a>
+              <a href="#hereandnow" className="syncMenu-item">About</a>
+              <a href="#hereandnow" className="syncMenu-item">FAQ</a>
+              <a href="#hereandnow" className="syncMenu-item">Discourse</a>
             </section>
             <section className="syncMenu-section">
-              <a className="syncMenu-item">
+              <a href="#hereandnow" className="syncMenu-item">
                 { synced && <div>tz33...39ab</div> }
                 <div>{ synced ? 'Unsync' : 'Sync'}</div>
               </a>

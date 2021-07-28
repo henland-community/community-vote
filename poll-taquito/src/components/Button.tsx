@@ -4,10 +4,10 @@ import './button.css';
 
 export const Button = ({...props}) => {
   return (
-    <a
+    <button
       className={ `button ${ props.disabled && 'disabled'}` }
     >
       { props.children || 'Label' }
-    </a>
+    </button>
   );
 };

@@ -6,8 +6,8 @@ import { Button } from './Button';
 
 import { ReactComponent as ProposalIcon } from '../assets/icons/other.svg';
 import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
-import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
-import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
+// import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
+// import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
 
 export const ProposalCard = ({...props}) => {
   return (

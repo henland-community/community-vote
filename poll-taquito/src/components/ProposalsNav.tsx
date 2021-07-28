@@ -8,11 +8,11 @@ export const ProposalsNav = ({...props}) => {
       className={`proposalsNav ${props.className}`}
     >
       <div className="proposalsNav-primary">
-        <a className="proposalsNav-item">Proposals<sup className="proposalsNav-itemCount">15</sup></a>
-        <a className="proposalsNav-item">Questions<sup className="proposalsNav-itemCount">34</sup></a>
+        <a href="#hereandnow" className="proposalsNav-item">Proposals<sup className="proposalsNav-itemCount">15</sup></a>
+        <a href="#hereandnow" className="proposalsNav-item">Questions<sup className="proposalsNav-itemCount">34</sup></a>
       </div>
       <div className="proposalsNav-secondary">
-        <a className="proposalsNav-item">Past Votes<sup className="proposalsNav-itemCount">123</sup></a>
+        <a href="#hereandnow" className="proposalsNav-item">Past Votes<sup className="proposalsNav-itemCount">123</sup></a>
       </div>
     </nav>
   );
