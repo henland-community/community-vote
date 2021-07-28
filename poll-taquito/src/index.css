@@ -1,8 +1,13 @@
 @import 'assets/fonts/iosevka.css';
+@import 'assets/styles/design-tokens.css';
+@import 'assets/styles/utility-classes.css';
+@import 'assets/styles/typography.css';
 
 body {
   margin: 0;
   font-family: 'Iosevka Web', 'Courier New', monospace;
+  line-height: var(--line-height-tight);
+  font-size: var(--font-m);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -28,17 +33,4 @@ code {
     width: 70vw;
     max-width: 1400px;
   }
-}
-
-h1 {
-  font-size: 2.5em;
-  text-align: center;
-}
-.subtitle {
-  font-size: 1.5em;
-  text-align: center;
-  display: block;
-}
-h2 {
-  font-size: 2em;
 }

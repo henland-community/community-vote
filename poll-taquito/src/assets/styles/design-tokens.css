@@ -51,8 +51,8 @@
   * @presenter LineHeight
   */
 
-  --line-height-tight: 125%;
-  --line-height-body: 140%;
+  --line-height-tight: 1.25;
+  --line-height-body: 1.4;
 
   /**
   * @tokens Spacing
