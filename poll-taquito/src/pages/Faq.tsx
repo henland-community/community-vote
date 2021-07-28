@@ -1,4 +1,4 @@
-export default function Faq() {
+export const Faq = () => {
   return (
     <div>
       <h1>Frequently Asked Questions</h1>
