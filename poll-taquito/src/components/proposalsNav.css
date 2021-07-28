@@ -1,0 +1,26 @@
+.proposalsNav {
+  background: var(--gray-20);
+  display: flex;
+  flex-direction: column;
+}
+
+.proposalsNav-item {
+  display: block;
+  position: relative;
+}
+
+.proposalsNav-itemCount {
+}
+
+@media screen and (min-width: 1024px) {
+  .proposalsNav {
+    padding: var(--outer-padding);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .proposalsNav-item + .proposalsNav-item {
+    margin-left: calc(var(--grid-unit) * 2);
+  }
+}
