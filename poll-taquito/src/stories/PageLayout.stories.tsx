@@ -4,7 +4,7 @@ import { ComponentMeta } from '@storybook/react';
 import { PageLayout } from '../components/PageLayout';
 
 export default {
-  title: 'Layouts/Page',
+  title: 'Pages/PageLayout',
   component: PageLayout,
   parameters: {
     layout: 'fullscreen',
