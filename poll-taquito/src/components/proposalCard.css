@@ -42,7 +42,7 @@
   font-weight: var(--font-bold);
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1024px) {
   .proposalCard {
     padding: calc(var(--grid-unit) * 5);
   } 
