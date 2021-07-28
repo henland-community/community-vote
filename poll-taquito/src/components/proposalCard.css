@@ -1,0 +1,55 @@
+.proposalCard {
+  padding: calc(var(--grid-unit) * 2);
+  background: var(--gray-10);
+}
+
+.proposalCard-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proposalCard-name {
+  margin: var(--grid-unit) 0;
+}
+
+.proposalCard-identifiers {
+}
+
+.proposalCard-yourVote {
+  padding: calc(var(--grid-unit) / 2);
+  background: var(--gray-0);
+}
+
+.proposalCard-voteStatus {
+  padding: calc(var(--grid-unit) / 2);
+  background: var(--gray-20);
+}
+
+.proposalCard-voteResult {
+  margin: calc(var(--grid-unit) * 3);
+}
+
+.proposalCard-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proposalCard-name {
+  font-size: var(--font-h2);
+  font-weight: var(--font-bold);
+}
+
+@media screen and (min-width: 800px) {
+  .proposalCard {
+    padding: calc(var(--grid-unit) * 5);
+  } 
+  .proposalCard-footer {
+    flex-direction: row;
+  }
+  .proposalCard-voteResult {
+    margin: unset;
+  }
+}

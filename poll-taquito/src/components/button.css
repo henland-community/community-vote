@@ -1,0 +1,14 @@
+.button {
+  display: inline-block;
+  --button-height: calc(var(--grid-unit) * 4);
+  height: var(--button-height);
+  padding-left: calc(var(--button-height) / 2);
+  padding-right: calc(var(--button-height) / 2);
+  color: var(--gray-0);
+  background: var(--gray-100);
+  line-height: var(--button-height);
+}
+
+.button.disabled {
+  background: var(--gray-50);
+}
