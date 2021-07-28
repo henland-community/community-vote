@@ -1,4 +1,4 @@
-export default function Home() {
+export const Home = () => {
   return (
     <div>
       <h1>DAO TITLE</h1>
