@@ -1,13 +1,12 @@
-import { useWallet } from "@tz-contrib/react-wallet-provider";
 import { Link } from "react-router-dom";
 
 export default function About() {
-  // const { ... } = useParams();
-  const { disconnect, activeAccount, connect } = useWallet();
   return (
     <div>
       <h1>ABOUT</h1>
-      <p></p>
+      <p>
+        <Link to="https://www.hicathon.xyz/" target="_blank" rel="noreferrer">Hicathon</Link>
+      </p>
     </div>
   );
 }
