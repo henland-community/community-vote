@@ -74,6 +74,6 @@
     --font-h2: 28px;
     --font-h1: 48px;
 
-    --outer-padding: calc(var(--grid-unit) * 4);
+    --outer-padding: calc(var(--grid-unit) * 3) calc(var(--grid-unit) * 4);
   }
 }
