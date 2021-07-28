@@ -34,7 +34,7 @@ function App() {
   }, [beaconWallet]);
   return (
     <Router>
-      <NavDumb votes={3}/>
+      <Header votes={3}/>
       <div className="pageContent wrap">
         <Switch>
           <Route exact path="/">
