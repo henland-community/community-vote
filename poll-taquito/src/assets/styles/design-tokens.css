@@ -37,18 +37,6 @@
   --font-h1: 28px;
 
   /**
-  * @tokens FontSizesDesktop
-  * @presenter FontSize
-  */
-
-  @media screen and (min-width: 1024px) {
-    --font-l: 20px;
-    --font-xl: 26px;
-    --font-h2: 28px;
-    --font-h1: 48px;
-  }
-
-  /**
   * @tokens FontWeights
   * @presenter FontWeight
   */
@@ -72,4 +60,20 @@
   */
 
   --grid-unit: 10px;
+  --outer-padding: calc(var(--grid-unit) * 2);
+}
+
+/**
+  * @tokens DesktopOverrides
+  */
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --font-l: 20px;
+    --font-xl: 26px;
+    --font-h2: 28px;
+    --font-h1: 48px;
+
+    --outer-padding: calc(var(--grid-unit) * 4);
+  }
 }
