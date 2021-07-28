@@ -1,19 +1,23 @@
-.text-xs        { font-size: var(--font-xs); }
+.text-xs        { font-size: var(--font-xs); font-weight: var(--font-normal); }
 .text-s         { font-size: var(--font-s); text-transform: uppercase; }
 .text-s-light   { font-size: var(--font-s); font-weight: var(--font-light); }
 .text-s-medium  { font-size: var(--font-s); font-weight: var(--font-medium); }
 .text-s-bold    { font-size: var(--font-s); font-weight: var(--font-bold); }
 
-p, .text-m      { font-size: var(--font-m); line-height: var(--line-height-body);}
-.text-m-light   { font-size: var(--font-m); }
+p, .text-m      { font-size: var(--font-m); font-weight: var(--font-normal); line-height: var(--line-height-body);}
+.text-m-light   { font-size: var(--font-m); font-weight: var(--font-normal); }
 .text-m-medium  { font-size: var(--font-m); font-weight: var(--font-medium); }
 
-.text-button    { font-size: var(--font-m); }
+.text-button    { font-size: var(--font-m); font-weight: var(--font-normal); }
 
 .text-l-light   { font-size: var(--font-l); font-weight: var(--font-light); text-transform: uppercase; }
 .text-l-bold    { font-size: var(--font-l); font-weight: var(--font-bold); text-transform: uppercase; }
 
 .text-xl        { font-size: var(--font-xl); font-weight: var(--font-light); }
 
-h1, .text-h1    { font-size: var(--font-h1); text-transform: uppercase; }
-h2, .text-h2    { font-size: var(--font-h2); text-transform: uppercase; }
+h1, .text-h1    { font-size: var(--font-h1); font-weight: var(--font-normal); text-transform: uppercase; }
+h2, .text-h2    { font-size: var(--font-h2); font-weight: var(--font-normal); text-transform: uppercase; }
+
+a               { color: var(--gray-100); font-weight: var(--font-normal); }
+a:active,
+a.active        { text-decoration: underline; }
