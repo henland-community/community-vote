@@ -1,4 +1,4 @@
-export default function Polls(props: any) {
+export const Polls = (props: any) => {
   const viewTitles: any = {
     'proposals': 'Proposals',
     'questions': 'Questions',
