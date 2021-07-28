@@ -4,6 +4,7 @@ import menuOpen from '../assets/icons/menu-open.svg';
 import options from '../assets/icons/options.svg';
 import other from '../assets/icons/other.svg';
 import hdao from '../assets/icons/hdao.svg';
+import selectChevron from '../assets/icons/select-chevron.svg';
 import voteAgainst from '../assets/icons/vote-against.svg';
 import voteFor from '../assets/icons/vote-for.svg';
 import voteDraw from '../assets/icons/vote-draw.svg';
@@ -29,4 +30,5 @@ export const icons = () => <div>
     <h1>Others</h1>
     <img alt="views" src={views} />
     <img alt="multiple options" src={options} />
+    <img alt="select chevron" src={selectChevron} />
   </div>;
