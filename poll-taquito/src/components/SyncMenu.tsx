@@ -1,38 +1,38 @@
 import React from 'react';
-import './design-tokens.css';
+import '../assets/styles/design-tokens.css';
 import './syncMenu.css';
+import { ProposalsNav } from './ProposalsNav';
 import { ReactComponent as Logo } from '../assets/icons/hen-vote-logo.svg';
 import { ReactComponent as MenuOpen } from '../assets/icons/menu-open.svg';
 import { ReactComponent as MenuClose } from '../assets/icons/menu-close.svg';
+import { useState } from 'react';
+import { truncateSync } from 'fs';
 
 interface SyncProps {
   synced: boolean,
   admin: boolean,
-  open: boolean,
 }
 
 export const SyncMenu = ({
   synced = false,
   admin = false,
-  open = false,
   ...props
 }: SyncProps) => {
+  const [open, setOpen] = useState(false);
   return (
     <nav
       className="syncMenu"
       {...props}
     >
-      <MenuOpen className="syncMenu-open" onClick={(event: any) => {
-          open = !open
-        }} />
+      { open ? 
+          <MenuClose className="syncMenu-close" onClick={(event: any) => { setOpen(false); }} /> 
+        : <MenuOpen className="syncMenu-open" onClick={(event: any) => { setOpen(true) }} />  
+      }
       { open && 
         <div className="syncMenu-contents">
-          <MenuClose className="syncMenu-close" />
           <section className="syncMenu-mobileOnly">
             <Logo className="syncMenu-logo"/><br/>
-            <a className="syncMenu-mobileLink">Proposals</a>
-            <a className="syncMenu-mobileLink">Questions</a>
-            <a className="syncMenu-mobileLink">Past Votes</a>
+            <ProposalsNav />
           </section>
           <section className="syncMenu-mainOptions">
             <section className="syncMenu-section">
@@ -44,6 +44,11 @@ export const SyncMenu = ({
               <a className="syncMenu-item">create</a>
               <a className="syncMenu-item">settings</a>
             </section> }
+            <section className="syncMenu-section mobileOnly">
+              <a className="syncMenu-item">About</a>
+              <a className="syncMenu-item">FAQ</a>
+              <a className="syncMenu-item">Discourse</a>
+            </section>
             <section className="syncMenu-section">
               <a className="syncMenu-item">
                 { synced && <div>tz33...39ab</div> }
