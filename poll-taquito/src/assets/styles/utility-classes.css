@@ -12,7 +12,6 @@
 }
 
 .pageHeader {
-  margin-top: calc(var(--grid-unit) * 3);
   margin-bottom: calc(var(--grid-unit) * 3);
 }
 

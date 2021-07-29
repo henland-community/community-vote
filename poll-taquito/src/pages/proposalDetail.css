@@ -1,0 +1,20 @@
+.proposalDetail-header {
+  padding: var(--outer-padding);
+  background: var(--gray-10);
+}
+
+@media screen and (min-width: 1240px) {
+  .proposalDetail-header,
+  .proposalDetail-columns {
+    padding-left: calc(var(--grid-unit) * 10);
+    padding-right: calc(var(--grid-unit) * 10);
+  }
+
+  .proposalDetail-columns {
+    display: flex;
+  }
+
+  .proposalDetail-details {
+    margin-right: calc(var(--grid-unit) * 3)
+  }
+}
