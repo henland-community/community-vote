@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 interface SyncProps {
   synced: boolean,
-  admin: boolean,
+  admin: boolean
 }
 
 export const SyncMenu = ({

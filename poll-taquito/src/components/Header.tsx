@@ -44,7 +44,10 @@ export const Header = ({
           <div className="appHeader-walletAddress">
             tz13...123s
           </div>
-          <SyncMenu />
+          <SyncMenu 
+            synced={false}
+            admin={false}
+          />
         </section>
       </nav>
       <ProposalsNav className="appHeader-proposalsNav" />
