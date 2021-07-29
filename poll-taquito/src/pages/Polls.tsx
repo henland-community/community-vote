@@ -1,4 +1,11 @@
-export default function Polls(props: any) {
+import '../assets/styles/utility-classes.css';
+import './polls.css';
+
+import { ProposalCard } from '../components/ProposalCard';
+import { Select } from '../components/Select';
+import { Pagination } from '../components/Pagination';
+
+export const Polls = (props: any) => {
   const viewTitles: any = {
     'proposals': 'Proposals',
     'questions': 'Questions',
@@ -6,8 +13,27 @@ export default function Polls(props: any) {
     'past': 'Past Votes'
   }
   return (
-    <div>
-      <h1>{ viewTitles[props.view] ?? 'All Votes' }</h1>
-    </div>
+    <article className="polls">
+      <header className="pageHeader">
+        <h1>{ viewTitles[props.view] ?? 'All Votes' }</h1>
+      </header>
+      <nav className="pageSection polls-filters">
+        <Select />
+        <Select />
+      </nav>
+      <section className="pageSection polls-cards">
+        <ProposalCard />
+        <ProposalCard />
+        <ProposalCard />
+        <ProposalCard />
+        <ProposalCard />
+        <ProposalCard />
+        <ProposalCard />
+        <ProposalCard />
+      </section>
+      <footer className="pageSection polls-pagination">
+        <Pagination />
+      </footer>
+    </article>
   );
 }
