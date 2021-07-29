@@ -4,8 +4,11 @@ import './select.css';
 
 export const Select = ({...props}) => {
   return (
-    <div className="select">
-      <select className="select-input">
+    <div className={ `select ${ props.disabled && 'select--disabled'}` }>
+      <select 
+        className="select-input"
+        disabled={ props.disabled }
+      >
         <option value="Option 1">Option 1</option>
         <option value="Option 2">Option 2</option>
         <option value="Option 3">Option 3</option>

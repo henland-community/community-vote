@@ -30,3 +30,16 @@
 .select-input::-ms-expand {
   display: none;
 }
+
+.select--disabled {
+  cursor: not-allowed;
+}
+
+.select--disabled::after {
+  opacity: 0.5;
+}
+
+.select--disabled .select-input {
+  color: var(--gray-50);
+  border-color: var(--gray-50);
+}
