@@ -1,15 +1,15 @@
+import '../assets/styles/utility-classes.css';
+import './profile.css';
+
 export const Profile = () => {
   return (
-    <div>
-      <h1>DAO TITLE</h1>
-      <strong className="subtitle">Help to create the future of hicetnunc</strong>
-      <br></br>
-      <h2>WHAT CAN I DO HERE</h2>
-      <p></p>
-      <h2>THE MISSION</h2>
-      <p></p>
-      <h2>THE VISION</h2>
-      <p></p>
-    </div>
+    <article className="pageContents">
+      <header className="pageHeader">
+        <h1>Your profile</h1>
+      </header>
+      <section className="pageSection">
+        blah
+      </section>
+    </article>
   );
 }
