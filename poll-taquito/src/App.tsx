@@ -2,9 +2,6 @@ import * as React from "react";
 import { useBeaconWallet, useWallet } from "@tz-contrib/react-wallet-provider";
 import { initPollContract, initTezos, setWalletProvider } from "./contract";
 import CreatePollCard from "./components/CreatePollCard";
-import AddVoterCard from "./components/AddVoterCard";
-import RemoveVoterCard from "./components/RemoveVoterCard";
-import VoteCard from "./components/VoteCard";
 import { Header } from "./components/Header";
 import {
   BrowserRouter as Router,
@@ -39,13 +36,55 @@ export async function hasTzProfiles(address: string) {
   return false;
 }
 
+const queryBadgeCheck = `query BadgeCheck($wallet: String = "") {
+  hic_et_nunc_token(where: {id: {_eq: "93229"}}) {
+    metadata
+    title
+    token_holders(where: {quantity: {_gt: "0"}, holder_id: {_eq: $wallet}}) {
+      quantity
+    }
+  }
+}`;
+
+async function fetchGraphQL(operationsDoc: string, operationName: string, variables: object) {
+  const result = await fetch(
+      "https://api.hicdex.com/v1/graphql", {
+          method: "POST",
+          body: JSON.stringify({
+              query: operationsDoc,
+              variables: variables,
+              operationName: operationName
+          })
+      }
+  );
+  console.log(result);
+  return await result.json();
+}
+export async function checkBadge(address: string) {
+  const {
+      errors,
+      data
+  } = await fetchGraphQL(queryBadgeCheck, "BadgeCheck", {
+      "wallet": address
+  });
+  if (errors) console.error(errors);
+
+  const result = data.hic_et_nunc_token[0].token_holders.length > 0;
+  return result
+}
+
 function App() {
   const { connected, disconnect, activeAccount, connect } = useWallet();
   const beaconWallet = useBeaconWallet();
   const [votePower, setVotePower] = React.useState(0);
   function getVotePower(address: string) {
     let p = 0;
-    hasTzProfiles(address).then(has => p++)
+    Promise.all([
+      hasTzProfiles(address).then(has => p++),
+      checkBadge(address).then(has => p++)
+    ]).then(() => {
+      setVotePower(p);
+    });
   };
   React.useEffect(() => {
     initTezos(RPC_URL);
@@ -63,15 +102,9 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/faq">
-            <Faq />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
+          <Route path="/about" component={About} />
+          <Route path="/faq" component={Faq} />
+          <Route path="/profile" component={Profile} />
           <Route path="/proposals">
             <Polls view="proposals"/>
           </Route>
@@ -87,11 +120,7 @@ function App() {
           <Route path="/vote/:poll">
             <ProposalDetail></ProposalDetail>
           </Route>
-          <Route path="/admin">
-            <CreatePollCard />
-            <AddVoterCard />
-            <RemoveVoterCard />
-          </Route>
+          <Route path="/admin" component={CreatePollCard} />
         </Switch>
       </div>
     </Router>
