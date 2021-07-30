@@ -16,6 +16,7 @@
 .syncMenu-mainOptions {
   padding: calc(var(--grid-unit) * 2);
   background: var(--gray-10);
+  box-shadow: 0 100vh 0 100vh #999a;
 }
 
 .syncMenu-section {
@@ -83,6 +84,7 @@
 
   .syncMenu-mainOptions {
     padding: calc(var(--grid-unit) * 3);
+    box-shadow: none;
   }
 
   .syncMenu-section {
