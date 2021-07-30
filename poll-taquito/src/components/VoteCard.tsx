@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import * as Yup from "yup";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -9,7 +8,6 @@ import { useWallet } from "@tz-contrib/react-wallet-provider";
 import { vote } from "../contract";
 import { useToasts } from "react-toast-notifications";
 import { FormikTextField } from "./FormikTextField";
-import { useParams } from "react-router-dom";
 
 export default function VoteCard(poll_id: any) {
   const poll = poll_id;
