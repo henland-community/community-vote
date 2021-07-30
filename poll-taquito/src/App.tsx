@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useBeaconWallet } from "@tz-contrib/react-wallet-provider";
+import { useBeaconWallet, useWallet } from "@tz-contrib/react-wallet-provider";
 import { initPollContract, initTezos, setWalletProvider } from "./contract";
 import CreatePollCard from "./components/CreatePollCard";
 import AddVoterCard from "./components/AddVoterCard";
@@ -11,6 +11,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import axios from "axios";
 
 import {Home} from './pages/Home';
 import {About} from './pages/About';
@@ -23,9 +24,29 @@ const RPC_URL =
   process.env.REACT_APP_RPC_URL || "https://florencenet.smartpy.io/";
 const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
 
+export async function getTzProfiles(address: string) {
+  return await axios.post('https://indexer.tzprofiles.com/v1/graphql', {
+    query: `query MyQuery { tzprofiles_by_pk(account: "${address}") { valid_claims } }`,
+    variables: null,
+    operationName: 'MyQuery',
+  })
+}
+
+export async function hasTzProfiles(address: string) {
+  await getTzProfiles(address).then(res => {
+      return typeof res.data.tzprofiles_by_pk !== 'undefined';
+  });
+  return false;
+}
+
 function App() {
-  // const { connected, disconnect, activeAccount, connect } = useWallet();
+  const { connected, disconnect, activeAccount, connect } = useWallet();
   const beaconWallet = useBeaconWallet();
+  const [votePower, setVotePower] = React.useState(0);
+  function getVotePower(address: string) {
+    let p = 0;
+    hasTzProfiles(address).then(has => p++)
+  };
   React.useEffect(() => {
     initTezos(RPC_URL);
     initPollContract(CONTRACT_ADDRESS);
@@ -33,9 +54,10 @@ function App() {
   React.useEffect(() => {
     setWalletProvider(beaconWallet);
   }, [beaconWallet]);
+  
   return (
     <Router>
-      <Header votes={3}/>
+      <Header votes={votePower}/>
       <div className="pageContent wrap">
         <Switch>
           <Route exact path="/">
