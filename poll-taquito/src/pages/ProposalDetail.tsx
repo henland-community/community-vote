@@ -1,9 +1,12 @@
 import '../assets/styles/utility-classes.css';
 import './proposalDetail.css';
+import { useParams } from "react-router-dom";
+import VoteCard from '../components/VoteCard'
 
 import { Button } from '../components/Button';
 
 export const ProposalDetail = () => {
+  const params = useParams<{poll?: string}>();
   return (
     <article className="proposalDetail pageContents">
       <header className="proposalDetail-header pageHeader">
@@ -24,20 +27,21 @@ export const ProposalDetail = () => {
             Ends in 5d 12h 34m
           </div>
         </div>
+        <VoteCard poll_id={params.poll}/>
         <h1>
         In order to connect and grow the H=N developer com...
         </h1>
         <div className="proposalDetail-url">
-        https://www.loremipsum.com/wqdwqdw/ef3243r/qwdwde42/65765y4trf
+        https://community.hicetnunc.xyz/hicatvote/proposal-{params.poll}
         </div>
         <hr />
         <footer>
           <div className="proposalDetail-graph">
             results graph
           </div>
-          <div className="proposalDetail-discussion">
+          <a href={"https://community.hicetnunc.xyz/hicatvote/proposal-"+params.poll} className="proposalDetail-discussion">
             Discuss on Discourse 
-          </div>
+          </a>
           <div className="proposalDetail-CTA">
             <Button>AGAINST</Button>
             <Button>FOR</Button>

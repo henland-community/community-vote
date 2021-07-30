@@ -8,6 +8,7 @@
   display: block;
   position: relative;
   text-decoration: none;
+  margin-top: 1em;
 }
 
 .proposalsNav-item.active {
@@ -22,7 +23,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .proposalsNav {
+  .proposalsNav .wrap {
     padding: var(--outer-padding);
     display: flex;
     flex-direction: row;

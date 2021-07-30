@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { Link } from "react-router-dom";
 import '../assets/styles/design-tokens.css';
 import './proposalCard.css';
 
@@ -10,6 +11,8 @@ import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
 // import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
 
 export const ProposalCard = ({...props}) => {
+  const { proposal, onVote, onVoteDraw, onVoteAgainst, onVoteFor } = props;
+  const [poll_id] = useState(0);
   return (
     <div
       className="proposalCard"
@@ -35,7 +38,9 @@ export const ProposalCard = ({...props}) => {
         <div className="proposalCard-voteResult">
           Results <VoteForIcon />
         </div>
-        <Button>Detail</Button>
+        { poll_id ? (
+          <Link to={"/poll/"+poll_id}><Button>Detail</Button></Link>
+        ) : null }
       </footer>
     </div>
   );
