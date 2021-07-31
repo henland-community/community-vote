@@ -23,14 +23,27 @@ code {
   font-family: 'Iosevka Web', 'Courier New', monospace;
 }
 
+hr {
+  border-color: var(--gray-20);
+  border-style: solid;
+  border-bottom: 0;
+  margin-top: calc(var(--grid-unit) * 2);
+  margin-bottom: calc(var(--grid-unit) * 2);
+}
+
 .wrap {
   margin: 0 auto;
   width: 96%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .wrap { 
     width: 70%;
     max-width: 1400px;
+  }
+
+  hr {
+    margin-top: calc(var(--grid-unit) * 4);
+    margin-bottom: calc(var(--grid-unit) * 4);
   }
 }
