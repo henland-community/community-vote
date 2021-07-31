@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { MemoryRouter } from "react-router-dom";
 
 import { SyncMenu } from '../components/SyncMenu';
 
@@ -18,7 +19,9 @@ export default {
 
 const Template: ComponentStory<typeof SyncMenu> = (args) => 
   <div style={{ padding: '30px', background: 'whitesmoke', display: 'flex', justifyContent: 'flex-end' }}>
-    <SyncMenu {...args} />
+    <MemoryRouter>
+      <SyncMenu {...args} />
+    </MemoryRouter>
   </div> ;
 
 export const Unsynced = Template.bind({});
