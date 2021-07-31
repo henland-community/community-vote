@@ -12,6 +12,12 @@ export const PageLayout = ({...props}) => {
     b: false,
     count: 2
   }
+  const wallet = {
+    connect: () => {},
+    disconnect: () => {},
+    connected: true,
+    activeAccount: 'tz1234567890123'
+  }
   return (
     <div className="pageLayout">
       <div
@@ -19,6 +25,10 @@ export const PageLayout = ({...props}) => {
       >
         <Header 
           votes={votes.count}
+          connected={wallet.connected}
+          disconnect={wallet.disconnect}
+          connect={wallet.connect}
+          activeAccount={wallet.activeAccount}
         />
         <div className="pageLayout-body">
           {props.children}

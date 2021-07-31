@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { MemoryRouter } from "react-router-dom";
 
 import { SyncMenu } from '../components/SyncMenu';
 
@@ -18,21 +19,23 @@ export default {
 
 const Template: ComponentStory<typeof SyncMenu> = (args) => 
   <div style={{ padding: '30px', background: 'whitesmoke', display: 'flex', justifyContent: 'flex-end' }}>
-    <SyncMenu {...args} />
+    <MemoryRouter>
+      <SyncMenu {...args} />
+    </MemoryRouter>
   </div> ;
 
 export const Unsynced = Template.bind({});
 Unsynced.args = {
-  synced: false,
+  connected: false,
 };
 
 export const Synced = Template.bind({});
 Synced.args = {
-  synced: true,
+  connected: true,
 };
 
 export const SyncedAdmin = Template.bind({});
 SyncedAdmin.args = {
-  synced: true,
+  connected: true,
   admin: true,
 };

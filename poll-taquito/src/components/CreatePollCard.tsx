@@ -27,7 +27,8 @@ export default function CreatePollCard() {
         const hash = await createPoll(
           values.pollId,
           values.endDate,
-          values.noOfOptions
+          values.noOfOptions,
+          values.ipfsMeta
         );
         if (hash) {
           addToast("Tx Submitted", {
@@ -91,6 +92,15 @@ export default function CreatePollCard() {
                     name="noOfOptions"
                     type="number"
                     label="Number of options"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item>
+                  <Field
+                    component={FormikTextField}
+                    name="ipfsMeta"
+                    type="textarea"
+                    label="Extra metadata"
                     fullWidth
                   />
                 </Grid>

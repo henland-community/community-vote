@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../assets/styles/design-tokens.css';
 import './header.css';
 
@@ -10,12 +10,28 @@ import { ProposalsNav } from './ProposalsNav';
 
 interface HeaderProps {
   votes: number;
+  connected: boolean;
+  connect: any;
+  disconnect: any;
+  activeAccount: any;
 }
+
+function shortAddr(address:string){
+  return address ?
+    address.slice(0,4)+"..."+address.slice(address.length - 4,address.length)
+    : ''
+}
+
 
 export const Header = ({
   votes = 0,
+  connect = () => {},
+  disconnect = () => {},
+  connected = false,
+  activeAccount = "",
   ...props
 }: HeaderProps) => {
+  const addr = activeAccount?shortAddr(activeAccount.address):'';
   return (
     <header
       className="appHeader"
@@ -24,13 +40,13 @@ export const Header = ({
       <nav className="appHeader-primaryNav">
         <section className="appHeader-primaryNav-left">
           <div className="appHeader-logo">
-            <Logo/>
+            <Link to="/"><Logo/></Link>
           </div>
           <nav className="appHeader-resources">
-            {/* <Link to="/">Home</Link>
-          <Link to="/faq">FAQ</Link>
-          <Link to="/about">About</Link> */}
-          <a target="_blank" rel="noreferrer" href="https://community.hicetnunc.xyz">Forum ↪</a>
+            <Link to="/">Home</Link>
+            <Link to="/faq">FAQ</Link>
+            <Link to="/about">About</Link>
+            <a target="_blank" rel="noreferrer" href="https://community.hicetnunc.xyz">Forum ↪</a>
           </nav>
         </section>
         <section className="appHeader-primaryNav-right">
@@ -42,11 +58,15 @@ export const Header = ({
             </div>
           </div>
           <div className="appHeader-walletAddress">
-            tz13...123s
+            {addr}
           </div>
           <SyncMenu 
-            synced={false}
             admin={false}
+            connect={connect}
+            disconnect={disconnect}
+            connected={connected}
+            activeAccount={activeAccount}
+            addr={addr}
           />
         </section>
       </nav>

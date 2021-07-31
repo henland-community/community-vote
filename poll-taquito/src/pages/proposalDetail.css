@@ -1,20 +1,110 @@
-.proposalDetail-header {
+.proposalDetail-header, 
+.proposalDetail-adoptionStatus {
   padding: var(--outer-padding);
   background: var(--gray-10);
 }
 
+.proposalDetail-adoptionStatus {
+  margin-top: calc(var(--grid-unit) * -3);
+  background: var(--gray-20);
+}
+
+.proposalDetail-meta {
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  color: var(--gray-80);
+}
+
+.proposalDetail-metaPrimary {
+  display: flex;
+  flex-direction: column;
+}
+
+.proposalDetail-url {
+  color: var(--gray-80);
+}
+
+.proposalDetail-sidebarHeader {
+  position: relative;
+}
+
+.proposalDetail-sidebarHeader-text {
+  display: inline-block;
+  background-color: var(--gray-0);
+  position: relative;
+  z-index: 1;
+  padding-right: calc(var(--grid-unit) * 2);
+}
+
+.proposalDetail-sidebarHeader-line {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  top: 50%; 
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gray-20);
+}
+
+.proposalDetail-countdown {
+  background: var(--gray-20);
+  padding: 0 calc(var(--grid-unit) / 2);
+}
+
+.proposalDetail-voteStatus {
+  display: flex;
+  flex-direction: column;
+}
+
+.proposalDetail-yourVote {
+  display: flex;
+}
+
+.proposalDetail-yourVote > * {
+  margin-left: calc(var(--grid-unit) * 2);
+}
+
+@media screen and (min-width: 768px) {
+  .proposalDetail-columns {
+    display: flex;
+  }
+  .proposalDetail-details {
+    margin-right: calc(var(--grid-unit) * 3)
+  }
+
+  .proposalDetail-metaPrimary {
+    flex-direction: row;
+  }
+
+  .proposalDetail-metaPrimary > * {
+    margin-right: calc(var(--grid-unit) * 2);
+  }
+
+  .proposalDetail-voteStatus {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .proposalDetail-adoptionStatus {
+    margin-top: calc(var(--grid-unit) * -5);
+  }
+}
+
 @media screen and (min-width: 1240px) {
   .proposalDetail-header,
+  .proposalDetail-adoptionStatus,
   .proposalDetail-columns {
     padding-left: calc(var(--grid-unit) * 10);
     padding-right: calc(var(--grid-unit) * 10);
   }
 
-  .proposalDetail-columns {
-    display: flex;
-  }
-
-  .proposalDetail-details {
-    margin-right: calc(var(--grid-unit) * 3)
+  .proposalDetail-header {
+    padding-top: calc(var(--grid-unit) * 5);
+    padding-bottom: calc(var(--grid-unit) * 5);
   }
 }

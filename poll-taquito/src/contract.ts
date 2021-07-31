@@ -29,21 +29,12 @@ export const initPollContract = async (
 export const createPoll = async (
   pollId: string,
   endDate: Date,
-  noOfOptions: number
+  noOfOptions: number,
+  ipfsHash: string
 ) => {
   const op = await pollContract.methods
-    .createPoll(pollId, endDate.toISOString(), noOfOptions)
+    .createPoll(pollId, endDate.toISOString(), noOfOptions, ipfsHash)
     .send();
-  return op.opHash;
-};
-
-export const addVoter = async (voterAddress: string) => {
-  const op = await pollContract.methods.addVoter(voterAddress).send();
-  return op.opHash;
-};
-
-export const removeVoter = async (voterAddress: string) => {
-  const op = await pollContract.methods.removeVoter(voterAddress).send();
   return op.opHash;
 };
 

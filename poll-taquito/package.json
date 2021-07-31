@@ -24,6 +24,7 @@
     "@types/react-router-dom": "^5.1.8",
     "@types/react-toast-notifications": "^2.4.1",
     "@tz-contrib/react-wallet-provider": "^1.0.0-alpha.9",
+    "axios": "^0.21.1",
     "date-fns": "^2.22.1",
     "dotenv": "^10.0.0",
     "formik": "^2.2.9",
