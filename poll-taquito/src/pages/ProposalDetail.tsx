@@ -6,15 +6,15 @@ import VoteCard from '../components/VoteCard';
 import { Button } from '../components/Button';
 
 import { ReactComponent as Logo } from '../assets/icons/hen-logo.svg';
-import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
-import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
-import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
+// import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
+// import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
+// import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
 import { ReactComponent as ViewsIcon } from '../assets/icons/views.svg';
 import { ReactComponent as OtherIcon } from '../assets/icons/other.svg';
 
 export const ProposalDetail = () => {
   const params = useParams<{poll?: string}>();
-  const hasVoted = false;
+  // const hasVoted = false;
   return (
     <article className="proposalDetail pageContents">
       <header className="proposalDetail-header pageHeader">

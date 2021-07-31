@@ -78,16 +78,16 @@ export async function checkBadge(address: string) {
 function App() {
   const { connected, disconnect, activeAccount, connect } = useWallet();
   const beaconWallet = useBeaconWallet();
-  const [votePower, setVotePower] = React.useState(0);
-  function getVotePower(address: string) {
-    let p = 0;
-    Promise.all([
-      hasTzProfiles(address).then(has => p++),
-      checkBadge(address).then(has => p++)
-    ]).then(() => {
-      setVotePower(p);
-    });
-  };
+  const [votePower] = React.useState(0);
+  // function getVotePower(address: string) {
+  //   let p = 0;
+  //   Promise.all([
+  //     hasTzProfiles(address).then(has => p++),
+  //     checkBadge(address).then(has => p++)
+  //   ]).then(() => {
+  //     setVotePower(p);
+  //   });
+  // };
   React.useEffect(() => {
     initTezos(RPC_URL);
     initPollContract(CONTRACT_ADDRESS);

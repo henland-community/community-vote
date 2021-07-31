@@ -4,9 +4,9 @@ import '../assets/styles/design-tokens.css';
 import './proposalsNav.css';
 
 export const ProposalsNav = ({...props}) => {
-  const [proposalCount, setProposalCount] = React.useState(0);
-  const [questionCount, setQuestionCount] = React.useState(0);
-  const [pastVoteCount, setPastVoteCount] = React.useState(0);
+  const [proposalCount] = React.useState(0);
+  const [questionCount] = React.useState(0);
+  const [pastVoteCount] = React.useState(0);
   return (
     <nav
       className={`proposalsNav ${props.className??''}`}

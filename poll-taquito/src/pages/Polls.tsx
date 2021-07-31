@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../assets/styles/utility-classes.css';
 import './polls.css';
 
 import { ProposalCard } from '../components/ProposalCard';
 import { Select } from '../components/Select';
-import { Pagination } from '../components/Pagination';
+// import { Pagination } from '../components/Pagination';
 
 
 async function fetchPolls() {
@@ -13,24 +13,24 @@ async function fetchPolls() {
     .then(polls => polls);
 }
 
-async function filterPolls(polls: any, filter: string, activeAddress: string) {
-  if (filter == 'all') return polls
+/* async function filterPolls(polls: any, filter: string, activeAddress: string) {
+  if (filter === 'all') return polls
   const filteredPolls = [];
   for (const poll of polls) {
-    if (filter == 'proposals' && poll.type == 1) {
+    if (filter === 'proposals' && poll.type === 1) {
       filteredPolls.push(poll);
-    } else if (filter == 'questions' && poll.type == 2) {
+    } else if (filter === 'questions' && poll.type === 2) {
       filteredPolls.push(poll);
-    } else if (filter == 'past' && poll.active == false) {
+    } else if (filter === 'past' && poll.active === false) {
       filteredPolls.push(poll);
-    } else if (filter == 'active' && poll.active == true) {
+    } else if (filter === 'active' && poll.active === true) {
       filteredPolls.push(poll);
-    } else if (filter == 'my' && activeAddress.indexOf(poll.owner) != -1) {
+    } else if (filter === 'my' && activeAddress.indexOf(poll.owner) !== -1) {
       filteredPolls.push(poll);
     }
   }
   return filteredPolls;
-}
+} */
 
 class Polls extends React.Component<{ view: string }, { polls: any[] }> {
   constructor(props: any) {
@@ -43,6 +43,7 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
     fetchPolls().then(result => {
       console.log(result)
       this.setState({
+        // polls: filterPolls(result, 'all', activeAddress)
         polls: result
       })
     })
