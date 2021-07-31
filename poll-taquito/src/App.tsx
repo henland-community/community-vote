@@ -17,6 +17,8 @@ import {Profile} from './pages/Profile';
 import {Polls} from './pages/Polls';
 import { ProposalDetail } from "./pages/ProposalDetail";
 
+import './components/pageLayout.css';
+
 const RPC_URL =
   process.env.REACT_APP_RPC_URL || "https://florencenet.smartpy.io/";
 const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
@@ -96,38 +98,42 @@ function App() {
   
   return (
     <Router>
-      <Header 
-        votes={votePower}
-        connected={connected}
-        disconnect={disconnect}
-        activeAccount={activeAccount}
-        connect={connect}
-      />
-      <div className="pageContent wrap">
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/about" component={About} />
-          <Route path="/faq" component={Faq} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/proposals">
-            <Polls view="proposals"/>
-          </Route>
-          <Route path="/questions">
-            <Polls view="questions"/>
-          </Route>
-          <Route path="/past-votes">
-            <Polls view="past"/>
-          </Route>
-          <Route path="/my-votes">
-            <Polls view="my"/>
-          </Route>
-          <Route path="/vote/:poll">
-            <ProposalDetail></ProposalDetail>
-          </Route>
-          <Route path="/admin" component={CreatePollCard} />
-        </Switch>
+      <div className="pageLayout">
+        <div className="pageLayout-contents">
+          <Header 
+            votes={votePower}
+            connected={connected}
+            disconnect={disconnect}
+            activeAccount={activeAccount}
+            connect={connect}
+          />
+          <div className="pageLayout-body">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/about" component={About} />
+              <Route path="/faq" component={Faq} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/proposals">
+                <Polls view="proposals"/>
+              </Route>
+              <Route path="/questions">
+                <Polls view="questions"/>
+              </Route>
+              <Route path="/past-votes">
+                <Polls view="past"/>
+              </Route>
+              <Route path="/my-votes">
+                <Polls view="my"/>
+              </Route>
+              <Route path="/vote/:poll">
+                <ProposalDetail></ProposalDetail>
+              </Route>
+              <Route path="/admin" component={CreatePollCard} />
+            </Switch>
+          </div>
+        </div>
       </div>
     </Router>
   );

@@ -37,41 +37,39 @@ export const Header = ({
       className="appHeader"
       {...props}
     >
-      <div className="wrap">
-        <nav className="appHeader-primaryNav">
-          <section className="appHeader-primaryNav-left">
-            <div className="appHeader-logo">
-              <Link to="/"><Logo/></Link>
+      <nav className="appHeader-primaryNav">
+        <section className="appHeader-primaryNav-left">
+          <div className="appHeader-logo">
+            <Link to="/"><Logo/></Link>
+          </div>
+          <nav className="appHeader-resources">
+            <Link to="/">Home</Link>
+            <Link to="/faq">FAQ</Link>
+            <Link to="/about">About</Link>
+            <a target="_blank" rel="noreferrer" href="https://community.hicetnunc.xyz">Forum ↪</a>
+          </nav>
+        </section>
+        <section className="appHeader-primaryNav-right">
+          <div className="appHeader-votingStatus">
+            <div className="votingStatus">
+              <span className="votingStatus-count">
+                { votes } votes
+              </span>
             </div>
-            <nav className="appHeader-resources">
-              <Link to="/">Home</Link>
-              <Link to="/faq">FAQ</Link>
-              <Link to="/about">About</Link>
-              <a target="_blank" rel="noreferrer" href="https://community.hicetnunc.xyz">Forum ↪</a>
-            </nav>
-          </section>
-          <section className="appHeader-primaryNav-right">
-            <div className="appHeader-votingStatus">
-              <div className="votingStatus">
-                <span className="votingStatus-count">
-                  { votes } votes
-                </span>
-              </div>
-            </div>
-            <div className="appHeader-walletAddress">
-              {addr}
-            </div>
-            <SyncMenu 
-              admin={false}
-              connect={connect}
-              disconnect={disconnect}
-              connected={connected}
-              activeAccount={activeAccount}
-              addr={addr}
-            />
-          </section>
-        </nav>
-      </div>
+          </div>
+          <div className="appHeader-walletAddress">
+            {addr}
+          </div>
+          <SyncMenu 
+            admin={false}
+            connect={connect}
+            disconnect={disconnect}
+            connected={connected}
+            activeAccount={activeAccount}
+            addr={addr}
+          />
+        </section>
+      </nav>
       <ProposalsNav className="appHeader-proposalsNav" />
     </header>
   );

@@ -36,28 +36,26 @@ export const SyncMenu = ({
       { open && 
         <div className="syncMenu-contents">
           <section className="syncMenu-mobileOnly">
-            <div className="wrap">
               <Link to="/"><Logo className="syncMenu-logo"/></Link><br/>
               <MenuClose className="syncMenu-close" onClick={(event: any) => { setOpen(false); }} />
               <ProposalsNav />
-            </div>
           </section>
           <section className="syncMenu-mainOptions">
-            <section className="syncMenu-section wrap">
+            <section className="syncMenu-section">
               <Link to="/my-votes" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>my votes</Link>
               <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>profile</Link>
             </section>
             { admin && 
-            <section className="syncMenu-section wrap">
+            <section className="syncMenu-section">
               <Link to="/admin" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>create</Link>
               <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>settings</Link>
             </section> }
-            <section className="syncMenu-section mobileOnly wrap">
+            <section className="syncMenu-section mobileOnly">
               <Link to="/about" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>About</Link>
               <Link to="/faq" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>FAQ</Link>
               <a target="_blank" rel="noreferrer" href="https://community.hicetnunc.xyz" className="syncMenu-item">Discourse</a>
             </section>
-            <section className="syncMenu-section wrap">
+            <section className="syncMenu-section">
               <Link to="/" className="syncMenu-item">
                 { activeAccount && <div>{addr}</div> }
                 <div>{ activeAccount ? (
