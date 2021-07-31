@@ -5,6 +5,12 @@ import { ProposalCard } from '../components/ProposalCard';
 import { Select } from '../components/Select';
 import { Pagination } from '../components/Pagination';
 
+async function fetchPolls() {
+  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/102344/keys`)
+    .then(response => response.json())
+    .then(polls => polls);
+}
+
 export const Polls = (props: any) => {
   const viewTitles: any = {
     'proposals': 'Proposals',
@@ -22,17 +28,18 @@ export const Polls = (props: any) => {
         <Select />
       </nav>
       <section className="pageSection polls-cards">
+        { props.polls && props.polls.map((poll: any) => <ProposalCard poll={poll} />) }
+        {/* <ProposalCard />
         <ProposalCard />
         <ProposalCard />
         <ProposalCard />
         <ProposalCard />
         <ProposalCard />
         <ProposalCard />
-        <ProposalCard />
-        <ProposalCard />
+        <ProposalCard /> */}
       </section>
       <footer className="pageSection polls-pagination">
-        <Pagination />
+        {/* <Pagination /> */}
       </footer>
     </article>
   );
