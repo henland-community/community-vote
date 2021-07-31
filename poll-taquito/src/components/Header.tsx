@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import '../assets/styles/design-tokens.css';
 import './header.css';
-import { useWallet } from "@tz-contrib/react-wallet-provider";
 
 import { ReactComponent as Logo } from '../assets/icons/hen-vote-logo.svg';
 
@@ -11,6 +10,10 @@ import { ProposalsNav } from './ProposalsNav';
 
 interface HeaderProps {
   votes: number;
+  connected: boolean;
+  connect: any;
+  disconnect: any;
+  activeAccount: any;
 }
 
 function shortAddr(address:string){
@@ -20,9 +23,12 @@ function shortAddr(address:string){
 
 export const Header = ({
   votes = 0,
+  connect = () => {},
+  disconnect = () => {},
+  connected = false,
+  activeAccount = "",
   ...props
 }: HeaderProps) => {
-  const { disconnect, activeAccount, connect } = useWallet();
   const addr = activeAccount?shortAddr(activeAccount.address):'';
   return (
     <header

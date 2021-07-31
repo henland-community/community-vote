@@ -96,7 +96,13 @@ function App() {
   
   return (
     <Router>
-      <Header votes={votePower}/>
+      <Header 
+        votes={votePower}
+        connected={connected}
+        disconnect={disconnect}
+        activeAccount={activeAccount}
+        connect={connect}
+      />
       <div className="pageContent wrap">
         <Switch>
           <Route exact path="/">
