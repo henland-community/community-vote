@@ -67,7 +67,7 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
           <Select />
         </nav>
         <section className="pageSection polls-cards">
-          { this.state.polls.map((poll: any) => <ProposalCard poll={poll}/>) }
+          { this.state.polls.map((poll: any) => <ProposalCard key={poll} poll={poll}/>) }
         </section>
         <footer className="pageSection polls-pagination">
           {/* <Pagination /> */}
