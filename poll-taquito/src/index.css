@@ -30,7 +30,7 @@ code {
 
 @media (min-width: 768px) {
   .wrap { 
-    width: 70vw;
+    width: 70%;
     max-width: 1400px;
   }
 }
