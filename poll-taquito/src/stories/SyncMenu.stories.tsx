@@ -23,16 +23,16 @@ const Template: ComponentStory<typeof SyncMenu> = (args) =>
 
 export const Unsynced = Template.bind({});
 Unsynced.args = {
-  synced: false,
+  connected: false,
 };
 
 export const Synced = Template.bind({});
 Synced.args = {
-  synced: true,
+  connected: true,
 };
 
 export const SyncedAdmin = Template.bind({});
 SyncedAdmin.args = {
-  synced: true,
+  connected: true,
   admin: true,
 };
