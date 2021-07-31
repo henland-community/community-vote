@@ -6,21 +6,25 @@ import { ProposalsNav } from './ProposalsNav';
 import { ReactComponent as Logo } from '../assets/icons/hen-vote-logo.svg';
 import { ReactComponent as MenuOpen } from '../assets/icons/menu-open.svg';
 import { ReactComponent as MenuClose } from '../assets/icons/menu-close.svg';
-import { useWallet } from "@tz-contrib/react-wallet-provider";
 // import { truncateSync } from 'fs';
 
 interface SyncProps {
-  synced: boolean,
   admin: boolean,
-  addr: string
+  connect: any;
+  disconnect: any;
+  connected: boolean;
+  activeAccount: string;
+  addr: string;
 }
 export const SyncMenu = ({
-  synced = false,
   admin = false,
-  addr = '',
+  connect = () => {},
+  disconnect = () => {},
+  connected = false,
+  activeAccount = "",
+  addr="",
   ...props
 }: SyncProps) => {
-  const { disconnect, activeAccount, connect } = useWallet();
   const [open, setOpen] = useState(false);
   return (
     <nav

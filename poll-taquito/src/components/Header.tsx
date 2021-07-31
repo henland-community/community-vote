@@ -17,7 +17,9 @@ interface HeaderProps {
 }
 
 function shortAddr(address:string){
-  return address.slice(0,4)+"..."+address.slice(address.length - 4,address.length)
+  return address ?
+    address.slice(0,4)+"..."+address.slice(address.length - 4,address.length)
+    : ''
 }
 
 
@@ -60,8 +62,11 @@ export const Header = ({
               {addr}
             </div>
             <SyncMenu 
-              synced={false}
               admin={false}
+              connect={connect}
+              disconnect={disconnect}
+              connected={connected}
+              activeAccount={activeAccount}
               addr={addr}
             />
           </section>
