@@ -13,6 +13,25 @@ async function fetchPolls() {
     .then(polls => polls);
 }
 
+async function filterPolls(polls: any, filter: string, activeAddress: string) {
+  if (filter == 'all') return polls
+  const filteredPolls = [];
+  for (const poll of polls) {
+    if (filter == 'proposals' && poll.type == 1) {
+      filteredPolls.push(poll);
+    } else if (filter == 'questions' && poll.type == 2) {
+      filteredPolls.push(poll);
+    } else if (filter == 'past' && poll.active == false) {
+      filteredPolls.push(poll);
+    } else if (filter == 'active' && poll.active == true) {
+      filteredPolls.push(poll);
+    } else if (filter == 'my' && activeAddress.indexOf(poll.owner) != -1) {
+      filteredPolls.push(poll);
+    }
+  }
+  return filteredPolls;
+}
+
 class Polls extends React.Component<{ view: string }, { polls: any[] }> {
   constructor(props: any) {
     super(props);
@@ -48,15 +67,7 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
           <Select />
         </nav>
         <section className="pageSection polls-cards">
-          { this.state.polls.map((poll: any) => <ProposalCard poll={poll} />) }
-          {/* <ProposalCard />
-          <ProposalCard />
-          <ProposalCard />
-          <ProposalCard />
-          <ProposalCard />
-          <ProposalCard />
-          <ProposalCard />
-          <ProposalCard /> */}
+          { this.state.polls.map((poll: any) => <ProposalCard poll={poll}/>) }
         </section>
         <footer className="pageSection polls-pagination">
           {/* <Pagination /> */}

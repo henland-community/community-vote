@@ -11,15 +11,14 @@ import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
 // import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
 
 export const ProposalCard = ({...props}) => {
-  const { proposal, onVote, onVoteDraw, onVoteAgainst, onVoteFor } = props;
-  const [poll_id] = useState(0);
+  const { poll } = props;
   return (
     <div
       className="proposalCard"
     >
       <div className="proposalCard-meta">
         <div className="proposalCard-identifiers">
-          <div className="proposalCard-id">#1340</div>
+          <div className="proposalCard-id">#{poll.key}</div>
           <div className="proposalCard-type">
             Proposal <ProposalIcon />
           </div>
@@ -28,7 +27,7 @@ export const ProposalCard = ({...props}) => {
           Your vote
         </div>
         <div className="proposalCard-voteStatus">
-          Ended
+          Ending { (new Date(poll.value.metadata.end_date)).toLocaleDateString('en-us') }
         </div>
       </div>
       <div className="proposalCard-name">
@@ -38,8 +37,8 @@ export const ProposalCard = ({...props}) => {
         <div className="proposalCard-voteResult">
           Results <VoteForIcon />
         </div>
-        { poll_id ? (
-          <Link to={"/poll/"+poll_id}><Button>Detail</Button></Link>
+        { poll.key ? (
+          <Link to={"/vote/"+poll.key}><Button>Detail</Button></Link>
         ) : null }
       </footer>
     </div>
