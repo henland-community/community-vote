@@ -61,7 +61,7 @@ export const Header = ({
             {addr}
           </div>
           <SyncMenu 
-            admin={false}
+            admin={activeAccount.address === process.env.REACT_APP_ADMIN}
             connect={connect}
             disconnect={disconnect}
             connected={connected}
