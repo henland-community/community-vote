@@ -36,6 +36,11 @@ hr {
   width: 96%;
 }
 
+dt {
+  margin-top: calc(var(--grid-unit) * 2);
+  margin-bottom: calc(var(--grid-unit) / 2);
+}
+
 @media (min-width: 1024px) {
   .wrap { 
     width: 70%;
