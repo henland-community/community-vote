@@ -11,16 +11,35 @@ import { createPoll } from "../contract";
 import { useToasts } from "react-toast-notifications";
 import { FormikTextField } from "./FormikTextField";
 
+
+async function getNextPollId() {
+  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`)
+    .then(response => response.json())
+    .then(polls => {
+      return polls.length + 1
+    });
+}
+
 export default function CreatePollCard() {
   const { connected } = useWallet();
   const { addToast } = useToasts();
   const validationSchema = Yup.object().shape({
     pollId: Yup.string().required("Required"),
     endDate: Yup.date().required("Required"),
+    startDate: Yup.date().required("Required"),
     noOfOptions: Yup.number()
       .min(2, "Min 2 options required")
       .required("Required"),
   });
+  const [nextPollId, setNextPollId] = React.useState("1");
+  React.useEffect(() => {
+    getNextPollId()
+      .then(pollId =>{
+        console.log(pollId)
+        setNextPollId(pollId.toString())
+      })
+      .catch(err => console.error(err));
+  }, []);
   const handleSubmit = async (values: any, helper: any) => {
     if (connected) {
       try {
@@ -28,7 +47,7 @@ export default function CreatePollCard() {
           values.pollId,
           values.endDate,
           values.noOfOptions,
-          values.ipfsMeta
+          values.startDate
         );
         if (hash) {
           addToast("Tx Submitted", {
@@ -47,12 +66,17 @@ export default function CreatePollCard() {
       }
     }
   };
+  const dateStart = new Date()
+  var dateEnd = new Date()
+  dateEnd.setDate(dateEnd.getDate() + 1)
+
   return (
     <Card sx={{ maxWidth: "21.5rem" }}>
       <CardHeader title="Create A Poll" subheader="Start a new poll" />
       <CardContent>
         <Formik
-          initialValues={{ pollId: "", endDate: new Date(), noOfOptions: 2 }}
+          initialValues={{ pollId: nextPollId, startDate: dateStart, endDate: dateEnd, noOfOptions: 2 }}
+          enableReinitialize={true}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
           validateOnBlur
@@ -68,6 +92,22 @@ export default function CreatePollCard() {
                     type="text"
                     label="Poll ID"
                     fullWidth
+                  />
+                </Grid>
+                <Grid item>
+                  <Field
+                    label="Start Date"
+                    name="startDate"
+                    component={DatePicker}
+                    onChange={(value: any) => {
+                      setFieldValue("startDate", value);
+                    }}
+                    renderInput={(params: any) => (
+                      <TextField {...params} fullWidth />
+                    )}
+                    error={touched.startDate && Boolean(errors.startDate)}
+                    helperText={touched.startDate ? errors.startDate : ""}
+                    disablePast
                   />
                 </Grid>
                 <Grid item>
@@ -95,7 +135,7 @@ export default function CreatePollCard() {
                     fullWidth
                   />
                 </Grid>
-                <Grid item>
+                {/* <Grid item>
                   <Field
                     component={FormikTextField}
                     name="ipfsMeta"
@@ -103,7 +143,7 @@ export default function CreatePollCard() {
                     label="Extra metadata"
                     fullWidth
                   />
-                </Grid>
+                </Grid> */}
                 <Grid item>
                   <Button
                     variant="contained"
