@@ -6,12 +6,12 @@
 
 p, .text-m      { font-size: var(--font-m); font-weight: var(--font-normal); line-height: var(--line-height-body); max-width: 80ch; }
 .text-m-light   { font-size: var(--font-m); font-weight: var(--font-normal); max-width: 80ch; }
-.text-m-medium  { font-size: var(--font-m); font-weight: var(--font-medium); max-width: 80ch; }
+b,.text-m-medium  { font-size: var(--font-m); font-weight: var(--font-medium); max-width: 80ch; }
 
 .text-button    { font-size: var(--font-m); font-weight: var(--font-normal); }
 
 .text-l-light   { font-size: var(--font-l); font-weight: var(--font-light); text-transform: uppercase; max-width: 60ch; }
-.text-l-bold    { font-size: var(--font-l); font-weight: var(--font-bold); text-transform: uppercase; max-width: 60ch; }
+dt,.text-l-bold    { font-size: var(--font-l); font-weight: var(--font-bold); text-transform: uppercase; max-width: 60ch; }
 
 .text-xl        { font-size: var(--font-xl); font-weight: var(--font-light); }
 
