@@ -13,11 +13,11 @@ async function fetchPolls() {
     .then(polls => polls);
 }
 
-async function fetchVotes() {
-  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
-    .then(response => response.json())
-    .then(votes => votes);
-}
+// async function fetchVotes() {
+//   return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
+//     .then(response => response.json())
+//     .then(votes => votes);
+// }
 
 /* async function filterPolls(polls: any, filter: string, activeAddress: string) {
   if (filter === 'all') return polls
