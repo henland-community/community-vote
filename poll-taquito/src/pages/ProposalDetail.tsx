@@ -71,7 +71,7 @@ export const ProposalDetail = () => {
           metadata: {
             startDate: poll.value.metadata.start_date,
             endDate: poll.value.metadata.end_date,
-            numOptions: poll.value.metadata.num_options
+            numOptions: Math.floor(poll.value.metadata.num_options)
           },
           totals: poll.value.totals
         })
@@ -135,6 +135,7 @@ export const ProposalDetail = () => {
         { discourseThread }
         </div>
         <hr />
+        { console.log(pollData) }
         { pollData.metadata.numOptions === 2 ? (
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
