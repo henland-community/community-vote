@@ -9,7 +9,7 @@ import { ReactComponent as Logo } from '../assets/icons/hen-logo.svg';
 // import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
 // import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
 // import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
-import { ReactComponent as ViewsIcon } from '../assets/icons/views.svg';
+// import { ReactComponent as ViewsIcon } from '../assets/icons/views.svg';
 import { ReactComponent as OtherIcon } from '../assets/icons/other.svg';
 
 import { vote } from "../contract";
@@ -84,7 +84,7 @@ export const ProposalDetail = () => {
         setVoteSums(sumVotes(votes))
       })
       .catch(err => console.error(err));
-  }, []);
+  }, [params.poll]);
 
   async function handleVote(option: number) {
     if (params.poll) {
@@ -108,6 +108,7 @@ export const ProposalDetail = () => {
   }
   const discourseThread = 'https://community.hicetnunc.xyz/t/test-proposal-'+params.poll
   // const hasVoted = false;
+  console.log(voteData)
   return (
     <article className="proposalDetail pageContents">
       <header className="proposalDetail-header pageHeader">
@@ -134,21 +135,41 @@ export const ProposalDetail = () => {
         { discourseThread }
         </div>
         <hr />
-        <footer className="proposalDetail-voteStatus">
-          <div className="proposalDetail-graph">
-            <div><span className="text-s-bold">Results</span> <small className="text-s-light">30 votes required</small></div>
-            {JSON.stringify(voteSums)}
-            <div>{ voteSums[1] } for • { voteSums[2] } against</div>
-          </div>
-          <a className="proposalDetail-discussionLink"
-            href={ discourseThread }>
-            Discuss on Discourse 
-          </a>
-          <div className="proposalDetail-yourVote">
-            <div onClick={()=>{handleVote(2)}}><Button>AGAINST</Button></div>
-            <div onClick={()=>{handleVote(1)}}><Button>FOR</Button></div>
-          </div>
-        </footer>
+        { pollData.metadata.numOptions === 2 ? (
+          <footer className="proposalDetail-voteStatus">
+            <div className="proposalDetail-graph">
+              <div><span className="text-s-bold">Results</span> <small className="text-s-light">30 votes required</small></div>
+              <div>{ voteSums[1] } for • { voteSums[2] } against</div>
+            </div>
+            <a className="proposalDetail-discussionLink"
+              href={ discourseThread }>
+              Discuss on Discourse 
+            </a>
+            <div className="proposalDetail-yourVote">
+              <div onClick={()=>{handleVote(2)}}><Button>AGAINST</Button></div>
+              <div onClick={()=>{handleVote(1)}}><Button>FOR</Button></div>
+            </div>
+          </footer>
+        ) : (
+          <footer className="proposalDetail-voteStatus">
+            <div className="proposalDetail-graph">
+              <div><span className="text-s-bold">Results</span> <small className="text-s-light">30 votes required</small></div>
+              <div>{ JSON.stringify(voteSums) }</div>
+            </div>
+            <a className="proposalDetail-discussionLink"
+              href={ discourseThread }>
+              Discuss on Discourse
+            </a>
+            <div className="proposalDetail-yourVote">
+              <div onClick={()=>{handleVote(1)}}><Button>OPTION 1</Button></div>
+              <div onClick={()=>{handleVote(2)}}><Button>OPTION 2</Button></div>
+              <div onClick={()=>{handleVote(3)}}><Button>OPTION 3</Button></div>
+              { pollData.metadata.numOptions > 3 ? (
+                <div onClick={()=>{handleVote(4)}}><Button>OPTION 4</Button></div>
+              ) : '' }
+            </div>
+          </footer>
+        )}
       </header>
       <div className="pageSection proposalDetail-adoptionStatus">
         <Logo /> <span className="text-l-light">STATUS</span> <span className="text-l-bold">PENDING</span> <a href="#adoptiondoc">https://www.loremipsum.com/wqdwqdw/ef3243r/qwdwde42/65765y4trf</a>
