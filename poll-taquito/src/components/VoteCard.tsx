@@ -9,18 +9,16 @@ import { vote } from "../contract";
 import { useToasts } from "react-toast-notifications";
 import { FormikTextField } from "./FormikTextField";
 
-export default function VoteCard(poll_id: any) {
-  const poll = poll_id;
+export default function VoteCard(poll: any) {
   const { connected } = useWallet();
   const { addToast } = useToasts();
   const validationSchema = Yup.object().shape({
-    pollId: Yup.string().required("Required"),
     pollOption: Yup.number().min(1, "Min value is 1").required("Required"),
   });
   const handleSubmit = async (values: any, helper: any) => {
     if (connected) {
       try {
-        const hash = await vote(values.pollId, values.pollOption);
+        const hash = await vote(poll.poll_id, values.pollOption);
         if (hash) {
           addToast("Tx Submitted", {
             appearance: "success",
@@ -57,7 +55,7 @@ export default function VoteCard(poll_id: any) {
                     name="pollId"
                     type="hidden"
                     label="Poll ID"
-                    value={ poll }
+                    value={ poll.poll_id }
                   />
                 ) : (
                   <Grid item>
