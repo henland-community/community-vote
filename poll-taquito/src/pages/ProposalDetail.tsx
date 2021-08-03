@@ -2,6 +2,7 @@ import '../assets/styles/utility-classes.css';
 import './proposalDetail.css';
 import { useParams } from "react-router-dom";
 import VoteCard from '../components/VoteCard';
+import * as React from "react";
 
 import { Button } from '../components/Button';
 
@@ -12,8 +13,100 @@ import { ReactComponent as Logo } from '../assets/icons/hen-logo.svg';
 import { ReactComponent as ViewsIcon } from '../assets/icons/views.svg';
 import { ReactComponent as OtherIcon } from '../assets/icons/other.svg';
 
+import { vote } from "../contract";
+import { useToasts } from "react-toast-notifications";
+
+async function getPollData(key: string) {
+  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys?key=${key}`)
+    .then(response => response.json())
+    .then(polls => {
+      if (polls[0].key === key) {
+        return polls[0];
+      } else {
+        throw new Error(`Poll with key ${key} not found`);
+      }
+    });
+}
+async function getVoteData(key: string) {
+  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
+    .then(response => response.json())
+    .then(votes => votes.filter((v: any) => v.key.string === key))
+}
+
+function sumVotes(votes: any) {
+  console.log(votes)
+  return {
+    1: votes.filter((v: any) => v.value === "1").length,
+    2: votes.filter((v: any) => v.value === "2").length,
+    3: votes.filter((v: any) => v.value === "3").length,
+    4: votes.filter((v: any) => v.value === "4").length
+  };
+}
+
 export const ProposalDetail = () => {
-  const params = useParams<{poll?: string}>();
+  const params = useParams<{poll: string}>();
+  const { addToast } = useToasts();
+  
+  const [pollData, setPollData] = React.useState({
+    hash: '',
+    metadata: {
+      startDate: '',
+      endDate: '',
+      numOptions: 0
+    },
+    totals: {}
+  });
+  const [voteData, setVoteData] = React.useState([]);
+  const [voteSums, setVoteSums] = React.useState({
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0
+  });
+  React.useEffect(() => {
+    getPollData(params.poll)
+      .then(poll =>{
+        console.log(poll)
+        setPollData({
+          hash: poll.hash,
+          metadata: {
+            startDate: poll.value.metadata.start_date,
+            endDate: poll.value.metadata.end_date,
+            numOptions: poll.value.metadata.num_options
+          },
+          totals: poll.value.totals
+        })
+      })
+      .catch(err => console.error(err));
+    getVoteData(params.poll)
+      .then(votes =>{
+        console.log(votes)
+        setVoteData(votes)
+        setVoteSums(sumVotes(votes))
+      })
+      .catch(err => console.error(err));
+  }, []);
+
+  async function handleVote(option: number) {
+    if (params.poll) {
+      try {
+        const hash = await vote(params.poll, option);
+        if (hash) {
+          addToast("Tx Submitted", {
+            appearance: "success",
+            autoDismiss: true,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+        const errorMessage = error?.data[1]?.with?.string || "Tx Failed";
+        addToast(errorMessage, {
+          appearance: "error",
+          autoDismiss: true,
+        });
+      }
+    }
+  }
   // const hasVoted = false;
   return (
     <article className="proposalDetail pageContents">
@@ -21,17 +114,17 @@ export const ProposalDetail = () => {
         <div className="proposalDetail-meta">
           <div className="proposalDetail-metaPrimary">
             <div className="proposalDetail-idAndType">
-              #1340 Proposal
+              #{ params.poll } Proposal
             </div>
             <div className="proposalDetail-subCategory">
               <OtherIcon /> DAO
             </div>
-            <div className="proposalDetail-views">
+            {/* <div className="proposalDetail-views">
               <ViewsIcon /> 34 Views
-            </div>
+            </div> */}
           </div>
           <div className="proposalDetail-countdown">
-            Ends in 5d 12h 34m
+            Ends in { pollData ? pollData.metadata.endDate : '...' }
           </div>
         </div>
         <h1>
@@ -44,15 +137,16 @@ export const ProposalDetail = () => {
         <footer className="proposalDetail-voteStatus">
           <div className="proposalDetail-graph">
             <div><span className="text-s-bold">Results</span> <small className="text-s-light">30 votes required</small></div>
-            <div>3205 for • 3201 against</div>
+            {JSON.stringify(voteSums)}
+            <div>{ voteSums[1] } for • { voteSums[2] } against</div>
           </div>
           <a className="proposalDetail-discussionLink"
             href={"https://community.hicetnunc.xyz/hicatvote/proposal-"+params.poll }>
             Discuss on Discourse 
           </a>
           <div className="proposalDetail-yourVote">
-            <Button>AGAINST</Button>
-            <Button>FOR</Button>
+            <div onClick={()=>{handleVote(2)}}><Button>AGAINST</Button></div>
+            <div onClick={()=>{handleVote(1)}}><Button>FOR</Button></div>
           </div>
         </footer>
         <VoteCard poll_id={params.poll}/>
@@ -73,11 +167,11 @@ export const ProposalDetail = () => {
           </p>
           <p className="text-s-light">
             Start date:<br/>
-            31.07.2021 - 14:53 UTC
+            { pollData.metadata.startDate }
           </p>
           <p className="text-s-light">
             End date:<br/>
-            12.08.2021 - 14:53 UTC
+            { pollData.metadata.endDate }
           </p>
           <p className="text-s-light">
             Hash:<br/>
