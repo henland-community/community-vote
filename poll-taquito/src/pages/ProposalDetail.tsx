@@ -1,7 +1,6 @@
 import '../assets/styles/utility-classes.css';
 import './proposalDetail.css';
 import { useParams } from "react-router-dom";
-import VoteCard from '../components/VoteCard';
 import * as React from "react";
 
 import { Button } from '../components/Button';
@@ -107,6 +106,7 @@ export const ProposalDetail = () => {
       }
     }
   }
+  const discourseThread = 'https://community.hicetnunc.xyz/t/test-proposal-'+params.poll
   // const hasVoted = false;
   return (
     <article className="proposalDetail pageContents">
@@ -131,7 +131,7 @@ export const ProposalDetail = () => {
         In order to connect and grow the H=N developer com...
         </h1>
         <div className="proposalDetail-url">
-        https://community.hicetnunc.xyz/hicatvote/proposal-{params.poll}
+        { discourseThread }
         </div>
         <hr />
         <footer className="proposalDetail-voteStatus">
@@ -141,7 +141,7 @@ export const ProposalDetail = () => {
             <div>{ voteSums[1] } for • { voteSums[2] } against</div>
           </div>
           <a className="proposalDetail-discussionLink"
-            href={"https://community.hicetnunc.xyz/hicatvote/proposal-"+params.poll }>
+            href={ discourseThread }>
             Discuss on Discourse 
           </a>
           <div className="proposalDetail-yourVote">
@@ -149,7 +149,6 @@ export const ProposalDetail = () => {
             <div onClick={()=>{handleVote(1)}}><Button>FOR</Button></div>
           </div>
         </footer>
-        <VoteCard poll_id={params.poll}/>
       </header>
       <div className="pageSection proposalDetail-adoptionStatus">
         <Logo /> <span className="text-l-light">STATUS</span> <span className="text-l-bold">PENDING</span> <a href="#adoptiondoc">https://www.loremipsum.com/wqdwqdw/ef3243r/qwdwde42/65765y4trf</a>
