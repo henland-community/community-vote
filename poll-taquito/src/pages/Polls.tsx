@@ -19,7 +19,7 @@ async function fetchPolls() {
 //     .then(votes => votes);
 // }
 
-/* async function filterPolls(polls: any, filter: string, activeAddress: string) {
+async function filterPolls(polls: any, filter: string) { // , activeAddress: string
   if (filter === 'all') return polls
   const filteredPolls = [];
   for (const poll of polls) {
@@ -31,12 +31,13 @@ async function fetchPolls() {
       filteredPolls.push(poll);
     } else if (filter === 'active' && poll.active === true) {
       filteredPolls.push(poll);
-    } else if (filter === 'my' && activeAddress.indexOf(poll.owner) !== -1) {
-      filteredPolls.push(poll);
-    }
+    } 
+    // else if (filter === 'my' && activeAddress.indexOf(poll.owner) !== -1) {
+    //   filteredPolls.push(poll);
+    // }
   }
   return filteredPolls;
-} */
+}
 
 class Polls extends React.Component<{ view: string }, { polls: any[] }> {
   constructor(props: any) {
@@ -49,8 +50,8 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
     fetchPolls().then(result => {
       console.log(result)
       this.setState({
-        // polls: filterPolls(result, 'all', activeAddress)
         polls: result
+        // polls: filterPolls(result, 'all', activeAddress)
       })
     })
   }

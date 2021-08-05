@@ -30,6 +30,8 @@ export default function CreatePollCard() {
     noOfOptions: Yup.number()
       .min(2, "Min 2 options required")
       .required("Required"),
+    title: Yup.string().required("Required"),
+    category: Yup.string().required("Required")
   });
   const [nextPollId, setNextPollId] = React.useState("1");
   React.useEffect(() => {
@@ -45,9 +47,11 @@ export default function CreatePollCard() {
       try {
         const hash = await createPoll(
           values.pollId,
+          values.category,
           values.endDate,
           values.noOfOptions,
-          values.startDate
+          values.startDate,
+          values.title
         );
         if (hash) {
           addToast("Tx Submitted", {
@@ -75,7 +79,14 @@ export default function CreatePollCard() {
       <CardHeader title="Create A Poll" subheader="Start a new poll" />
       <CardContent>
         <Formik
-          initialValues={{ pollId: nextPollId, startDate: dateStart, endDate: dateEnd, noOfOptions: 2 }}
+          initialValues={{ 
+            pollId: nextPollId, 
+            startDate: dateStart, 
+            endDate: dateEnd, 
+            noOfOptions: 2,
+            title: "",
+            category: ""
+          }}
           enableReinitialize={true}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
@@ -134,6 +145,25 @@ export default function CreatePollCard() {
                     label="Number of options"
                     fullWidth
                   />
+                </Grid>
+                <Grid item>
+                  <Field
+                    component={FormikTextField}
+                    name="title"
+                    type="text"
+                    label="Title"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item>
+                  <Field
+                    name="category"
+                    as="select"
+                  >
+                    <option value="">Select Category</option>
+                    <option value="1">Proposal</option>
+                    <option value="2">Question</option>
+                  </Field>
                 </Grid>
                 {/* <Grid item>
                   <Field

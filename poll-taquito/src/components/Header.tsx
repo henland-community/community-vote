@@ -22,6 +22,20 @@ function shortAddr(address:string){
     : ''
 }
 
+async function isAdmin(address:string){
+  return await fetch(`https://api.florencenet.tzkt.io/v1/contracts/KT1A4ZehSZjQUf2iVKjez7UvkhUrfUoBBM35/storage?path=administrator`)
+  .then(response => response.json())
+  .then(data => {
+    // if address is in response, then it is an admin
+    console.log(data);
+    return typeof data[address] === 'object';
+  })
+  .catch(err => {
+    console.log(err);
+    return false;
+  });
+}
+
 
 export const Header = ({
   votes = 0,
@@ -32,6 +46,14 @@ export const Header = ({
   ...props
 }: HeaderProps) => {
   const addr = activeAccount?shortAddr(activeAccount.address):'';
+  const [admin, setAdmin] = React.useState(false);
+    React.useEffect(() => {
+    if(activeAccount.address){
+      isAdmin(activeAccount.address).then((res: boolean) => {
+        setAdmin(res);
+      });
+    }
+  }, [activeAccount.address]);
   return (
     <header
       className="appHeader"
@@ -61,7 +83,7 @@ export const Header = ({
             {addr}
           </div>
           <SyncMenu 
-            admin={activeAccount.address === process.env.REACT_APP_ADMIN}
+            admin={activeAccount.address === process.env.REACT_APP_ADMIN || admin}
             connect={connect}
             disconnect={disconnect}
             connected={connected}

@@ -33,7 +33,7 @@ export const ProposalCard = ({...props}) => {
         </div>
       </div>
       <div className="proposalCard-name">
-      In order to connect and grow the H=N developer com...
+      { poll.value.metadata.title }
       </div>
       <footer className="proposalCard-footer">
         <div className="proposalCard-voteResult">

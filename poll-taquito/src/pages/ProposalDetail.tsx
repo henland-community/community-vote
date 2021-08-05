@@ -3,6 +3,8 @@ import './proposalDetail.css';
 import { useParams } from "react-router-dom";
 import * as React from "react";
 
+import DiscourseForum from "../components/DiscourseForum";
+
 import { Button } from '../components/Button';
 
 import { ReactComponent as Logo } from '../assets/icons/hen-logo.svg';
@@ -51,7 +53,9 @@ export const ProposalDetail = () => {
     metadata: {
       startDate: '',
       endDate: '',
-      numOptions: 0
+      numOptions: 0,
+      category: '',
+      title: ''
     },
     totals: {}
   });
@@ -71,7 +75,9 @@ export const ProposalDetail = () => {
           metadata: {
             startDate: poll.value.metadata.start_date,
             endDate: poll.value.metadata.end_date,
-            numOptions: Math.floor(poll.value.metadata.num_options)
+            numOptions: Math.floor(poll.value.metadata.num_options),
+            category: poll.value.metadata.category,
+            title: poll.value.metadata.title
           },
           totals: poll.value.totals
         })
@@ -98,7 +104,7 @@ export const ProposalDetail = () => {
         }
       } catch (error) {
         console.log(error);
-        const errorMessage = error?.data[1]?.with?.string || "Tx Failed";
+        const errorMessage = error?.message || error?.data[1]?.with?.string || "Tx Failed";
         addToast(errorMessage, {
           appearance: "error",
           autoDismiss: true,
@@ -129,7 +135,7 @@ export const ProposalDetail = () => {
           </div>
         </div>
         <h1>
-        In order to connect and grow the H=N developer com...
+        { pollData.metadata.title }
         </h1>
         <div className="proposalDetail-url">
         { discourseThread }
@@ -177,9 +183,10 @@ export const ProposalDetail = () => {
       </div>
       <section className="pageSection proposalDetail-columns">
         <section className="proposalDetail-details">
-          <p className="text-m-medium">In order to connect and grow the H=N developer comsectetur adipiscing elit tempus feugi?</p>
+          {/* <p className="text-m-medium">In order to connect and grow the H=N developer comsectetur adipiscing elit tempus feugi?</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt orci in tempus feugiat. Duis congue ac turpis eu blandit. Phasellus dolor nisi, rutrum quis tempus in, volutpat sit amet mi. Quisque nisi tortor, dictum nec leo at, molestie eleifend ipsum. Aliquam dapibus metus nec tortor pulvinar, in commodo risus consectetur. Phasellus auctor vestibulum viverra. Nulla tristique sodales purus, ut cursus turpis ultrices eu. Sed aliquet sed lectus nec finibus. Praesent pulvinar, sapien et consequat bibendum, velit ligula porttitor odio, vel sollicitudin odio nisl nec neque. Vestibulum vel finibus mauris, et fermentum urna. Aliquam sed mauris enim. Pellentesque in arcu sapien. </p>
-          <p>Phasellus dolor nisi, rutrum quis tempus in, volutpat sit amet mi. Quisque nisi tortor, dictum nec leo at, molestie eleifend ipsum. Aliquam dapibus metus nec tortor pulvinar, in commodo risus consectetur. Phasellus auctor vestibulum viverra. Nulla tristique sodales purus, ut cursus turpis ultrices eu. Sed aliquet sed lectus nec finibus. Praesent pulvinar, sapien et consequat bibendum, velit ligula porttitor odio, vel sollicitudin odio nisl nec neque. Vestibulum vel finibus mauris, et fermentum urna. Aliquam sed mauris enim. Pellentesque in arcu sapien.</p>
+          <p>Phasellus dolor nisi, rutrum quis tempus in, volutpat sit amet mi. Quisque nisi tortor, dictum nec leo at, molestie eleifend ipsum. Aliquam dapibus metus nec tortor pulvinar, in commodo risus consectetur. Phasellus auctor vestibulum viverra. Nulla tristique sodales purus, ut cursus turpis ultrices eu. Sed aliquet sed lectus nec finibus. Praesent pulvinar, sapien et consequat bibendum, velit ligula porttitor odio, vel sollicitudin odio nisl nec neque. Vestibulum vel finibus mauris, et fermentum urna. Aliquam sed mauris enim. Pellentesque in arcu sapien.</p> */}
+          <DiscourseForum thread="1"/>
         </section>
         <section className="proposalDetail-sidebar">
           <p className="proposalDetail-sidebarHeader">

@@ -28,16 +28,20 @@ export const initPollContract = async (
 
 export const createPoll = async (
   pollId: string,
+  category: string,
   endDate: Date,
   noOfOptions: number,
-  startDate: Date
+  startDate: Date,
+  title: string
 ) => {
   const op = await pollContract.methods
     .createPoll(
-      pollId, 
-      endDate.toISOString(), 
-      noOfOptions, 
-      startDate.toISOString()
+      pollId,
+      category,
+      endDate.toISOString(),  
+      noOfOptions,
+      startDate.toISOString(),
+      title
     ).send();
   return op.opHash;
 };

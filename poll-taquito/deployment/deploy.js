@@ -1,7 +1,9 @@
 require("dotenv").config();
 const { importKey } = require("@taquito/signer");
 const { TezosToolkit, MichelsonMap } = require("@taquito/taquito");
-const pollJSON = require("./poll2.json");
+// const pollJSON = require("./poll1.json"); // original contract
+// const pollJSON = require("./poll2.json"); // mod attempt by ufffd (?)
+const pollJSON = require("./poll3.json"); // update from https://github.com/tzConnectBerlin/hic-et-nunc-poll-tool compiled 8-5-2021
 
 const RPC_URL = process.env.REACT_APP_RPC_URL;
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -11,11 +13,12 @@ const Tezos = new TezosToolkit(RPC_URL);
 const deploy = async () => {
   console.log("Setting Secret key....");
   await importKey(Tezos, SECRET_KEY);
-  const administrator = await Tezos.signer.publicKeyHash();
+  const super_admin = await Tezos.signer.publicKeyHash();
   const initialStorage = {
     polls: MichelsonMap.fromLiteral({}),
     votes: MichelsonMap.fromLiteral({}),
-    administrator,
+    super_admin,
+    administrator: MichelsonMap.fromLiteral({})
   };
   console.log("Deploying Contract....");
   try {
