@@ -186,7 +186,7 @@ export const ProposalDetail = () => {
           {/* <p className="text-m-medium">In order to connect and grow the H=N developer comsectetur adipiscing elit tempus feugi?</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt orci in tempus feugiat. Duis congue ac turpis eu blandit. Phasellus dolor nisi, rutrum quis tempus in, volutpat sit amet mi. Quisque nisi tortor, dictum nec leo at, molestie eleifend ipsum. Aliquam dapibus metus nec tortor pulvinar, in commodo risus consectetur. Phasellus auctor vestibulum viverra. Nulla tristique sodales purus, ut cursus turpis ultrices eu. Sed aliquet sed lectus nec finibus. Praesent pulvinar, sapien et consequat bibendum, velit ligula porttitor odio, vel sollicitudin odio nisl nec neque. Vestibulum vel finibus mauris, et fermentum urna. Aliquam sed mauris enim. Pellentesque in arcu sapien. </p>
           <p>Phasellus dolor nisi, rutrum quis tempus in, volutpat sit amet mi. Quisque nisi tortor, dictum nec leo at, molestie eleifend ipsum. Aliquam dapibus metus nec tortor pulvinar, in commodo risus consectetur. Phasellus auctor vestibulum viverra. Nulla tristique sodales purus, ut cursus turpis ultrices eu. Sed aliquet sed lectus nec finibus. Praesent pulvinar, sapien et consequat bibendum, velit ligula porttitor odio, vel sollicitudin odio nisl nec neque. Vestibulum vel finibus mauris, et fermentum urna. Aliquam sed mauris enim. Pellentesque in arcu sapien.</p> */}
-          <DiscourseForum thread="1"/>
+          {/* <DiscourseForum thread="1"/> */}
         </section>
         <section className="proposalDetail-sidebar">
           <p className="proposalDetail-sidebarHeader">

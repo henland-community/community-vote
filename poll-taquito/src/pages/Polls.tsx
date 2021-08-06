@@ -4,11 +4,21 @@ import './polls.css';
 
 import { ProposalCard } from '../components/ProposalCard';
 import { Select } from '../components/Select';
+import { AnyCnameRecord } from 'dns';
 // import { Pagination } from '../components/Pagination';
 
 
-async function fetchPolls() {
-  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`)
+async function fetchPolls(cat: number) {
+  let fetchUrl = `https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`
+  if (cat !== 0) 
+    fetchUrl += `?value.metadata.category=${cat}`;
+  return await fetch(fetchUrl)
+    .then(response => response.json())
+    .then(polls => polls);
+}
+
+async function fetchPollsByCat(cat: number) {
+  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys?value.metadata.category=${cat}`)
     .then(response => response.json())
     .then(polls => polls);
 }
@@ -19,35 +29,16 @@ async function fetchPolls() {
 //     .then(votes => votes);
 // }
 
-async function filterPolls(polls: any, filter: string) { // , activeAddress: string
-  if (filter === 'all') return polls
-  const filteredPolls = [];
-  for (const poll of polls) {
-    if (filter === 'proposals' && poll.type === 1) {
-      filteredPolls.push(poll);
-    } else if (filter === 'questions' && poll.type === 2) {
-      filteredPolls.push(poll);
-    } else if (filter === 'past' && poll.active === false) {
-      filteredPolls.push(poll);
-    } else if (filter === 'active' && poll.active === true) {
-      filteredPolls.push(poll);
-    } 
-    // else if (filter === 'my' && activeAddress.indexOf(poll.owner) !== -1) {
-    //   filteredPolls.push(poll);
-    // }
-  }
-  return filteredPolls;
-}
+class Polls extends React.Component<{ view: string }, { polls: any[] }> {  
+  viewTitles: any = {
+    'proposals': 'Proposals',
+    'questions': 'Questions',
+    'my': 'My Votes',
+    'past': 'Past Votes'
+  };
 
-class Polls extends React.Component<{ view: string }, { polls: any[] }> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      polls: []
-    }
-
-    // test wallet: tz1LovFrdT3D2uY5ijGnb16172szCqFazDCE
-    fetchPolls().then(result => {
+  loadPolls(view: string) {
+    fetchPolls(view==='proposals'?1:view==='questions'?2:0).then(result => {
       console.log(result)
       this.setState({
         polls: result
@@ -55,13 +46,21 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
       })
     })
   }
+
   
-  viewTitles: any = {
-    'proposals': 'Proposals',
-    'questions': 'Questions',
-    'my': 'My Votes',
-    'past': 'Past Votes'
-  };
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      polls: []
+    }
+    this.loadPolls(this.props.view);
+  }
+
+  componentWillReceiveProps(nextProps: any) {
+    if (nextProps.view !== this.props.view) {
+      this.loadPolls(nextProps.view);
+    }
+  }
 
   render() {
 
