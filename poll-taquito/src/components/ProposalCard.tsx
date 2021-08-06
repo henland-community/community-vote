@@ -13,7 +13,7 @@ import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
 export const ProposalCard = ({...props}) => {
   const { poll } = props;
   const ended = new Date(poll.value.metadata.end_date) < new Date();
-  console.log(ended);
+  // console.log(ended);
   return (
     <div
       className="proposalCard"
