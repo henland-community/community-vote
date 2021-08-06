@@ -24,7 +24,7 @@ export default function CreatePollCard() {
   const { connected } = useWallet();
   const { addToast } = useToasts();
   const validationSchema = Yup.object().shape({
-    pollId: Yup.string().required("Required"),
+    // pollId: Yup.string().required("Required"),
     endDate: Yup.date().required("Required"),
     startDate: Yup.date().required("Required"),
     noOfOptions: Yup.number()
@@ -33,14 +33,14 @@ export default function CreatePollCard() {
     title: Yup.string().required("Required"),
     category: Yup.string().required("Required")
   });
-  const [nextPollId, setNextPollId] = React.useState("1");
-  React.useEffect(() => {
-    getNextPollId()
-      .then(pollId =>{
-        setNextPollId(pollId.toString())
-      })
-      .catch(err => console.error(err));
-  }, []);
+  // const [nextPollId, setNextPollId] = React.useState("1");
+  // React.useEffect(() => {
+  //   getNextPollId()
+  //     .then(pollId =>{
+  //       setNextPollId(pollId.toString())
+  //     })
+  //     .catch(err => console.error(err));
+  // }, []);
   const handleSubmit = async (values: any, helper: any) => {
     if (connected) {
       try {
@@ -51,8 +51,8 @@ export default function CreatePollCard() {
           values.startDate,
           values.title,
           {
-            discourse: 'test-thread-1',
-            description: 'Lorem ipsum hic et nuncum'
+            discourse: values.discourse,
+            description: values.description
           }
         );
         if (hash) {
@@ -82,7 +82,7 @@ export default function CreatePollCard() {
       <CardContent>
         <Formik
           initialValues={{ 
-            pollId: nextPollId, 
+            // pollId: nextPollId, 
             startDate: dateStart, 
             endDate: dateEnd, 
             noOfOptions: 2,
@@ -98,7 +98,7 @@ export default function CreatePollCard() {
           {({ setFieldValue, errors, values, touched, isValid, dirty }) => (
             <Form>
               <Grid direction="column" container spacing={3}>
-                <Grid item>
+                {/* <Grid item>
                   <Field
                     component={FormikTextField}
                     name="pollId"
@@ -106,7 +106,7 @@ export default function CreatePollCard() {
                     label="Poll ID"
                     fullWidth
                   />
-                </Grid>
+                </Grid> */}
                 <Grid item>
                   <Field
                     label="Start Date"
@@ -154,6 +154,24 @@ export default function CreatePollCard() {
                     name="title"
                     type="text"
                     label="Title"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item>
+                  <Field
+                    component={FormikTextField}
+                    name="description"
+                    type="textarea"
+                    label="Description"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item>
+                  <Field
+                    component={FormikTextField}
+                    name="discourse"
+                    type="textarea"
+                    label="Discourse Thread, ie: /t/thread-1/"
                     fullWidth
                   />
                 </Grid>
