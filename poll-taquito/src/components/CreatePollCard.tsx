@@ -31,7 +31,9 @@ export default function CreatePollCard() {
       .min(2, "Min 2 options required")
       .required("Required"),
     title: Yup.string().required("Required"),
-    category: Yup.string().required("Required")
+    category: Yup.string().required("Required"),
+    description: Yup.string().required("Required"),
+    discourse: Yup.string().required("Required")
   });
   // const [nextPollId, setNextPollId] = React.useState("1");
   // React.useEffect(() => {
