@@ -3,7 +3,7 @@ import './proposalDetail.css';
 import { useParams } from "react-router-dom";
 import * as React from "react";
 
-// import DiscourseForum from "../components/DiscourseForum";
+import DiscourseForum from "../components/DiscourseForum";
 
 import { Button } from '../components/Button';
 
@@ -200,7 +200,7 @@ export const ProposalDetail = () => {
         <section className="proposalDetail-details">
           <p className="text-m-medium">{ pollData.metadata.title }</p>
           <p>{ pollIpfs.description }</p>
-          {/* <DiscourseForum thread="1"/> */}
+          <DiscourseForum thread="1"/>
         </section>
         <section className="proposalDetail-sidebar">
           <p className="proposalDetail-sidebarHeader">
@@ -217,7 +217,7 @@ export const ProposalDetail = () => {
           </p>
           <p className="text-s-light">
             Hash:<br/>
-            PtGRANADsDU8R9daYKAgWnQYAJ64omN1o3KMGVCykShA97vQbvV
+            { params.poll }
           </p>
           <p className="text-s-light">
             Proposer:<br/>
