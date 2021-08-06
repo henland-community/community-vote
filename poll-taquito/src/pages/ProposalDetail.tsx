@@ -3,7 +3,7 @@ import './proposalDetail.css';
 import { useParams } from "react-router-dom";
 import * as React from "react";
 
-import DiscourseForum from "../components/DiscourseForum";
+// import DiscourseForum from "../components/DiscourseForum";
 
 import { Button } from '../components/Button';
 

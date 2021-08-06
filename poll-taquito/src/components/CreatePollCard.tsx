@@ -12,13 +12,13 @@ import { useToasts } from "react-toast-notifications";
 import { FormikTextField } from "./FormikTextField";
 
 
-async function getNextPollId() {
-  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`)
-    .then(response => response.json())
-    .then(polls => {
-      return polls.length + 1
-    });
-}
+// async function getNextPollId() {
+//   return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`)
+//     .then(response => response.json())
+//     .then(polls => {
+//       return polls.length + 1
+//     });
+// }
 
 export default function CreatePollCard() {
   const { connected } = useWallet();
