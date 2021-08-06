@@ -20,7 +20,7 @@ export const ProposalCard = ({...props}) => {
     >
       <div className="proposalCard-meta">
         <div className="proposalCard-identifiers">
-          <div className="proposalCard-id">#{poll.key}</div>
+          <div className="proposalCard-id">#{ poll.key.substr(0,8) }...</div>
           <div className="proposalCard-type">
             Proposal <ProposalIcon />
           </div>
