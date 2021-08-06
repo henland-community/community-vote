@@ -33,7 +33,7 @@ export default function CreatePollCard() {
     title: Yup.string().required("Required"),
     category: Yup.string().required("Required"),
     description: Yup.string().required("Required"),
-    discourse: Yup.string().required("Required")
+    discourse: Yup.number().required("Required")
   });
   // const [nextPollId, setNextPollId] = React.useState("1");
   // React.useEffect(() => {
@@ -172,8 +172,8 @@ export default function CreatePollCard() {
                   <Field
                     component={FormikTextField}
                     name="discourse"
-                    type="textarea"
-                    label="Discourse Thread, ie: /t/thread-1/"
+                    type="number"
+                    label="Discourse Topic #"
                     fullWidth
                   />
                 </Grid>
@@ -181,6 +181,10 @@ export default function CreatePollCard() {
                   <Field
                     name="category"
                     as="select"
+                    style={{ padding: '16.5px 14px',
+                      borderColor: 'var(--gray-50)',
+                      borderRadius: '5px',
+                      width: '100%'}}
                   >
                     <option value="">Select Category</option>
                     <option value="1">Proposal</option>

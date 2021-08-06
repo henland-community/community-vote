@@ -39,6 +39,11 @@ async function getIpfs(hash: string) {
     .then(response => response.json())
 }
 
+async function getUpdate(poll: string) {
+  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys/${poll}/updates`)
+    .then(response => response.json())
+}
+
 function sumVotes(votes: any) {
   console.log(votes)
   return {
@@ -52,6 +57,9 @@ function sumVotes(votes: any) {
 export const ProposalDetail = () => {
   const params = useParams<{poll: string}>();
   const { addToast } = useToasts();
+
+  const [hasUpdate, setHasUpdate] = React.useState(false);
+  const [updateIpfs, setUpdateIpfs] = React.useState({} as any);
   
   const [pollData, setPollData] = React.useState({
     hash: '',
@@ -103,6 +111,15 @@ export const ProposalDetail = () => {
       .then(ipfs =>{
         console.log(ipfs)
         setPollIpfs(ipfs)
+      }
+    )
+    getUpdate(params.poll)
+      .then(update =>{
+        console.log(update)
+        if (update !== false) {
+          setHasUpdate(true)
+          setUpdateIpfs(update)
+        }
       }
     )
   }, [params.poll]);
@@ -194,7 +211,7 @@ export const ProposalDetail = () => {
         )}
       </header>
       <div className="pageSection proposalDetail-adoptionStatus">
-        <Logo /> <span className="text-l-light">STATUS</span> <span className="text-l-bold">PENDING</span> <a href="#adoptiondoc">https://www.loremipsum.com/wqdwqdw/ef3243r/qwdwde42/65765y4trf</a>
+        <Logo /> <span className="text-l-light">STATUS</span> <span className="text-l-bold">PENDING</span> { hasUpdate && <a href="#adoptiondoc">https://community.hicetnunc.xyz/t/{ updateIpfs.discourse }</a> }
       </div>
       <section className="pageSection proposalDetail-columns">
         <section className="proposalDetail-details">
@@ -229,7 +246,7 @@ export const ProposalDetail = () => {
           </p>
           <p className="text-s-light">
             How does the voting system work?<br/>
-            Sollicitudin odio nisl nec neque et fermentum?
+            <span style={{color: 'red'}}>Sollicitudin odio nisl nec neque et fermentum?</span>
           </p>
         </section>
       </section>
