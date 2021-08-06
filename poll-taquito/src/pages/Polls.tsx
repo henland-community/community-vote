@@ -4,21 +4,19 @@ import './polls.css';
 
 import { ProposalCard } from '../components/ProposalCard';
 import { Select } from '../components/Select';
-import { AnyCnameRecord } from 'dns';
+// import { AnyCnameRecord } from 'dns';
 // import { Pagination } from '../components/Pagination';
 
 
-async function fetchPolls(cat: number) {
+async function fetchPolls(cat: number = 0, datecomp: string = '') {
   let fetchUrl = `https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`
   if (cat !== 0) 
     fetchUrl += `?value.metadata.category=${cat}`;
+  if (datecomp === 'gt' || datecomp === 'lt') {
+    fetchUrl += cat===0?'?':'&'
+    fetchUrl += `value.metadata.end_date.${datecomp}=`+(new Date().toISOString().slice(0,10));
+  }
   return await fetch(fetchUrl)
-    .then(response => response.json())
-    .then(polls => polls);
-}
-
-async function fetchPollsByCat(cat: number) {
-  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys?value.metadata.category=${cat}`)
     .then(response => response.json())
     .then(polls => polls);
 }
@@ -38,7 +36,21 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
   };
 
   loadPolls(view: string) {
-    fetchPolls(view==='proposals'?1:view==='questions'?2:0).then(result => {
+    let viewcat, datecomp;
+    if (view === 'proposals') {
+      viewcat = 1;
+      datecomp = 'gt';
+    } else if (view === 'questions') {
+      viewcat = 2;
+      datecomp = 'gt';
+    } else if (view === 'my') {
+      viewcat = 0;
+      datecomp = '';
+    } else if (view === 'past') {
+      viewcat = 0;
+      datecomp = 'lt';
+    }
+    fetchPolls(viewcat, datecomp).then(result => {
       console.log(result)
       this.setState({
         polls: result

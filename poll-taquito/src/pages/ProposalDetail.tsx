@@ -34,6 +34,11 @@ async function getVoteData(key: string) {
     .then(votes => votes.filter((v: any) => v.key.string === key))
 }
 
+async function getIpfs(hash: string) {
+  return await fetch(`https://ipfs.io/ipfs/${hash}`)
+    .then(response => response.json())
+}
+
 function sumVotes(votes: any) {
   console.log(votes)
   return {
@@ -66,6 +71,10 @@ export const ProposalDetail = () => {
     3: 0,
     4: 0
   });
+  const [pollIpfs, setPollIpfs] = React.useState({
+    discourse: '',
+    description: ''
+  });
   React.useEffect(() => {
     getPollData(params.poll)
       .then(poll =>{
@@ -90,6 +99,12 @@ export const ProposalDetail = () => {
         setVoteSums(sumVotes(votes))
       })
       .catch(err => console.error(err));
+    getIpfs(params.poll)
+      .then(ipfs =>{
+        console.log(ipfs)
+        setPollIpfs(ipfs)
+      }
+    )
   }, [params.poll]);
 
   async function handleVote(option: number) {
@@ -112,7 +127,7 @@ export const ProposalDetail = () => {
       }
     }
   }
-  const discourseThread = 'https://community.hicetnunc.xyz/t/test-proposal-'+params.poll
+  const discourseThread = 'https://community.hicetnunc.xyz/t/test-proposal-'+pollIpfs.discourse
   // const hasVoted = false;
   console.log(voteData)
   return (
@@ -183,9 +198,8 @@ export const ProposalDetail = () => {
       </div>
       <section className="pageSection proposalDetail-columns">
         <section className="proposalDetail-details">
-          {/* <p className="text-m-medium">In order to connect and grow the H=N developer comsectetur adipiscing elit tempus feugi?</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt orci in tempus feugiat. Duis congue ac turpis eu blandit. Phasellus dolor nisi, rutrum quis tempus in, volutpat sit amet mi. Quisque nisi tortor, dictum nec leo at, molestie eleifend ipsum. Aliquam dapibus metus nec tortor pulvinar, in commodo risus consectetur. Phasellus auctor vestibulum viverra. Nulla tristique sodales purus, ut cursus turpis ultrices eu. Sed aliquet sed lectus nec finibus. Praesent pulvinar, sapien et consequat bibendum, velit ligula porttitor odio, vel sollicitudin odio nisl nec neque. Vestibulum vel finibus mauris, et fermentum urna. Aliquam sed mauris enim. Pellentesque in arcu sapien. </p>
-          <p>Phasellus dolor nisi, rutrum quis tempus in, volutpat sit amet mi. Quisque nisi tortor, dictum nec leo at, molestie eleifend ipsum. Aliquam dapibus metus nec tortor pulvinar, in commodo risus consectetur. Phasellus auctor vestibulum viverra. Nulla tristique sodales purus, ut cursus turpis ultrices eu. Sed aliquet sed lectus nec finibus. Praesent pulvinar, sapien et consequat bibendum, velit ligula porttitor odio, vel sollicitudin odio nisl nec neque. Vestibulum vel finibus mauris, et fermentum urna. Aliquam sed mauris enim. Pellentesque in arcu sapien.</p> */}
+          <p className="text-m-medium">{ pollData.metadata.title }</p>
+          <p>{ pollIpfs.description }</p>
           {/* <DiscourseForum thread="1"/> */}
         </section>
         <section className="proposalDetail-sidebar">

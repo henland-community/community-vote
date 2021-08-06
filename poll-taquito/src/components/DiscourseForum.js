@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default function DiscourseForum(topic) {
+export default function DiscourseForum() {
   useEffect(() => {
     window.DiscourseEmbed = {
       discourseUrl: 'https://community.hicetnunc.xyz/',
@@ -12,7 +12,7 @@ export default function DiscourseForum(topic) {
     d.async = true;
     d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
-  }, []);
+  }, [topic]);
 
   return (
     <div>

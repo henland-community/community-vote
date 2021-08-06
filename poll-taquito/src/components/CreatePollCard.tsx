@@ -37,7 +37,6 @@ export default function CreatePollCard() {
   React.useEffect(() => {
     getNextPollId()
       .then(pollId =>{
-        console.log(pollId)
         setNextPollId(pollId.toString())
       })
       .catch(err => console.error(err));
@@ -46,12 +45,15 @@ export default function CreatePollCard() {
     if (connected) {
       try {
         const hash = await createPoll(
-          values.pollId,
           values.category,
           values.endDate,
           values.noOfOptions,
           values.startDate,
-          values.title
+          values.title,
+          {
+            discourse: 'test-thread-1',
+            description: 'Lorem ipsum hic et nuncum'
+          }
         );
         if (hash) {
           addToast("Tx Submitted", {
