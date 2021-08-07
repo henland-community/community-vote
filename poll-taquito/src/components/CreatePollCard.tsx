@@ -76,10 +76,10 @@ export default function CreatePollCard() {
   };
   const dateStart = new Date()
   var dateEnd = new Date()
-  dateEnd.setDate(dateEnd.getDate() + 1)
+  dateEnd.setDate(dateEnd.getDate() + 7)
 
   return (
-    <Card sx={{ maxWidth: "21.5rem" }}>
+    <Card sx={{ maxWidth: "40rem", margin: "3em auto" }}>
       <CardHeader title="Create A Poll" subheader="Start a new poll" />
       <CardContent>
         <Formik
@@ -89,7 +89,9 @@ export default function CreatePollCard() {
             endDate: dateEnd, 
             noOfOptions: 2,
             title: "",
-            category: ""
+            category: "",
+            description: "",
+            discourse: 0
           }}
           enableReinitialize={true}
           onSubmit={handleSubmit}
@@ -100,46 +102,39 @@ export default function CreatePollCard() {
           {({ setFieldValue, errors, values, touched, isValid, dirty }) => (
             <Form>
               <Grid direction="column" container spacing={3}>
-                {/* <Grid item>
-                  <Field
-                    component={FormikTextField}
-                    name="pollId"
-                    type="text"
-                    label="Poll ID"
-                    fullWidth
-                  />
-                </Grid> */}
-                <Grid item>
-                  <Field
-                    label="Start Date"
-                    name="startDate"
-                    component={DatePicker}
-                    onChange={(value: any) => {
-                      setFieldValue("startDate", value);
-                    }}
-                    renderInput={(params: any) => (
-                      <TextField {...params} fullWidth />
-                    )}
-                    error={touched.startDate && Boolean(errors.startDate)}
-                    helperText={touched.startDate ? errors.startDate : ""}
-                    disablePast
-                  />
-                </Grid>
-                <Grid item>
-                  <Field
-                    label="End Date"
-                    name="endDate"
-                    component={DatePicker}
-                    onChange={(value: any) => {
-                      setFieldValue("endDate", value);
-                    }}
-                    renderInput={(params: any) => (
-                      <TextField {...params} fullWidth />
-                    )}
-                    error={touched.endDate && Boolean(errors.endDate)}
-                    helperText={touched.endDate ? errors.endDate : ""}
-                    disablePast
-                  />
+                <Grid container item spacing={3}>
+                  <Grid item md>
+                    <Field
+                      label="Start Date"
+                      name="startDate"
+                      component={DatePicker}
+                      onChange={(value: any) => {
+                        setFieldValue("startDate", value);
+                      }}
+                      renderInput={(params: any) => (
+                        <TextField {...params} fullWidth />
+                      )}
+                      error={touched.startDate && Boolean(errors.startDate)}
+                      helperText={touched.startDate ? errors.startDate : ""}
+                      disablePast
+                    />
+                  </Grid>
+                  <Grid item md>
+                    <Field
+                      label="End Date"
+                      name="endDate"
+                      component={DatePicker}
+                      onChange={(value: any) => {
+                        setFieldValue("endDate", value);
+                      }}
+                      renderInput={(params: any) => (
+                        <TextField {...params} fullWidth />
+                      )}
+                      error={touched.endDate && Boolean(errors.endDate)}
+                      helperText={touched.endDate ? errors.endDate : ""}
+                      disablePast
+                    />
+                  </Grid>
                 </Grid>
                 <Grid item>
                   <Field
@@ -168,28 +163,30 @@ export default function CreatePollCard() {
                     fullWidth
                   />
                 </Grid>
-                <Grid item>
-                  <Field
-                    component={FormikTextField}
-                    name="discourse"
-                    type="number"
-                    label="Discourse Topic #"
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item>
-                  <Field
-                    name="category"
-                    as="select"
-                    style={{ padding: '16.5px 14px',
-                      borderColor: 'var(--gray-50)',
-                      borderRadius: '5px',
-                      width: '100%'}}
-                  >
-                    <option value="">Select Category</option>
-                    <option value="1">Proposal</option>
-                    <option value="2">Question</option>
-                  </Field>
+                <Grid container item spacing={3}>
+                  <Grid item md>
+                    <Field
+                      name="category"
+                      as="select"
+                      style={{ padding: '16.5px 14px',
+                        borderColor: 'var(--gray-50)',
+                        borderRadius: '5px',
+                        width: '100%'}}
+                    >
+                      <option value="">Select Category</option>
+                      <option value="1">Proposal</option>
+                      <option value="2">Question</option>
+                    </Field>
+                  </Grid>
+                  <Grid item md>
+                    <Field
+                      component={FormikTextField}
+                      name="discourse"
+                      type="number"
+                      label="Discourse Topic #"
+                      fullWidth
+                    />
+                  </Grid>
                 </Grid>
                 {/* <Grid item>
                   <Field
