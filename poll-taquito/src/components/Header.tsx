@@ -73,14 +73,14 @@ export const Header = ({
         <section className="appHeader-primaryNav-right">
           <div className="appHeader-votingStatus">
             <div className="votingStatus">
-              <span className="votingStatus-count">
+              <Link to="/profile" className="votingStatus-count">
                 { votes.count } votes
-              </span>
+              </Link>
             </div>
           </div>
-          <div className="appHeader-walletAddress">
+          <Link to='/profile' className="appHeader-walletAddress">
             {addr}
-          </div>
+          </Link>
           <SyncMenu 
             admin={activeAccount.address === process.env.REACT_APP_ADMIN || admin}
             connect={connect}
