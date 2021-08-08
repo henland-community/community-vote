@@ -245,7 +245,7 @@ export const ProposalDetail = () => {
       </div>
       <section className="pageSection proposalDetail-columns">
         <section className="proposalDetail-details">
-          <p className="text-m-medium">{ pollData.metadata.title }</p>
+          {/* <p className="text-m-medium">{ pollData.metadata.title }</p> */}
           <p>{ pollIpfs.description }</p>
           <DiscourseForum thread={ discourseThread }/>
         </section>
