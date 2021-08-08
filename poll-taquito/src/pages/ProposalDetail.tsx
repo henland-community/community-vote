@@ -209,10 +209,10 @@ export const ProposalDetail = () => {
           </footer>
         ) : (
           <footer className="proposalDetail-voteStatus">
-            <div className="proposalDetail-graph">
+            {/* <div className="proposalDetail-graph">
               <div><span className="text-s-bold">Results</span> <small className="text-s-light">30 votes required</small></div>
               <div>{ JSON.stringify(voteSums) }</div>
-            </div>
+            </div> */}
             <a className="proposalDetail-discussionLink"
               href={ discourseThread }>
               Discuss on Discourse
