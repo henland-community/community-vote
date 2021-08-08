@@ -40,8 +40,12 @@ async function getIpfs(hash: string) {
 }
 
 async function getUpdate(poll: string) {
-  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys/${poll}/updates`)
+  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${(process.env.REACT_APP_BIGMAP_UPDATES ??'12345')}/keys/${poll}/updates`)
     .then(response => response.json())
+    .then(data => {
+      console.log(['data',data])
+      return true; 
+    });
 }
 
 function sumVotes(votes: any) {
@@ -211,7 +215,9 @@ export const ProposalDetail = () => {
         )}
       </header>
       <div className="pageSection proposalDetail-adoptionStatus">
-        <Logo /> <span className="text-l-light">STATUS</span> <span className="text-l-bold">PENDING</span> { hasUpdate && <a href="#adoptiondoc">https://community.hicetnunc.xyz/t/{ discourseThread }</a> }
+        <Logo /> <span className="text-l-light">STATUS</span> <span className="text-l-bold">PENDING</span> { hasUpdate ? (
+          <a href="#adoptiondoc">https://community.hicetnunc.xyz/t/{ JSON.stringify(updateIpfs) }</a>
+        ):'' }
       </div>
       <section className="pageSection proposalDetail-columns">
         <section className="proposalDetail-details">
