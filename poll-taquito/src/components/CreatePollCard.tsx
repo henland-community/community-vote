@@ -221,7 +221,7 @@ export default function CreatePollCard() {
                     <Field
                       component={FormikTextField}
                       name="discourse"
-                      type="number"
+                      type="text"
                       label="Discourse Topic URL"
                       fullWidth
                     />
