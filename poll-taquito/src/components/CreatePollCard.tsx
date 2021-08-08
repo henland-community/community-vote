@@ -165,7 +165,8 @@ export default function CreatePollCard() {
                     as="textarea"
                     label="Description"
                     fullWidth
-                    style={{width: "100%", fontSize: '1em', padding: '0.5em'}}
+                    placeholder="Description"
+                    style={{width: "100%", fontSize: '1em', padding: '0.5em', resize: 'vertical'}}
                   />
                 </Grid>
                 <Grid container item spacing={3}>
