@@ -54,7 +54,10 @@ function sumVotes(votes: any) {
     1: votes.filter((v: any) => v.value === "1").length,
     2: votes.filter((v: any) => v.value === "2").length,
     3: votes.filter((v: any) => v.value === "3").length,
-    4: votes.filter((v: any) => v.value === "4").length
+    4: votes.filter((v: any) => v.value === "4").length,
+    5: votes.filter((v: any) => v.value === "5").length,
+    6: votes.filter((v: any) => v.value === "6").length,
+    7: votes.filter((v: any) => v.value === "7").length
   };
 }
 
@@ -81,7 +84,10 @@ export const ProposalDetail = () => {
     1: 0,
     2: 0,
     3: 0,
-    4: 0
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0
   });
   const [pollIpfs, setPollIpfs] = React.useState({
     discourse: '',
@@ -89,7 +95,10 @@ export const ProposalDetail = () => {
     opt1: 'Option 1',
     opt2: 'Option 2',
     opt3: 'Option 3',
-    opt4: 'Option 4'
+    opt4: 'Option 4',
+    opt5: 'Option 5',
+    opt6: 'Option 6',
+    opt7: 'Option 7'
   });
   React.useEffect(() => {
     getPollData(params.poll)
@@ -216,6 +225,15 @@ export const ProposalDetail = () => {
               ) : '' }
               { pollData.metadata.numOptions > 3 ? (
                 <div onClick={()=>{handleVote(4)}}><Button>{ pollIpfs.opt4 }</Button></div>
+              ) : '' }
+              { pollData.metadata.numOptions > 4 ? (
+                <div onClick={()=>{handleVote(5)}}><Button>{ pollIpfs.opt5 }</Button></div>
+              ) : '' }
+              { pollData.metadata.numOptions > 5 ? (
+                <div onClick={()=>{handleVote(6)}}><Button>{ pollIpfs.opt6 }</Button></div>
+              ) : '' }
+              { pollData.metadata.numOptions > 6 ? (
+                <div onClick={()=>{handleVote(7)}}><Button>{ pollIpfs.opt7 }</Button></div>
               ) : '' }
             </div>
           </footer>
