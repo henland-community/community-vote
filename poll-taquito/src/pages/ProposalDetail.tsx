@@ -186,9 +186,9 @@ export const ProposalDetail = () => {
         <h1>
         { pollData.metadata.title }
         </h1>
-        <div className="proposalDetail-url">
+        {/* <div className="proposalDetail-url">
         { discourseThreadUrl }
-        </div>
+        </div> */}
         <hr />
         { console.log(pollData) }
         { pollData.metadata.numOptions === 2 ? (
