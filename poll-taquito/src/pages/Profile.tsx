@@ -16,9 +16,9 @@ export const Profile = (props: any) => {
         <strong>{ props.activeAccount }</strong> 
         <div style={{display:'flex', justifyContent: 'space-between'}}>
           <strong>{ props.votes.count } VOTES:</strong> 
-          <span>TzProfiles: { props.votes.tzprof?<IconFor/>:<IconAgainst/>}</span>
-          <span>hDAO: { props.votes.hDAO?<IconFor/>:<IconAgainst/>}</span>
-          <span>Badge: { props.votes.badge?<IconFor/>:<IconAgainst/>}</span>
+          <span style={{opacity: props.votes.tzprof?'1.0':'0.5'}}>{ props.votes.tzprof?<IconFor/>:<IconAgainst/>} Tezos Profiles</span>
+          <span style={{opacity: props.votes.hDAO?'1.0':'0.5'}}>{ props.votes.hDAO?<IconFor/>:<IconAgainst/>} hDAO</span>
+          <span style={{opacity: props.votes.badge?'1.0':'0.5'}}>{ props.votes.badge?<IconFor/>:<IconAgainst/>} Hicathon Badge</span>
         </div>
       </section>
       <section className="pageSection">
