@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
-export default function DiscourseForum({thread = '1'}) {
+export default function DiscourseForum({url = ''}) {
   useEffect(() => {
     window.DiscourseEmbed = {
       discourseUrl: 'https://community.hicetnunc.xyz/',
-      topicId: thread,
+      discourseEmbedUrl: url
     };
 
     const d = document.createElement('script');
