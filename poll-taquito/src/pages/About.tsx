@@ -10,11 +10,11 @@ export const About = () => {
         <h1>ABOUT</h1>
       </header>
       <section className="pageSection">
-        <p><Link to="https://hen.vote">hen.vote</Link> is an experimental collaboration between TZ Connect, 
+        <p><Link to="/">hen.vote</Link> is an experimental collaboration between TZ Connect, 
           hicathon org team, Hicathon Working Group 5.4 &amp; the hen.vote dev team.</p>
         <p>This voting DAO is an experiment born from the hicathon, which was the first hackathon 
           organised by and with the community of the Tezos-based marketplace hic et nunc. 
-          You can find more info about the <Link to="https://www.hicathon.xyz/" target="_blank" rel="noreferrer">hicathon here</Link>.
+          You can find more info about the <a href="https://www.hicathon.xyz/" target="_blank" rel="noreferrer">hicathon here</a>.
         </p>
       </section>
       <section className="pageSection">
@@ -62,9 +62,9 @@ export const About = () => {
           <dd>All the hicathon community meets online to hear about the achievements of the 
             working groups.</dd>
         </dl>
-        <p>See the timeline of the post-hicathon <Link to="https://miro.com/app/board/o9J_lELpu8c=/?moveToWidget=3074457361752103305&cot=10"
+        <p>See the timeline of the post-hicathon <a href="https://miro.com/app/board/o9J_lELpu8c=/?moveToWidget=3074457361752103305&cot=10"
             target="_blank" 
-            rel="noreferrer">here</Link>.</p>
+            rel="noreferrer">here</a>.</p>
       </section>
     </article>
   );
