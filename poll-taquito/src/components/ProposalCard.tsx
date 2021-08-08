@@ -44,7 +44,7 @@ export const ProposalCard = ({...props}) => {
           ) : '' }          
         </div>
         { poll.key ? (
-          <Link to={"/vote/"+poll.key}><Button>Detail</Button></Link>
+          <Link to={"/vote/"+poll.key}><Button>Details</Button></Link>
         ) : null }
       </footer>
     </div>
