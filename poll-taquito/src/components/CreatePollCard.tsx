@@ -161,11 +161,11 @@ export default function CreatePollCard() {
                 </Grid>
                 <Grid item>
                   <Field
-                    component={FormikTextField}
                     name="description"
-                    type="textarea"
+                    as="textarea"
                     label="Description"
                     fullWidth
+                    style={{width: "100%", fontSize: '1em', padding: '0.5em'}}
                   />
                 </Grid>
                 <Grid container item spacing={3}>
@@ -262,7 +262,7 @@ export default function CreatePollCard() {
                         <Field
                           component={FormikTextField}
                           name="opt1desc"
-                          type="text"
+                          as="text"
                           label="Description (Option 1)"
                           fullWidth
                         />
