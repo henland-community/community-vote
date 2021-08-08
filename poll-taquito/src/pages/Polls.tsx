@@ -3,7 +3,7 @@ import '../assets/styles/utility-classes.css';
 import './polls.css';
 
 import { ProposalCard } from '../components/ProposalCard';
-import { Select } from '../components/Select';
+// import { Select } from '../components/Select';
 // import { AnyCnameRecord } from 'dns';
 // import { Pagination } from '../components/Pagination';
 
