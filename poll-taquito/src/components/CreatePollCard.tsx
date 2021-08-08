@@ -29,7 +29,7 @@ export default function CreatePollCard() {
     startDate: Yup.date().required("Required"),
     noOfOptions: Yup.number()
       .min(2, "Min 2 options required")
-      .min(7, "Max 7 options currently supported")
+      .max(7, "Max 7 options currently supported")
       .required("Required"),
     title: Yup.string().required("Required"),
     category: Yup.string().required("Required"),
