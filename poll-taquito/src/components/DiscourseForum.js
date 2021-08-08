@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
-export default function DiscourseForum({url = ''}) {
+export default function DiscourseForum({thread = '1'}) {
   useEffect(() => {
     window.DiscourseEmbed = {
       discourseUrl: 'https://community.hicetnunc.xyz/',
-      discourseEmbedUrl: url
+      topicId: thread,
     };
 
     const d = document.createElement('script');
@@ -12,7 +12,7 @@ export default function DiscourseForum({url = ''}) {
     d.async = true;
     d.src = window.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
-  }, [url]);
+  }, [thread]);
 
   return (
     <div>

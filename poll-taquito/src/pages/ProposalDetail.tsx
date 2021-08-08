@@ -161,10 +161,9 @@ export const ProposalDetail = () => {
       }
     }
   }
-  // const discourseThread = 'https://community.hicetnunc.xyz/t/'+pollIpfs.discourse
-  const discourseThread = pollIpfs.discourse
-  // const hasVoted = false;
-  console.log(voteData)
+  const discourseThreadUrl = pollIpfs.discourse
+  const discourseThreadBits = discourseThreadUrl.split('/')
+  const discourseThread = discourseThreadBits[discourseThreadBits.length - 1]
   return (
     <article className="proposalDetail pageContents">
       <header className="proposalDetail-header pageHeader">
@@ -188,7 +187,7 @@ export const ProposalDetail = () => {
         { pollData.metadata.title }
         </h1>
         <div className="proposalDetail-url">
-        { discourseThread }
+        { discourseThreadUrl }
         </div>
         <hr />
         { console.log(pollData) }
@@ -199,7 +198,7 @@ export const ProposalDetail = () => {
               <div>{ voteSums[1] } for • { voteSums[2] } against</div>
             </div>
             <a className="proposalDetail-discussionLink"
-              href={ discourseThread }>
+              href={ discourseThreadUrl }>
               Discuss on Discourse 
             </a>
             <div className="proposalDetail-yourVote">
@@ -214,7 +213,7 @@ export const ProposalDetail = () => {
               <div>{ JSON.stringify(voteSums) }</div>
             </div> */}
             <a className="proposalDetail-discussionLink"
-              href={ discourseThread }>
+              href={ discourseThreadUrl }>
               Discuss on Discourse
             </a>
             <div className="proposalDetail-yourVote">
@@ -248,7 +247,7 @@ export const ProposalDetail = () => {
         <section className="proposalDetail-details">
           <p className="text-m-medium">{ pollData.metadata.title }</p>
           <p>{ pollIpfs.description }</p>
-          <DiscourseForum url="{ discourseThread }"/>
+          <DiscourseForum thread={ discourseThread }/>
         </section>
         <section className="proposalDetail-sidebar">
           <p className="proposalDetail-sidebarHeader">
