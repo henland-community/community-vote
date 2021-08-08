@@ -144,7 +144,7 @@ export const ProposalDetail = () => {
       }
     }
   }
-  const discourseThread = 'https://community.hicetnunc.xyz/t/test-proposal-'+pollIpfs.discourse
+  const discourseThread = 'https://community.hicetnunc.xyz/t/'+pollIpfs.discourse
   // const hasVoted = false;
   console.log(voteData)
   return (
@@ -211,7 +211,7 @@ export const ProposalDetail = () => {
         )}
       </header>
       <div className="pageSection proposalDetail-adoptionStatus">
-        <Logo /> <span className="text-l-light">STATUS</span> <span className="text-l-bold">PENDING</span> { hasUpdate && <a href="#adoptiondoc">https://community.hicetnunc.xyz/t/{ updateIpfs.discourse }</a> }
+        <Logo /> <span className="text-l-light">STATUS</span> <span className="text-l-bold">PENDING</span> { hasUpdate && <a href="#adoptiondoc">https://community.hicetnunc.xyz/t/{ discourseThread }</a> }
       </div>
       <section className="pageSection proposalDetail-columns">
         <section className="proposalDetail-details">

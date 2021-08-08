@@ -9,7 +9,7 @@ import { SyncMenu } from './SyncMenu';
 import { ProposalsNav } from './ProposalsNav';
 
 interface HeaderProps {
-  votes: number;
+  votes: any;
   connected: boolean;
   connect: any;
   disconnect: any;
@@ -75,7 +75,7 @@ export const Header = ({
           <div className="appHeader-votingStatus">
             <div className="votingStatus">
               <span className="votingStatus-count">
-                { votes } votes
+                { votes.count } votes
               </span>
             </div>
           </div>

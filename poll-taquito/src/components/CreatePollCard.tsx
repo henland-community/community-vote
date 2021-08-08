@@ -46,7 +46,7 @@ export default function CreatePollCard() {
   const handleSubmit = async (values: any, helper: any) => {
     if (connected) {
       try {
-        const hash = await createPoll(
+        const hash = await createPoll( 
           values.category,
           values.endDate,
           values.noOfOptions,
@@ -54,7 +54,15 @@ export default function CreatePollCard() {
           values.title,
           {
             discourse: values.discourse,
-            description: values.description
+            description: values.description,
+            opt1: values.opt1,
+            opt1desc: values.opt1desc,
+            opt2: values.opt2,
+            opt2desc: values.opt2desc,
+            opt3: values.opt3,
+            opt3desc: values.opt3desc,
+            opt4: values.opt4,
+            opt4desc: values.opt4desc
           }
         );
         if (hash) {
@@ -66,7 +74,7 @@ export default function CreatePollCard() {
         }
       } catch (error) {
         console.log(error);
-        const errorMessage = error?.data[1]?.with?.string || "Tx Failed";
+        const errorMessage = error?.message || error?.data[1]?.with?.string || "Tx Failed";
         addToast(errorMessage, {
           appearance: "error",
           autoDismiss: true,
@@ -84,14 +92,22 @@ export default function CreatePollCard() {
       <CardContent>
         <Formik
           initialValues={{ 
-            // pollId: nextPollId, 
+            multi: "false", 
             startDate: dateStart, 
             endDate: dateEnd, 
             noOfOptions: 2,
             title: "",
             category: "",
             description: "",
-            discourse: 0
+            discourse: 0,
+            opt1: '',
+            opt1desc: '',
+            opt2: '',
+            opt2desc: '',
+            opt3: '',
+            opt3desc: '',
+            opt4: '',
+            opt4desc: ''
           }}
           enableReinitialize={true}
           onSubmit={handleSubmit}
@@ -102,6 +118,43 @@ export default function CreatePollCard() {
           {({ setFieldValue, errors, values, touched, isValid, dirty }) => (
             <Form>
               <Grid direction="column" container spacing={3}>
+                <Grid item>
+                  <Field
+                    name="multi"
+                    id="multiNo"
+                    type="radio"
+                    label="Multiple Options"
+                    value="false"
+                  />
+                  <label htmlFor="multiNo">SINGLE VOTE</label>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <Field
+                    name="multi"
+                    id="multiYes"
+                    type="radio"
+                    label="Multiple Options"
+                    value="true"
+                  />
+                  <label htmlFor="multiYes">MULTIPLE CHOICE</label>
+                </Grid>
+                <Grid item>
+                  <Field
+                    component={FormikTextField}
+                    name="title"
+                    type="text"
+                    label="Title"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item>
+                  <Field
+                    component={FormikTextField}
+                    name="description"
+                    type="textarea"
+                    label="Description"
+                    fullWidth
+                  />
+                </Grid>
                 <Grid container item spacing={3}>
                   <Grid item md>
                     <Field
@@ -136,33 +189,6 @@ export default function CreatePollCard() {
                     />
                   </Grid>
                 </Grid>
-                <Grid item>
-                  <Field
-                    component={FormikTextField}
-                    name="noOfOptions"
-                    type="number"
-                    label="Number of options"
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item>
-                  <Field
-                    component={FormikTextField}
-                    name="title"
-                    type="text"
-                    label="Title"
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item>
-                  <Field
-                    component={FormikTextField}
-                    name="description"
-                    type="textarea"
-                    label="Description"
-                    fullWidth
-                  />
-                </Grid>
                 <Grid container item spacing={3}>
                   <Grid item md>
                     <Field
@@ -188,15 +214,112 @@ export default function CreatePollCard() {
                     />
                   </Grid>
                 </Grid>
-                {/* <Grid item>
-                  <Field
-                    component={FormikTextField}
-                    name="ipfsMeta"
-                    type="textarea"
-                    label="Extra metadata"
-                    fullWidth
-                  />
-                </Grid> */}
+                { values.multi === "true" && (
+                  <Grid item container className="options-wrap" spacing={2}>
+                    <Grid item container direction="column" spacing={3}>
+                      <Grid item xl>
+                        <hr />
+                        <strong>Options</strong>
+                      </Grid>
+                      <Grid item>
+                        <Field
+                          component={FormikTextField}
+                          name="noOfOptions"
+                          type="number"
+                          label="Number of options"
+                          onChange={(value: any) => {
+                            setFieldValue("endDate", value);
+                          }}
+                          fullWidth
+                        />
+                      </Grid>
+                    </Grid>
+                    <Grid container item className="opt1wrap">
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt1"
+                          type="text"
+                          label="Title (Option 1)"
+                          fullWidth
+                        />
+                      </Grid>
+                      &nbsp;
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt1desc"
+                          type="text"
+                          label="Description (Option 1)"
+                          fullWidth
+                        />
+                      </Grid>
+                    </Grid>
+                    <Grid container item className="opt2wrap">
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt2"
+                          type="text"
+                          label="Title (Option 2)"
+                          fullWidth
+                        />
+                      </Grid>
+                      &nbsp;
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt2desc"
+                          type="text"
+                          label="Description (Option 2)"
+                          fullWidth
+                        />
+                      </Grid>
+                    </Grid>
+                    <Grid container item className="opt3wrap">
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt3"
+                          type="text"
+                          label="Title (Option 3)"
+                          fullWidth
+                        />
+                      </Grid>
+                      &nbsp;
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt3desc"
+                          type="text"
+                          label="Description (Option 3)"
+                          fullWidth
+                        />
+                      </Grid>
+                    </Grid>
+                    <Grid container item className="opt4wrap">
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt4"
+                          type="text"
+                          label="Title (Option 4)"
+                          fullWidth
+                        />
+                      </Grid>
+                      &nbsp;
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt4desc"
+                          type="text"
+                          label="Description (Option 4)"
+                          fullWidth
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                )}
                 <Grid item>
                   <Button
                     variant="contained"
