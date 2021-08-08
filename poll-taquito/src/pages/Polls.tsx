@@ -10,12 +10,17 @@ import { Select } from '../components/Select';
 
 async function fetchPolls(cat: number = 0, datecomp: string = '') {
   let fetchUrl = `https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`
+  let params: any = {}
+
   if (cat !== 0) 
-    fetchUrl += `?value.metadata.category=${cat}`;
-  if (datecomp === 'gt' || datecomp === 'lt') {
-    fetchUrl += cat===0?'?':'&'
-    fetchUrl += `value.metadata.end_date.${datecomp}=`+(new Date().toISOString().slice(0,10));
-  }
+    params['value.metadata.category'] = cat
+  if (datecomp === 'gt' || datecomp === 'lt')
+    params[`value.metadata.end_date.${datecomp}`] = new Date().toISOString().slice(0, 10)
+  
+  // params['value.metadata.start_date.gt'] = '2021-08-08' // hide past polls
+
+  fetchUrl += '?' + Object.keys(params).map(k => `${k}=${params[k]}`).join('&')
+
   return await fetch(fetchUrl)
     .then(response => response.json())
     .then(polls => polls);
