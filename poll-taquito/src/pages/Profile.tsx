@@ -2,6 +2,9 @@ import '../assets/styles/utility-classes.css';
 import './profile.css';
 import { Link } from "react-router-dom";
 
+import { ReactComponent as IconFor } from '../assets/icons/vote-for.svg';
+import { ReactComponent as IconAgainst } from '../assets/icons/vote-against.svg';
+
 export const Profile = (props: any) => {
   console.log(props)
   return (
@@ -11,11 +14,11 @@ export const Profile = (props: any) => {
       </header>
       <section className="pageSection-gray">
         <strong>{ props.activeAccount }</strong> 
-        <div>
+        <div style={{display:'flex', justifyContent: 'space-between'}}>
           <strong>{ props.votes.count } VOTES:</strong> 
-          <br/>TzProfiles: { props.votes.tzprof?'yes':'no' } 
-          <br/>hDAO: { props.votes.hDAO?'yes':'no' } 
-          <br/>Badge: { props.votes.badge?'yes':'no' }
+          <span>TzProfiles: { props.votes.tzprof?<IconFor/>:<IconAgainst/>}</span>
+          <span>hDAO: { props.votes.hDAO?<IconFor/>:<IconAgainst/>}</span>
+          <span>Badge: { props.votes.badge?<IconFor/>:<IconAgainst/>}</span>
         </div>
       </section>
       <section className="pageSection">
