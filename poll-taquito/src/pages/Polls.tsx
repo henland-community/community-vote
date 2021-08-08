@@ -23,7 +23,10 @@ async function fetchPolls(cat: number = 0, datecomp: string = '') {
 
   return await fetch(fetchUrl)
     .then(response => response.json())
-    .then(polls => polls);
+    .then(polls => {
+      console.log(polls)
+      return polls.filter((poll: any) => poll.value.metadata.title.indexOf('Test') === -1)
+    });
 }
 
 // async function fetchVotes() {
