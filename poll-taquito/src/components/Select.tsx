@@ -8,6 +8,7 @@ export const Select = ({...props}) => {
       <select 
         className="select-input"
         disabled={ props.disabled }
+        style={{color: 'red'}}
       >
         <option value="Option 1">Option 1</option>
         <option value="Option 2">Option 2</option>

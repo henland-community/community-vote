@@ -82,8 +82,8 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
           <h1>{ this.viewTitles[this.props.view] ?? 'All Votes' }</h1>
         </header>
         <nav className="pageSection polls-filters">
-          <Select />
-          <Select />
+          {/* <Select/>
+          <Select/> */}
         </nav>
         <section className="pageSection polls-cards">
           { this.state.polls.map((poll: any) => <ProposalCard key={poll} poll={poll}/>) }
