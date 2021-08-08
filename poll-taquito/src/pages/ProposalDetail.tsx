@@ -28,11 +28,11 @@ async function getPollData(key: string) {
       }
     });
 }
-async function getVoteData(key: string) {
-  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
-    .then(response => response.json())
-    .then(votes => votes.filter((v: any) => v.key.string === key))
-}
+// async function getVoteData(key: string) {
+//   return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
+//     .then(response => response.json())
+//     .then(votes => votes.filter((v: any) => v.key.string === key))
+// }
 
 async function getIpfs(hash: string) {
   return await fetch(`https://ipfs.io/ipfs/${hash}`)
@@ -48,18 +48,18 @@ async function getUpdate(poll: string) {
     });
 }
 
-function sumVotes(votes: any) {
-  console.log(votes)
-  return {
-    1: votes.filter((v: any) => v.value === "1").length,
-    2: votes.filter((v: any) => v.value === "2").length,
-    3: votes.filter((v: any) => v.value === "3").length,
-    4: votes.filter((v: any) => v.value === "4").length,
-    5: votes.filter((v: any) => v.value === "5").length,
-    6: votes.filter((v: any) => v.value === "6").length,
-    7: votes.filter((v: any) => v.value === "7").length
-  };
-}
+// function sumVotes(votes: any) {
+//   console.log(votes)
+//   return {
+//     1: votes.filter((v: any) => v.value === "1").length,
+//     2: votes.filter((v: any) => v.value === "2").length,
+//     3: votes.filter((v: any) => v.value === "3").length,
+//     4: votes.filter((v: any) => v.value === "4").length,
+//     5: votes.filter((v: any) => v.value === "5").length,
+//     6: votes.filter((v: any) => v.value === "6").length,
+//     7: votes.filter((v: any) => v.value === "7").length
+//   };
+// }
 
 export const ProposalDetail = () => {
   const params = useParams<{poll: string}>();
@@ -79,16 +79,16 @@ export const ProposalDetail = () => {
     },
     totals: {}
   });
-  const [voteData, setVoteData] = React.useState([]);
-  const [voteSums, setVoteSums] = React.useState({
-    1: 0,
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-    6: 0,
-    7: 0
-  });
+  // const [voteData, setVoteData] = React.useState([]);
+  // const [voteSums, setVoteSums] = React.useState({
+  //   1: 0,
+  //   2: 0,
+  //   3: 0,
+  //   4: 0,
+  //   5: 0,
+  //   6: 0,
+  //   7: 0
+  // });
   const [pollIpfs, setPollIpfs] = React.useState({
     discourse: '',
     description: '',
@@ -117,13 +117,13 @@ export const ProposalDetail = () => {
         })
       })
       .catch(err => console.error(err));
-    getVoteData(params.poll)
-      .then(votes =>{
-        console.log(votes)
-        setVoteData(votes)
-        setVoteSums(sumVotes(votes))
-      })
-      .catch(err => console.error(err));
+    // getVoteData(params.poll)
+    //   .then(votes =>{
+    //     console.log(votes)
+    //     setVoteData(votes)
+    //     setVoteSums(sumVotes(votes))
+    //   })
+    //   .catch(err => console.error(err));
     getIpfs(params.poll)
       .then(ipfs =>{
         console.log(ipfs)
@@ -194,8 +194,8 @@ export const ProposalDetail = () => {
         { pollData.metadata.numOptions === 2 ? (
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
-              <div><span className="text-s-bold">Results</span> <small className="text-s-light">30 votes required</small></div>
-              <div>{ voteSums[1] } for • { voteSums[2] } against</div>
+              <div> {/* <span className="text-s-bold">Results</span>*/} <small className="text-s-light">30 votes required</small></div>
+              {/* <div>{ voteSums[1] } for • { voteSums[2] } against</div> */}
             </div>
             <a className="proposalDetail-discussionLink"
               href={ discourseThreadUrl }>
