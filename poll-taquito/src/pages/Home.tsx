@@ -44,10 +44,16 @@ export const Home = () => {
       <section className="pageSection">
         <h2>How does it work?</h2>
         <ol>
-          <li><b>Proposals are submitted</b> either by working groups, or by *you* through the Discourse.</li>
+          <li>For this V1, proposals and questions are submitted by the hicathon’s working groups and entered by the hicathon orga team in the voting DAO and the forum.</li>
+          <li>Check the list of what is to be voted in the menu ‘Proposals’ and ‘Questions’. </li>
+          <li>Click on one proposal or question, see the different voting options, how many votes have been done, discuss them via the Forum</li>
+          <li>For the proposals, vote by selecting one option and then click on XX. For the questions, vote by clicking on “Against” or “For”. </li>
+          <li>Results are tabulated at the end of the voting period, to determine whether it met quorum and was successful.</li>
+          <li>Hic et nunc’s founder will be able to decide if some of the projects will be adopted for the website or not.</li>
+          {/* <li><b>Proposals are submitted</b> either by working groups, or by *you* through the Discourse.</li>
           <li><b>Votes are cast</b> once the proposal is live for voting.</li>
           <li><b>Results are tabulated</b> at the end of the voting period, to determine whether it met quorum and was successful.</li>
-          <li><b>H=N decides how/when to adopt</b> any successful proposals.</li>
+          <li><b>H=N decides how/when to adopt</b> any successful proposals.</li> */}
         </ol>
         <p>
         <p>Visit our <Link to="/faq">FAQ</Link> learn more about how to submit proposals, earn voting rights, 
