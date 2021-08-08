@@ -29,11 +29,12 @@ export default function CreatePollCard() {
     startDate: Yup.date().required("Required"),
     noOfOptions: Yup.number()
       .min(2, "Min 2 options required")
+      .min(7, "Max 7 options currently supported")
       .required("Required"),
     title: Yup.string().required("Required"),
     category: Yup.string().required("Required"),
     description: Yup.string().required("Required"),
-    discourse: Yup.number().required("Required")
+    discourse: Yup.string().url().required("Required")
   });
   // const [nextPollId, setNextPollId] = React.useState("1");
   // React.useEffect(() => {
@@ -62,7 +63,13 @@ export default function CreatePollCard() {
             opt3: values.opt3,
             opt3desc: values.opt3desc,
             opt4: values.opt4,
-            opt4desc: values.opt4desc
+            opt4desc: values.opt4desc,
+            opt5: values.opt5,
+            opt5desc: values.opt5desc,
+            opt6: values.opt6,
+            opt6desc: values.opt6desc,
+            opt7: values.opt7,
+            opt7desc: values.opt7desc
           }
         );
         if (hash) {
@@ -99,7 +106,7 @@ export default function CreatePollCard() {
             title: "",
             category: "",
             description: "",
-            discourse: 0,
+            discourse: '',
             opt1: '',
             opt1desc: '',
             opt2: '',
@@ -107,7 +114,13 @@ export default function CreatePollCard() {
             opt3: '',
             opt3desc: '',
             opt4: '',
-            opt4desc: ''
+            opt4desc: '',
+            opt5: '',
+            opt5desc: '',
+            opt6: '',
+            opt6desc: '',
+            opt7: '',
+            opt7desc: ''
           }}
           enableReinitialize={true}
           onSubmit={handleSubmit}
@@ -209,7 +222,7 @@ export default function CreatePollCard() {
                       component={FormikTextField}
                       name="discourse"
                       type="number"
-                      label="Discourse Topic #"
+                      label="Discourse Topic URL"
                       fullWidth
                     />
                   </Grid>
@@ -276,6 +289,7 @@ export default function CreatePollCard() {
                         />
                       </Grid>
                     </Grid>
+                    { values.noOfOptions > 2 && (
                     <Grid container item className="opt3wrap">
                       <Grid lg item>
                         <Field
@@ -297,6 +311,8 @@ export default function CreatePollCard() {
                         />
                       </Grid>
                     </Grid>
+                    )}
+                    { values.noOfOptions > 3 && (
                     <Grid container item className="opt4wrap">
                       <Grid lg item>
                         <Field
@@ -318,6 +334,76 @@ export default function CreatePollCard() {
                         />
                       </Grid>
                     </Grid>
+                    )}
+                    { values.noOfOptions > 4 && (
+                    <Grid container item className="opt5wrap">
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt5"
+                          type="text"
+                          label="Title (Option 5)"
+                          fullWidth
+                        />
+                      </Grid>
+                      &nbsp;
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt5desc"
+                          type="text"
+                          label="Description (Option 5)"
+                          fullWidth
+                        />
+                      </Grid>
+                    </Grid>
+                    )}
+                    { values.noOfOptions > 5 && (
+                    <Grid container item className="opt6wrap">
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt6"
+                          type="text"
+                          label="Title (Option 6)"
+                          fullWidth
+                        />
+                      </Grid>
+                      &nbsp;
+                      <Grid lg item>
+                        <Field
+                          component={FormikTextField}
+                          name="opt6desc"
+                          type="text"
+                          label="Description (Option 6)"
+                          fullWidth
+                        />
+                      </Grid>
+                    </Grid>
+                    )}
+                    { values.noOfOptions > 6 && (
+                      <Grid container item className="opt7wrap">
+                        <Grid lg item>
+                          <Field
+                            component={FormikTextField}
+                            name="opt7"
+                            type="text"
+                            label="Title (Option 7)"
+                            fullWidth
+                          />
+                        </Grid>
+                        &nbsp;
+                        <Grid lg item>
+                          <Field
+                            component={FormikTextField}
+                            name="opt7desc"
+                            type="text"
+                            label="Description (Option 7)"
+                            fullWidth
+                          />
+                        </Grid>
+                      </Grid>
+                    )}
                   </Grid>
                 )}
                 <Grid item>
