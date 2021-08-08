@@ -60,10 +60,12 @@
 
 .proposalDetail-yourVote {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .proposalDetail-yourVote > * {
   margin-left: calc(var(--grid-unit) * 2);
+  margin-bottom: calc(var(--grid-unit) * 2);
 }
 
 @media screen and (min-width: 768px) {
