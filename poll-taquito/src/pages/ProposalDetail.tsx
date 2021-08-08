@@ -85,13 +85,17 @@ export const ProposalDetail = () => {
   });
   const [pollIpfs, setPollIpfs] = React.useState({
     discourse: '',
-    description: ''
+    description: '',
+    opt1: 'Option 1',
+    opt2: 'Option 2',
+    opt3: 'Option 3',
+    opt4: 'Option 4'
   });
   React.useEffect(() => {
     getPollData(params.poll)
       .then(poll =>{
         console.log(poll)
-        setPollData({
+        setPollData({ 
           hash: poll.hash,
           metadata: {
             startDate: poll.value.metadata.start_date,
@@ -204,11 +208,13 @@ export const ProposalDetail = () => {
               Discuss on Discourse
             </a>
             <div className="proposalDetail-yourVote">
-              <div onClick={()=>{handleVote(1)}}><Button>OPTION 1</Button></div>
-              <div onClick={()=>{handleVote(2)}}><Button>OPTION 2</Button></div>
-              <div onClick={()=>{handleVote(3)}}><Button>OPTION 3</Button></div>
+              <div onClick={()=>{handleVote(1)}}><Button>{ pollIpfs.opt1 }</Button></div>
+              <div onClick={()=>{handleVote(2)}}><Button>{ pollIpfs.opt2 }</Button></div>
+              { pollData.metadata.numOptions > 2 ? (
+                <div onClick={()=>{handleVote(3)}}><Button>{ pollIpfs.opt3 }</Button></div>
+              ) : '' }
               { pollData.metadata.numOptions > 3 ? (
-                <div onClick={()=>{handleVote(4)}}><Button>OPTION 4</Button></div>
+                <div onClick={()=>{handleVote(4)}}><Button>{ pollIpfs.opt4 }</Button></div>
               ) : '' }
             </div>
           </footer>
