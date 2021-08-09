@@ -68,6 +68,10 @@
   margin-bottom: calc(var(--grid-unit) * 2);
 }
 
+.proposalDetail-details {
+  white-space: pre-wrap;
+}
+
 @media screen and (min-width: 768px) {
   .proposalDetail-columns {
     display: flex;
