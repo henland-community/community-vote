@@ -115,11 +115,13 @@ function App() {
     });
   };
   React.useEffect(() => {
-    setWalletProvider(beaconWallet);
     initTezos(RPC_URL);
     initPollContract(CONTRACT_ADDRESS);
     activeAccount && getVotePower(activeAccount.address);
-  }, [activeAccount,beaconWallet]);
+  }, [activeAccount]);
+  React.useEffect(() => {
+    setWalletProvider(beaconWallet);
+  }, [beaconWallet]);
   
   return (
     <Router>
@@ -160,7 +162,10 @@ function App() {
                 <Polls view="my"/>
               </Route>
               <Route path="/vote/:poll">
-                <ProposalDetail></ProposalDetail>
+                <ProposalDetail
+                  activeAccount={ activeAccount ? activeAccount.address : ""}
+                  votePower={ votePower }
+                />
               </Route>
               <Route path="/admin" component={CreatePollCard} />
             </Switch>

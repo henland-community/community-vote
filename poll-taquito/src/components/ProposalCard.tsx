@@ -22,10 +22,10 @@ export const ProposalCard = ({...props}) => {
         <div className="proposalCard-identifiers">
           <div className="proposalCard-id">#{ poll.key.substr(0,8) }...</div>
           <div className="proposalCard-type">
-            { poll.value.metadata.category == '1' && (
+            { poll.value.metadata.category === '1' && (
               <>Proposal <ProposalIcon /></>
             )}
-            { poll.value.metadata.category == '2' && (
+            { poll.value.metadata.category === '2' && (
               <>Question <ProposalIcon /></>
             )}
           </div>

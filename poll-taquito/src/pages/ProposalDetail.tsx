@@ -2,14 +2,15 @@ import '../assets/styles/utility-classes.css';
 import './proposalDetail.css';
 import { useParams } from "react-router-dom";
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 import DiscourseForum from "../components/DiscourseForum";
 
 import { Button } from '../components/Button';
 
 import { ReactComponent as Logo } from '../assets/icons/hen-logo.svg';
-// import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
-// import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
+import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
+import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
 // import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
 // import { ReactComponent as ViewsIcon } from '../assets/icons/views.svg';
 import { ReactComponent as OtherIcon } from '../assets/icons/other.svg';
@@ -28,11 +29,11 @@ async function getPollData(key: string) {
       }
     });
 }
-// async function getVoteData(key: string) {
-//   return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
-//     .then(response => response.json())
-//     .then(votes => votes.filter((v: any) => v.key.string === key))
-// }
+async function getVoteData(key: string) {
+  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
+    .then(response => response.json())
+    .then(votes => votes.filter((v: any) => v.key.string === key))
+}
 
 async function getIpfs(hash: string) {
   return await fetch(`https://ipfs.io/ipfs/${hash}`)
@@ -61,7 +62,10 @@ async function getUpdate(poll: string) {
 //   };
 // }
 
-export const ProposalDetail = () => {
+export const ProposalDetail = (props: any) => {
+  const activeAccount = props.activeAccount
+  const votePower = props.votePower
+
   const params = useParams<{poll: string}>();
   const { addToast } = useToasts();
 
@@ -79,7 +83,7 @@ export const ProposalDetail = () => {
     },
     totals: {}
   });
-  // const [voteData, setVoteData] = React.useState([]);
+  const [voteData, setVoteData] = React.useState([]);
   // const [voteSums, setVoteSums] = React.useState({
   //   1: 0,
   //   2: 0,
@@ -117,13 +121,19 @@ export const ProposalDetail = () => {
         })
       })
       .catch(err => console.error(err));
-    // getVoteData(params.poll)
-    //   .then(votes =>{
-    //     console.log(votes)
-    //     setVoteData(votes)
-    //     setVoteSums(sumVotes(votes))
-    //   })
-    //   .catch(err => console.error(err));
+    getVoteData(params.poll)
+      .then(votes =>{
+        console.log(votes)
+        for (let i = 0; i < votes.length; i++) {
+          if (votes[i].key.address === activeAccount.address) {
+            votes.myvote = votes[i].value;
+          }
+        }
+        votes.myvote = 
+        setVoteData(votes)
+        // setVoteSums(sumVotes(votes))
+      })
+      .catch(err => console.error(err));
     getIpfs(params.poll)
       .then(ipfs =>{
         console.log(ipfs)
@@ -132,14 +142,13 @@ export const ProposalDetail = () => {
     )
     getUpdate(params.poll)
       .then(update =>{
-        console.log(update)
         if (update !== false) {
           setHasUpdate(true)
           setUpdateIpfs(update)
         }
       }
     )
-  }, [params.poll]);
+  }, [params.poll, activeAccount]);
 
   async function handleVote(option: number) {
     if (params.poll) {
@@ -190,7 +199,6 @@ export const ProposalDetail = () => {
         { discourseThreadUrl }
         </div> */}
         <hr />
-        { console.log(pollData) }
         { pollData.metadata.numOptions === 2 ? (
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
@@ -202,8 +210,8 @@ export const ProposalDetail = () => {
               Discuss on Discourse 
             </a>
             <div className="proposalDetail-yourVote">
-              <div onClick={()=>{handleVote(2)}}><Button>AGAINST</Button></div>
-              <div onClick={()=>{handleVote(1)}}><Button>FOR</Button></div>
+              <div onClick={()=>{handleVote(2)}}><Button>AGAINST <VoteAgainstIcon/></Button></div>
+              <div onClick={()=>{handleVote(1)}}><Button>FOR <VoteForIcon/></Button></div>
             </div>
           </footer>
         ) : (
@@ -212,37 +220,42 @@ export const ProposalDetail = () => {
               <div><span className="text-s-bold">Results</span> <small className="text-s-light">30 votes required</small></div>
               <div>{ JSON.stringify(voteSums) }</div>
             </div> */}
+            { console.log(voteData) }
             <a className="proposalDetail-discussionLink"
               href={ discourseThreadUrl }>
               Discuss on Discourse
             </a>
             <div className="proposalDetail-yourVote">
-              <div onClick={()=>{handleVote(1)}}><Button>{ pollIpfs.opt1 }</Button></div>
-              <div onClick={()=>{handleVote(2)}}><Button>{ pollIpfs.opt2 }</Button></div>
+              <div onClick={()=>{votePower.count > 0 && handleVote(1)}}><Button>{ pollIpfs.opt1 }</Button></div>
+              <div onClick={()=>{votePower.count > 0 && handleVote(2)}}><Button>{ pollIpfs.opt2 }</Button></div>
               { pollData.metadata.numOptions > 2 ? (
-                <div onClick={()=>{handleVote(3)}}><Button>{ pollIpfs.opt3 }</Button></div>
+                <div onClick={()=>{votePower.count > 0 && handleVote(3)}}><Button>{ pollIpfs.opt3 }</Button></div>
               ) : '' }
               { pollData.metadata.numOptions > 3 ? (
-                <div onClick={()=>{handleVote(4)}}><Button>{ pollIpfs.opt4 }</Button></div>
+                <div onClick={()=>{votePower.count > 0 && handleVote(4)}}><Button>{ pollIpfs.opt4 }</Button></div>
               ) : '' }
               { pollData.metadata.numOptions > 4 ? (
-                <div onClick={()=>{handleVote(5)}}><Button>{ pollIpfs.opt5 }</Button></div>
+                <div onClick={()=>{votePower.count > 0 && handleVote(5)}}><Button>{ pollIpfs.opt5 }</Button></div>
               ) : '' }
               { pollData.metadata.numOptions > 5 ? (
-                <div onClick={()=>{handleVote(6)}}><Button>{ pollIpfs.opt6 }</Button></div>
+                <div onClick={()=>{votePower.count > 0 && handleVote(6)}}><Button>{ pollIpfs.opt6 }</Button></div>
               ) : '' }
               { pollData.metadata.numOptions > 6 ? (
-                <div onClick={()=>{handleVote(7)}}><Button>{ pollIpfs.opt7 }</Button></div>
+                <div onClick={()=>{votePower.count > 0 && handleVote(7)}}><Button>{ pollIpfs.opt7 }</Button></div>
               ) : '' }
             </div>
+            { votePower.count === 0 && "Sync your TzProfiles verified wallet to enable voting" }
           </footer>
         )}
       </header>
-      <div className="pageSection proposalDetail-adoptionStatus">
-        <Logo /> <span className="text-l-light">STATUS</span> <span className="text-l-bold">PENDING</span> { hasUpdate ? (
+      { hasUpdate ? (
+        <div className="pageSection proposalDetail-adoptionStatus">
+          <Logo />
+          <span className="text-l-light">STATUS</span>
+          <span className="text-l-bold">PENDING</span>
           <a href="#adoptiondoc">{ JSON.stringify(updateIpfs) }</a>
-        ):'' }
-      </div>
+        </div>
+      ):'' }
       <section className="pageSection proposalDetail-columns">
         <section className="proposalDetail-details">
           {/* <p className="text-m-medium">{ pollData.metadata.title }</p> */}
@@ -277,8 +290,7 @@ export const ProposalDetail = () => {
             <span className="proposalDetail-sidebarHeader-text text-s-medium">Help</span>
           </p>
           <p className="text-s-light">
-            How does the voting system work?<br/>
-            <span style={{color: 'red'}}>Sollicitudin odio nisl nec neque et fermentum?</span>
+            <Link to="/faq">How does the voting system work?</Link>
           </p>
         </section>
       </section>

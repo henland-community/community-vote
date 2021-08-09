@@ -63,6 +63,13 @@
   flex-wrap: wrap;
 }
 
+.proposalDetail-yourVote svg {
+  height: 1em;
+}
+.proposalDetail-yourVote svg path {
+  stroke: white;
+}
+
 .proposalDetail-yourVote > * {
   margin-left: calc(var(--grid-unit) * 2);
   margin-bottom: calc(var(--grid-unit) * 2);
