@@ -170,7 +170,7 @@ export const ProposalDetail = () => {
         <div className="proposalDetail-meta">
           <div className="proposalDetail-metaPrimary">
             <div className="proposalDetail-idAndType">
-              #{ params.poll } Proposal
+              Proposal
             </div>
             <div className="proposalDetail-subCategory">
               <OtherIcon /> DAO

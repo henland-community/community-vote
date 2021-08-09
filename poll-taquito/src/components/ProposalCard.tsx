@@ -22,12 +22,17 @@ export const ProposalCard = ({...props}) => {
         <div className="proposalCard-identifiers">
           <div className="proposalCard-id">#{ poll.key.substr(0,8) }...</div>
           <div className="proposalCard-type">
-            Proposal <ProposalIcon />
+            { poll.value.metadata.category == '1' && (
+              <>Proposal <ProposalIcon /></>
+            )}
+            { poll.value.metadata.category == '2' && (
+              <>Question <ProposalIcon /></>
+            )}
           </div>
         </div>
-        <div className="proposalCard-yourVote">
+        {/* <div className="proposalCard-yourVote">
           Your vote
-        </div>
+        </div> */}
         <div className="proposalCard-voteStatus">
           { ended?'Ended':'Ending'}: { (new Date(poll.value.metadata.end_date)).toDateString() }
         </div>

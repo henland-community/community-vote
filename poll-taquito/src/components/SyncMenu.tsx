@@ -41,10 +41,12 @@ export const SyncMenu = ({
               <ProposalsNav />
           </section>
           <section className="syncMenu-mainOptions">
-            <section className="syncMenu-section">
-              <Link to="/my-votes" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>my votes</Link>
-              <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>profile</Link>
-            </section>
+            { activeAccount && 
+              <section className="syncMenu-section">
+                <Link to="/my-votes" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>my votes</Link>
+                <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>profile</Link>
+              </section>
+            }
             { admin && 
             <section className="syncMenu-section">
               <Link to="/admin" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>create</Link>
