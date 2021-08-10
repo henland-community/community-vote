@@ -74,7 +74,7 @@ export const Header = ({
           <div className="appHeader-votingStatus">
             <div className="votingStatus">
               <Link to="/profile" className="votingStatus-count">
-                { votes.count } votes
+                Vote Weight: { votes.count }
               </Link>
             </div>
           </div>

@@ -22,13 +22,16 @@ export const Faq = () => {
       </section>
       <section className="pageSection">
         <h2>What is the weighting rule?</h2>
-        <p>For each of the following 3 criteria, you will receive one vote towards your position on any proposal.</p>
+        <p>For each of the following 3 criteria, your vote will receive more weight.</p>
         <ul>
-          <li>Your profile is verified with TzProfiles? You get one vote</li>
-          <li>You own a hicathon badge? You get one vote</li>
-          <li>You own hDAOs? You get one vote</li>
+          <li>Your profile is verified with TzProfiles? You get one weight</li>
+          <li>You own a hicathon badge? You get one more weight</li>
+          <li>You own hDAO? You get one more weight</li>
         </ul>
-        <p>Each voter can get 3 votes maximum. Voters won’t be able to vote unless their profile is verified with TzProfiles.</p>
+        <p>
+          The weight of each voter can be amplified by 3, at maximum.<br></br>
+          Voters won’t be able to vote unless their profile is verified with TzProfiles.
+        </p>
       </section>
       <section className="pageSection">
         <h2>How are people voting?</h2>
