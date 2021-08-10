@@ -48,7 +48,7 @@ export const About = () => {
       <section className="pageSection">
         <h2>Key dates</h2>
         <dl>
-          <dt>05-07 August 2021: “Calling for Feedback!” Community Vote</dt> 
+          <dt>11-16 August 2021: “Calling for Feedback!” Community Vote</dt> 
           <dd>The working groups of the hicathon are asking for feedback and reactions.</dd>
           <dt>08-11 August 2021: Let’s select the WGs of the post-hicathon</dt>
           <dd>As representatives of the hic et nunc community, let us know which working groups 
