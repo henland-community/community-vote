@@ -192,9 +192,9 @@ export const ProposalDetail = (props: any) => {
                 <>Question <ProposalIcon /></>
               )}
             </div>
-            <div className="proposalDetail-subCategory">
+            {/* <div className="proposalDetail-subCategory">
               <OtherIcon /> DAO
-            </div>
+            </div> */}
           </div>
           <div className="proposalDetail-countdown">
             Ending { pollData ? pollData.metadata.endDate.substr(0,10) : '...' }
