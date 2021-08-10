@@ -116,11 +116,13 @@ function App() {
   React.useEffect(() => {
     initTezos(RPC_URL);
     initPollContract(CONTRACT_ADDRESS);
-    activeAccount && getVotePower(activeAccount.address);
-  }, [activeAccount]);
+  }, []);
   React.useEffect(() => {
     setWalletProvider(beaconWallet);
   }, [beaconWallet]);
+  React.useEffect(() => {
+    activeAccount && getVotePower(activeAccount.address);
+  }, [activeAccount]);
   
   return (
     <Router>
