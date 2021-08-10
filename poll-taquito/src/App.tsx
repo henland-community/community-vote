@@ -26,16 +26,15 @@ const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
 export async function getTzProfiles(address: string) {
   return await axios.post('https://indexer.tzprofiles.com/v1/graphql', {
     query: `query MyQuery { tzprofiles_by_pk(account: "${address}") { valid_claims } }`,
-    variables: null,
     operationName: 'MyQuery',
   })
 }
 
 export async function hasTzProfiles(address: string) {
-  await getTzProfiles(address).then(res => {
-      return typeof res.data.tzprofiles_by_pk !== 'undefined';
+  return await getTzProfiles(address).then(res => {
+    console.log(res.data);
+    return res.data.data.tzprofiles_by_pk && res.data.data.tzprofiles_by_pk.valid_claims.length > 0;
   });
-  return false;
 }
 
 const queryBadgeCheck = `query BadgeCheck($wallet: String = "") {
@@ -59,7 +58,7 @@ async function fetchGraphQL(operationsDoc: string, operationName: string, variab
           })
       }
   );
-  console.log(result);
+  // console.log(result);
   return await result.json();
 }
 export async function checkBadge(address: string) {
@@ -69,14 +68,14 @@ export async function checkBadge(address: string) {
   if (errors) console.error(errors);
 
   const result = data.hic_et_nunc_token[0].token_holders.length > 0;
-  console.log(`checkBadge: ${result}`)
+  // console.log(`checkBadge: ${result}`)
   return result
 }
 export async function checkHDAO(address: string) {
   // return true if wallet holds hDAO
   // https://api.tzkt.io/v1/bigmaps/515/keys?key.address=
   const result = await axios.get(`https://api.tzkt.io/v1/bigmaps/515/keys?key.address=${address}`);
-  console.log(result);
+  // console.log(result);
   return result.data.length > 0 ? result.data[0].value > 0 : false;
 }
 
