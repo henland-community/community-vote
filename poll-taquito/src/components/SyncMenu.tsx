@@ -58,14 +58,14 @@ export const SyncMenu = ({
               <a target="_blank" rel="noreferrer" href="https://community.hicetnunc.xyz" className="syncMenu-item">Forum ↪</a>
             </section>
             <section className="syncMenu-section">
-              <Link to="/" className="syncMenu-item">
+              <div className="syncMenu-item">
                 { activeAccount && <div>{addr}</div> }
                 <div>{ activeAccount ? (
                   <button onClick={disconnect}>Unsync</button>
                  ) : (
                    <button onClick={connect}>Sync</button>
                  )}</div>
-              </Link>
+              </div>
             </section>
           </section>
         </div>
