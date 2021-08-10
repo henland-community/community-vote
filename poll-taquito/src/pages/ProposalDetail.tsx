@@ -15,7 +15,7 @@ import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
 import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
 // import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
 // import { ReactComponent as ViewsIcon } from '../assets/icons/views.svg';
-import { ReactComponent as OtherIcon } from '../assets/icons/other.svg';
+// import { ReactComponent as OtherIcon } from '../assets/icons/other.svg';
 
 import { vote } from "../contract";
 import { useToasts } from "react-toast-notifications";
