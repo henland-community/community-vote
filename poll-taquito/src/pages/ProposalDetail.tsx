@@ -212,7 +212,7 @@ export const ProposalDetail = (props: any) => {
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
               <div>
-                <span className="text-s-bold">Votes Submitted</span>:
+                <a href="#votes" className="text-s-bold">Votes Submitted:</a>&nbsp;
                 { Object.values(voteSums).reduce((a, b) => a + b, 0) || 0 }
                 <small className="text-s-light"> &nbsp; (30 votes required)</small>
               </div>
@@ -237,7 +237,7 @@ export const ProposalDetail = (props: any) => {
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
               <div>
-                <span className="text-s-bold">Votes Submitted: </span>
+                <a href="#votes" className="text-s-bold">Votes Submitted:</a>&nbsp;
                 { Object.values(voteSums).reduce((a, b) => a + b, 0) || 0 }
                 <small className="text-s-light"> (30 votes required)</small>
               </div>
@@ -333,6 +333,17 @@ export const ProposalDetail = (props: any) => {
           </p>
           <p className="text-s-light">
             <Link to="/faq">How does the voting system work?</Link>
+          </p>
+          <p className="proposalDetail-sidebarHeader">
+          <span className="proposalDetail-sidebarHeader-line"></span>
+            <span className="proposalDetail-sidebarHeader-text text-s-medium" id="votes">Votes</span>
+          </p>
+          <p className="text-s-light">
+            { voteData.map((vote: any) => 
+              <div className="voteRow" key={vote.id}>
+                { vote.key.address.substr(0,4)+"..."+vote.key.address.substr(vote.key.address.length - 4,vote.key.address.length) } voted { vote.value === 1 ? 'for' : 'against' }
+              </div>
+            )}
           </p>
         </section>
       </section>
