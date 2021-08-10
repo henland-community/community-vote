@@ -35,8 +35,5 @@ export async function checkBadge(wallet: string) {
         console.error(errors);
     }
     const result = data.hic_et_nunc_token[0].token_holders.length > 0;
-    console.log({
-        result
-    })
     return result
 }

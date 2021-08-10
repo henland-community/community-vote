@@ -60,7 +60,7 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
       datecomp = 'lt';
     }
     fetchPolls(viewcat, datecomp).then(result => {
-      console.log(result)
+      // console.log(result)
       this.setState({
         polls: result
         // polls: filterPolls(result, 'all', activeAddress)

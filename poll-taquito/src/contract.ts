@@ -62,7 +62,7 @@ export const createPoll = async (
 ) => {
   return pinJSONToIPFS(hicvoteJson1.key, hicvoteJson1.secret, ipfsMeta).then(
     async (ipfsResponse: any) => {
-      console.log(ipfsResponse.IpfsHash)
+      // console.log(ipfsResponse.IpfsHash)
       const op = await pollContract.methods
         .createPoll(
           ipfsResponse.IpfsHash,

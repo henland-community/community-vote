@@ -52,7 +52,7 @@ async function getUpdate(poll: string) {
 }
 
 function sumVotes(votes: any) {
-  console.log(votes)
+  // console.log(votes)
   return {
     1: votes.filter((v: any) => v.value === "1").length,
     2: votes.filter((v: any) => v.value === "2").length,
@@ -109,7 +109,7 @@ export const ProposalDetail = (props: any) => {
   React.useEffect(() => {
     getPollData(params.poll)
       .then(poll =>{
-        console.log(poll)
+        // console.log(poll)
         setPollData({ 
           hash: poll.hash,
           metadata: {
@@ -125,7 +125,7 @@ export const ProposalDetail = (props: any) => {
       .catch(err => console.error(err));
     getVoteData(params.poll)
       .then(votes =>{
-        console.log(votes)
+        // console.log(votes)
         for (let i = 0; i < votes.length; i++) {
           if (votes[i].key.address === activeAccount.address) {
             votes.myvote = votes[i].value;
@@ -138,7 +138,7 @@ export const ProposalDetail = (props: any) => {
       .catch(err => console.error(err));
     getIpfs(params.poll)
       .then(ipfs =>{
-        console.log(ipfs)
+        // console.log(ipfs)
         setPollIpfs(ipfs)
       }
     )
@@ -164,7 +164,7 @@ export const ProposalDetail = (props: any) => {
           });
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
         const errorMessage = error?.message || error?.data[1]?.with?.string || "Tx Failed";
         addToast(errorMessage, {
           appearance: "error",
@@ -229,7 +229,6 @@ export const ProposalDetail = (props: any) => {
               <div><span className="text-s-bold">Results</span> <small className="text-s-light">30 votes required</small></div>
               <div>{ JSON.stringify(voteSums) }</div>
             </div>
-            { console.log(voteData) }
             <a className="proposalDetail-discussionLink"
               href={ discourseThreadUrl }>
               Discuss on Discourse

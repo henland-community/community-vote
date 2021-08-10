@@ -6,7 +6,7 @@ import { ReactComponent as IconFor } from '../assets/icons/vote-for.svg';
 import { ReactComponent as IconAgainst } from '../assets/icons/vote-against.svg';
 
 export const Profile = (props: any) => {
-  console.log(props)
+  // console.log(props)
   return (
     <article className="pageContents">
       <header className="pageHeader">

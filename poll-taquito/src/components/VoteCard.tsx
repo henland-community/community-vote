@@ -27,7 +27,7 @@ export default function VoteCard(poll: any) {
           helper.resetForm();
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
         const errorMessage = error?.data[1]?.with?.string || "Tx Failed";
         addToast(errorMessage, {
           appearance: "error",

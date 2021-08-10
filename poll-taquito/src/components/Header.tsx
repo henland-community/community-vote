@@ -27,7 +27,7 @@ async function isAdmin(address:string){
   .then(response => response.json())
   .then(data => {
     // if address is in response, then it is an admin
-    console.log(data);
+    // console.log(data);
     return typeof data[address] === 'object';
   })
   .catch(err => {

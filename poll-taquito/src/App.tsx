@@ -32,7 +32,7 @@ export async function getTzProfiles(address: string) {
 
 export async function hasTzProfiles(address: string) {
   return await getTzProfiles(address).then(res => {
-    console.log(res.data);
+    // console.log(res.data);
     return res.data.data.tzprofiles_by_pk && res.data.data.tzprofiles_by_pk.valid_claims.length > 0;
   });
 }
@@ -109,7 +109,7 @@ function App() {
         }
       })
     ]).then(() => {
-      console.log(votePower)
+      // console.log(votePower)
       setVotePower(votePower);
     });
   };
