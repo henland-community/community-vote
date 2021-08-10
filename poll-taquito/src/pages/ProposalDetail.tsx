@@ -229,6 +229,7 @@ export const ProposalDetail = (props: any) => {
               <div><span className="text-s-bold">Results</span> <small className="text-s-light">30 votes required</small></div>
               <div>{ JSON.stringify(voteSums) }</div>
             </div>
+            { console.log(voteData) }
             <a className="proposalDetail-discussionLink"
               href={ discourseThreadUrl }>
               Discuss on Discourse
