@@ -171,8 +171,11 @@ export const ProposalDetail = (props: any) => {
     }
   }
   const discourseThreadUrl = pollIpfs.discourse
-  const discourseThreadBits = discourseThreadUrl.split('/')
-  const discourseThread = discourseThreadBits[discourseThreadBits.length - 1]
+  console.log(discourseThreadUrl)
+  let discourseThreadBits: any
+  if (typeof discourseThreadUrl !== 'number')
+    discourseThreadBits = discourseThreadUrl.split('/')
+  const discourseThread = typeof discourseThreadUrl !== 'number' ? discourseThreadBits[discourseThreadBits.length - 1] : ''
   return (
     <article className="proposalDetail pageContents">
       <header className="proposalDetail-header pageHeader">

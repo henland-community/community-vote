@@ -24,6 +24,7 @@ async function fetchPolls(cat: number = 0, datecomp: string = '') {
   return await fetch(fetchUrl)
     .then(response => response.json())
     .then(polls => {
+      return polls // skip 'Test' filter
       console.log(polls)
       return polls.filter((poll: any) => poll.value.metadata.title.indexOf('Test') === -1)
     });
@@ -94,7 +95,8 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
           <Select/> */}
         </nav>
         <section className="pageSection polls-cards">
-          { this.state.polls.map((poll: any) => <ProposalCard key={poll.key } poll={poll}/>) }
+          { this.props.view === 'my' ? 'Vote history coming soon' : 
+            this.state.polls.map((poll: any) => <ProposalCard key={poll.key } poll={poll}/>) }
         </section>
         <footer className="pageSection polls-pagination">
           {/* <Pagination /> */}
