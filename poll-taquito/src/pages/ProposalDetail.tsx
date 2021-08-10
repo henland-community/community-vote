@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 import DiscourseForum from "../components/DiscourseForum";
 
+import { ReactComponent as ProposalIcon } from '../assets/icons/other.svg';
+
 import { Button } from '../components/Button';
 
 import { ReactComponent as Logo } from '../assets/icons/hen-logo.svg';
@@ -151,6 +153,7 @@ export const ProposalDetail = (props: any) => {
   }, [params.poll, activeAccount]);
 
   async function handleVote(option: number) {
+    
     if (params.poll) {
       try {
         const hash = await vote(params.poll, option);
@@ -182,14 +185,16 @@ export const ProposalDetail = (props: any) => {
         <div className="proposalDetail-meta">
           <div className="proposalDetail-metaPrimary">
             <div className="proposalDetail-idAndType">
-              { pollData.metadata.category }
+              { pollData.metadata.category === '1' && (
+                <>Proposal <ProposalIcon /></>
+              )}
+              { pollData.metadata.category === '2' && (
+                <>Question <ProposalIcon /></>
+              )}
             </div>
             <div className="proposalDetail-subCategory">
               <OtherIcon /> DAO
             </div>
-            {/* <div className="proposalDetail-views">
-              <ViewsIcon /> 34 Views
-            </div> */}
           </div>
           <div className="proposalDetail-countdown">
             Ending { pollData ? pollData.metadata.endDate.substr(0,10) : '...' }
@@ -216,6 +221,7 @@ export const ProposalDetail = (props: any) => {
               <div onClick={()=>{handleVote(2)}}><Button>AGAINST <VoteAgainstIcon/></Button></div>
               <div onClick={()=>{handleVote(1)}}><Button>FOR <VoteForIcon/></Button></div>
             </div>
+            { votePower.count === 0 && "Sync your TzProfiles verified wallet to enable voting" }
           </footer>
         ) : (
           <footer className="proposalDetail-voteStatus">
@@ -229,7 +235,7 @@ export const ProposalDetail = (props: any) => {
               Discuss on Discourse
             </a>
             <div className="proposalDetail-yourVote">
-              <div onClick={()=>{votePower.count > 0 && handleVote(1)}}><Button>{ pollIpfs.opt1 }</Button></div>
+              <div onClick={()=>{votePower.count > 0 && handleVote(1)}} className={ (votePower.count === 0) ? "disabled":'' } ><Button>{ pollIpfs.opt1 }</Button></div>
               <div onClick={()=>{votePower.count > 0 && handleVote(2)}}><Button>{ pollIpfs.opt2 }</Button></div>
               { pollData.metadata.numOptions > 2 ? (
                 <div onClick={()=>{votePower.count > 0 && handleVote(3)}}><Button>{ pollIpfs.opt3 }</Button></div>
