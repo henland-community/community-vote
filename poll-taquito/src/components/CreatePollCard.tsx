@@ -13,7 +13,7 @@ import { FormikTextField } from "./FormikTextField";
 
 
 // async function getNextPollId() {
-//   return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`)
+//   return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`)
 //     .then(response => response.json())
 //     .then(polls => {
 //       return polls.length + 1

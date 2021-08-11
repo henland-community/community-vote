@@ -23,7 +23,7 @@ function shortAddr(address:string){
 }
 
 async function isAdmin(address:string){
-  return await fetch(`https://api.florencenet.tzkt.io/v1/contracts/KT1A4ZehSZjQUf2iVKjez7UvkhUrfUoBBM35/storage?path=administrator`)
+  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/contracts/KT1A4ZehSZjQUf2iVKjez7UvkhUrfUoBBM35/storage?path=administrator`)
   .then(response => response.json())
   .then(data => {
     // if address is in response, then it is an admin

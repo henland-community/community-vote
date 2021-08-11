@@ -9,7 +9,7 @@ import { ProposalCard } from '../components/ProposalCard';
 
 
 async function fetchPolls(cat: number = 0, datecomp: string = '') {
-  let fetchUrl = `https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`
+  let fetchUrl = `https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`
   let params: any = {}
 
   if (cat !== 0) 
@@ -31,7 +31,7 @@ async function fetchPolls(cat: number = 0, datecomp: string = '') {
 }
 
 // async function fetchVotes() {
-//   return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
+//   return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
 //     .then(response => response.json())
 //     .then(votes => votes);
 // }

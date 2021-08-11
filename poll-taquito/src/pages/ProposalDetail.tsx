@@ -21,7 +21,7 @@ import { vote } from "../contract";
 import { useToasts } from "react-toast-notifications";
 
 async function getPollData(key: string) {
-  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys?key=${key}`)
+  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys?key=${key}`)
     .then(response => response.json())
     .then(polls => {
       if (polls[0].key === key) {
@@ -32,7 +32,7 @@ async function getPollData(key: string) {
     });
 }
 async function getVoteData(key: string) {
-  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
+  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
     .then(response => response.json())
     .then(votes => votes.filter((v: any) => v.key.string === key))
 }
@@ -43,7 +43,7 @@ async function getIpfs(hash: string) {
 }
 
 async function getUpdate(poll: string) {
-  return await fetch(`https://api.florencenet.tzkt.io/v1/bigmaps/${(process.env.REACT_APP_BIGMAP_UPDATES ??'12345')}/keys/${poll}/updates`)
+  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${(process.env.REACT_APP_BIGMAP_UPDATES ??'12345')}/keys/${poll}/updates`)
     .then(response => response.json())
     .then(data => {
       console.log(['data',data])
