@@ -341,7 +341,8 @@ export const ProposalDetail = (props: any) => {
           <p className="text-s-light">
             { voteData.map((vote: any) => 
               <div className="voteRow" key={vote.id}>
-                { vote.key.address.substr(0,4)+"..."+vote.key.address.substr(vote.key.address.length - 4,vote.key.address.length) } voted { vote.value === 1 ? 'for' : 'against' }
+                {/* { vote.key.address.substr(0,4)+"..."+vote.key.address.substr(vote.key.address.length - 4,vote.key.address.length) } voted { vote.value === "1" ? 'for' : 'against' } */}
+                { vote.key.address }
               </div>
             )}
           </p>
