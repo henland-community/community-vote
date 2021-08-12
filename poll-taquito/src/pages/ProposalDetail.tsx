@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import DiscourseForum from "../components/DiscourseForum";
 
-import { ReactComponent as ProposalIcon } from '../assets/icons/other.svg';
+// import { ReactComponent as ProposalIcon } from '../assets/icons/other.svg';
 
 import { Button } from '../components/Button';
 
