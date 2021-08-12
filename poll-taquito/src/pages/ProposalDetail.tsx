@@ -248,43 +248,43 @@ export const ProposalDetail = (props: any) => {
               Discuss on Discourse
             </a>
             <div className="proposalDetail-yourVote">
-              <div 
-                onClick={()=>{votePower.tzprof && handleVote(1)}} 
-                className={ votePower.tzprof ? "":"disabled" }
-              ><Button>{ pollIpfs.opt1 }</Button></div>
-              <div 
-                onClick={()=>{votePower.tzprof && handleVote(2)}} 
-                className={ votePower.tzprof ? "":"disabled" }
-              ><Button>{ pollIpfs.opt2 }</Button></div>
+              <Button
+                onClick={()=>{handleVote(1)}} 
+                disabled={ !votePower.tzprof }
+              >{ pollIpfs.opt1 }</Button>
+              <Button
+                onClick={()=>{handleVote(2)}} 
+                disabled={ !votePower.tzprof }
+              >{ pollIpfs.opt2 }</Button>
               { pollData.metadata.numOptions > 2 ? (
-                <div 
-                  onClick={()=>{votePower.tzprof && handleVote(3)}} 
-                  className={ votePower.tzprof ? "":"disabled" }
-                ><Button>{ pollIpfs.opt3 }</Button></div>
-              ) : '' }
+                <Button
+                  onClick={()=>{handleVote(3)}} 
+                  disabled={ !votePower.tzprof }
+                >{ pollIpfs.opt3 }</Button>
+                ) : '' }
               { pollData.metadata.numOptions > 3 ? (
-                <div 
-                  onClick={()=>{votePower.tzprof && handleVote(4)}} 
-                  className={ votePower.tzprof ? "":"disabled" }
-                ><Button>{ pollIpfs.opt4 }</Button></div>
+                <Button
+                  onClick={()=>{handleVote(4)}} 
+                  disabled={ !votePower.tzprof }
+                >{ pollIpfs.opt4 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 4 ? (
-                <div 
-                  onClick={()=>{votePower.tzprof && handleVote(5)}} 
-                  className={ votePower.tzprof ? "":"disabled" }
-                ><Button>{ pollIpfs.opt5 }</Button></div>
+                <Button
+                  onClick={()=>{handleVote(5)}} 
+                  disabled={ !votePower.tzprof }
+                >{ pollIpfs.opt5 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 5 ? (
-                <div 
-                  onClick={()=>{votePower.tzprof && handleVote(6)}} 
-                  className={ votePower.tzprof ? "":"disabled" }
-                ><Button>{ pollIpfs.opt6 }</Button></div>
+                <Button
+                  onClick={()=>{handleVote(6)}} 
+                  disabled={ !votePower.tzprof }
+                >{ pollIpfs.opt6 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 6 ? (
-                <div 
-                  onClick={()=>{votePower.tzprof && handleVote(7)}} 
-                  className={ votePower.tzprof ? "":"disabled" }
-                ><Button>{ pollIpfs.opt7 }</Button></div>
+                <Button
+                  onClick={()=>{handleVote(7)}} 
+                  disabled={ !votePower.tzprof }
+                >{ pollIpfs.opt7 }</Button>
               ) : '' }
             </div>
             { votePower.count === 0 && "Sync your TzProfiles verified wallet to enable voting" }

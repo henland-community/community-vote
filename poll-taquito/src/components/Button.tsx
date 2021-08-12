@@ -4,8 +4,9 @@ import './button.css';
 
 export const Button = ({...props}) => {
   return (
-    <button
-      className={ `button ${ props.disabled && 'disabled'}` }
+    <button {...props}
+      className={ `button ${ props.disabled && 'disabled'} ${props.className}` }
+      onClick={ props.onClick }
     >
       { props.children || 'Label' }
     </button>
