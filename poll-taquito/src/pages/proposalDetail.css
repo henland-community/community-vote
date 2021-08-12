@@ -82,6 +82,9 @@
   height: auto;
   border: none;
   cursor: pointer;
+  line-height: 2;
+  padding-top: calc(var(--grid-unit) * 2);
+  padding-bottom: calc(var(--grid-unit) * 2);
 }
 
 .proposalDetail-details {
