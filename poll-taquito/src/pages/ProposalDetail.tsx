@@ -178,7 +178,10 @@ export const ProposalDetail = (props: any) => {
   let discourseThreadBits: any
   if (typeof discourseThreadUrl !== 'number')
     discourseThreadBits = discourseThreadUrl.split('/')
-  const discourseThread = typeof discourseThreadUrl !== 'number' ? discourseThreadBits[discourseThreadBits.length - 1] : ''
+  console.log([discourseThreadBits,discourseThreadBits[discourseThreadBits.length - 1] === "1"])
+  const discourseThread = typeof discourseThreadUrl !== 'number' ? 
+    (discourseThreadBits[discourseThreadBits.length - 1] === "1" ? discourseThreadBits[discourseThreadBits.length - 2] : discourseThreadBits[discourseThreadBits.length - 1])
+    : ''
   return (
     <article className="proposalDetail pageContents">
       <header className="proposalDetail-header pageHeader">
