@@ -69,7 +69,8 @@ export default function CreatePollCard() {
             opt6: values.opt6,
             opt6desc: values.opt6desc,
             opt7: values.opt7,
-            opt7desc: values.opt7desc
+            opt7desc: values.opt7desc,
+            multi: values.multi
           }
         );
         if (hash) {
