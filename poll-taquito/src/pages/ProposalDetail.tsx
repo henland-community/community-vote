@@ -209,7 +209,7 @@ export const ProposalDetail = (props: any) => {
         <hr />
         { console.log(voteData) }
         { console.log(votePower) }
-        { pollIpfs.multi ? (
+        { pollIpfs.opt1 === "" ? (
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
               <div>
