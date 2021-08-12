@@ -104,7 +104,8 @@ export const ProposalDetail = (props: any) => {
     opt4: 'Option 4',
     opt5: 'Option 5',
     opt6: 'Option 6',
-    opt7: 'Option 7'
+    opt7: 'Option 7',
+    multi: false
   });
   React.useEffect(() => {
     getPollData(params.poll)
@@ -208,7 +209,7 @@ export const ProposalDetail = (props: any) => {
         <hr />
         { console.log(voteData) }
         { console.log(votePower) }
-        { pollData.metadata.numOptions === 2 ? (
+        { pollIpfs.multi ? (
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
               <div>
