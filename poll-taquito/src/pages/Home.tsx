@@ -7,7 +7,7 @@ export const Home = () => {
   return (
     <article className="pageContents--centered homePage">
       <header className="pageHeader pageHeader--centered">
-        <h1>HEN vote</h1>
+        <h1>H=N VOTE</h1>
         <h3 className="text-xl">The voice of the hic et nunc community amplified.</h3>
       </header>
       <section className="pageSection">
