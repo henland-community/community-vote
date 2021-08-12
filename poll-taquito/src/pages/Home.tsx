@@ -12,7 +12,7 @@ export const Home = () => {
       </header>
       <section className="pageSection">
         <h2>What can I do here?</h2>
-        <p>Hen.vote is the voice of the community.</p>
+        <p>You are the voice of the community.</p>
         <p>Here you can give your opinion and make it heard so that the hicathon’s working 
           groups can build what you want.</p>
       </section>

@@ -10,8 +10,8 @@ export const About = () => {
         <h1>ABOUT</h1>
       </header>
       <section className="pageSection">
-        <p><Link to="/">hen.vote</Link> is an experimental collaboration between TZ Connect, 
-          hicathon org team, Hicathon Working Group 5.4 &amp; the hen.vote dev team.</p>
+        <p><Link to="/">henvote.xyz</Link> is an experimental collaboration between TZ Connect, 
+          hicathon org team, Hicathon Working Group 5.4 &amp; the henvote dev team.</p>
         <p>This voting DAO is an experiment born from the hicathon, which was the first hackathon 
           organised by and with the community of the Tezos-based marketplace hic et nunc. 
           You can find more info about the <a href="https://www.hicathon.xyz/" target="_blank" rel="noreferrer">hicathon here</a>.
