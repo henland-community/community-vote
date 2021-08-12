@@ -42,9 +42,8 @@ export const Faq = () => {
       <section className="pageSection">
         <h2>How is Quorum achieved?</h2>
         <p>After the voting period has ended, votes will be compiled with their according weight.</p>
-        <p>For a vote to pass, by the end of the voting period, a simple majority of 51% of the total number of valid voters need to vote YES on a proposal, and once that number is reached it passes.</p>
-        <p>If the NO vote reaches 51% of the total number of valid voters, by the end of the voting period, the proposal fails.</p>
-        <p>If votes do not reach 51% either voting either with a YES or NO vote, it does not pass and the proposal will need to be adjusted/resubmitted for another round of voting at a later time.</p>
+        <p>For a vote to pass quorum, by the end of the voting period 30 or more accounts must vote on it.</p>
+        <p>If a proposal does not meet quorum it does not pass and the proposal will need to be adjusted/resubmitted for another round of voting at a later time.</p>
       </section>
       <section className="pageSection">
         <h2>Who can enter the options?</h2>
