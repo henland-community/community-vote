@@ -43,14 +43,14 @@ export const SyncMenu = ({
           <section className="syncMenu-mainOptions">
             { activeAccount && 
               <section className="syncMenu-section">
-                <Link to="/my-votes" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>my votes</Link>
-                <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>profile</Link>
+                <Link to="/my-votes" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>My Votes</Link>
+                <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Profile</Link>
               </section>
             }
             { admin && 
             <section className="syncMenu-section">
-              <Link to="/admin" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>create</Link>
-              <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>settings</Link>
+              <Link to="/admin" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Create</Link>
+              <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Settings</Link>
             </section> }
             <section className="syncMenu-section mobileOnly">
               <Link to="/about" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>About</Link>

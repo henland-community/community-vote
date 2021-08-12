@@ -17,7 +17,7 @@ export const Faq = () => {
       </section>
       <section className="pageSection">
         <h2>What is the voting rule?</h2>
-        <p><b>Rule 1:</b> We are following the simple rule of 1 voice = 1 vote. All votes are equal.</p>
+        <p><b>Rule 1:</b> Each account can vote for one option per proposal.</p>
         <p><b>Rule 2:</b> Votes need to be within the voting period - time period as determined by Hicathon orga team (consider having to bring this to the attention of all participants of the hicathon and in the ecosystem generally in deciding on the start, length and end of the voting period).</p>
       </section>
       <section className="pageSection">

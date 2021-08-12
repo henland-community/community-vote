@@ -186,10 +186,10 @@ export const ProposalDetail = (props: any) => {
           <div className="proposalDetail-metaPrimary">
             <div className="proposalDetail-idAndType">
               { pollData.metadata.category === '1' && (
-                <>Proposal <ProposalIcon /></>
+                <>Proposal{/* <ProposalIcon /> */}</>
               )}
               { pollData.metadata.category === '2' && (
-                <>Question <ProposalIcon /></>
+                <>Question</>
               )}
             </div>
             {/* <div className="proposalDetail-subCategory">
