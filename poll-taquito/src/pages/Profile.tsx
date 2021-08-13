@@ -23,8 +23,8 @@ export const Profile = (props: any) => {
       </section>
       <section className="pageSection">
         <Link to='/my-votes'>My Votes</Link>
-        <br></br>
-        <Link to='/contact'>Contact admin</Link>
+        {/* <br></br>
+        <Link to='/contact'>Contact admin</Link> */}
       </section>
     </article>
   );
