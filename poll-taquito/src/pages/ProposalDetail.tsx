@@ -32,9 +32,8 @@ async function getPollData(key: string) {
     });
 }
 async function getVoteData(key: string) {
-  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys`)
+  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys?key.string=${key}`)
     .then(response => response.json())
-    .then(votes => votes.filter((v: any) => v.key.string === key))
 }
 
 async function getIpfs(hash: string) {
@@ -132,7 +131,7 @@ export const ProposalDetail = (props: any) => {
             votes.myvote = votes[i].value;
           }
         }
-        votes.myvote = 
+        // votes.myvote = 
         setVoteData(votes)
         setVoteSums(sumVotes(votes))
       })
