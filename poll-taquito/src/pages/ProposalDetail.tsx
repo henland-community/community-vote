@@ -128,7 +128,6 @@ export const ProposalDetail = (props: any) => {
         // console.log(votes)
         var myvote = 0
         for (let i = 0; i < votes.length; i++) {
-          console.log([votes[i].key.address, activeAccount])
           if (votes[i].key.address === activeAccount) {
             myvote = votes[i].value * 1;
           }
@@ -181,7 +180,6 @@ export const ProposalDetail = (props: any) => {
   let discourseThreadBits: any
   if (typeof discourseThreadUrl !== 'number')
     discourseThreadBits = discourseThreadUrl.split('/')
-  console.log([discourseThreadBits,discourseThreadBits[discourseThreadBits.length - 1] === "1"])
   const discourseThread = typeof discourseThreadUrl !== 'number' ? 
     (discourseThreadBits[discourseThreadBits.length - 1] === "1" ? discourseThreadBits[discourseThreadBits.length - 2] : discourseThreadBits[discourseThreadBits.length - 1])
     : ''

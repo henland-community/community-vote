@@ -14,6 +14,6 @@ export default {
 } as ComponentMeta<typeof Polls>;
 
 export const Default = () => <MemoryRouter><PageLayout>
-  <Polls view="all" />
+  <Polls view="all" myVotes={[]} />
 </PageLayout></MemoryRouter>;
 Default.args = {};

@@ -11,7 +11,7 @@ import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
 // import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
 
 export const ProposalCard = ({...props}) => {
-  const { poll } = props;
+  const { poll, voted } = props;
   const ended = new Date(poll.value.metadata.end_date) < new Date();
   // console.log(ended);
   return (
@@ -30,9 +30,11 @@ export const ProposalCard = ({...props}) => {
             )}
           </div>
         </div>
-        {/* <div className="proposalCard-yourVote">
-          Your vote
-        </div> */}
+        { voted !== 0 && (
+          <div className="proposalCard-yourVote">
+            Your vote: { poll.value.metadata.category === '1' ? 'Option ' + voted : (voted === "1" ? 'For' : 'Against') }
+          </div>
+        )}
         <div className="proposalCard-voteStatus">
           { ended?'Ended':'Ending'}: { (new Date(poll.value.metadata.end_date)).toDateString() }
         </div>

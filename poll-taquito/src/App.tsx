@@ -37,6 +37,11 @@ export async function hasTzProfiles(address: string) {
   });
 }
 
+export async function getMyVotes(address: string) {
+  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys?key.address=${address}`)
+    .then(response => response.json())
+}
+
 const queryBadgeCheck = `query BadgeCheck($wallet: String = "") {
   hic_et_nunc_token(where: {id: {_eq: "93229"}}) {
     metadata
@@ -85,6 +90,7 @@ function App() {
   const [votePower, setVotePower] = React.useState({
     count: 0, tzprof: false, hDAO: false, badge: false
   });
+  const [myVotes, setMyVotes] = React.useState([]);
   function getVotePower(address: string) {
     var votePower = {
       count: 0, tzprof: false, hDAO: false, badge: false
@@ -109,7 +115,6 @@ function App() {
         }
       })
     ]).then(() => {
-      // console.log(votePower)
       setVotePower(votePower);
     });
   };
@@ -121,7 +126,12 @@ function App() {
     setWalletProvider(beaconWallet);
   }, [beaconWallet]);
   React.useEffect(() => {
-    activeAccount && getVotePower(activeAccount.address);
+    if (activeAccount) {
+      getVotePower(activeAccount.address);
+      getMyVotes(activeAccount.address).then(myVotes => {
+        setMyVotes(myVotes)
+      })
+    }
   }, [activeAccount]);
   
   return (
@@ -151,21 +161,22 @@ function App() {
                 ) : 'Log In' }
               </Route>
               <Route path="/proposals">
-                <Polls view="proposals"/>
+                <Polls view="proposals" myVotes={myVotes} />
               </Route>
               <Route path="/questions">
-                <Polls view="questions"/>
+                <Polls view="questions" myVotes={myVotes} />
               </Route>
               <Route path="/past-votes">
-                <Polls view="past"/>
+                <Polls view="past" myVotes={myVotes} />
               </Route>
               <Route path="/my-votes">
-                <Polls view="my"/>
+                <Polls view="my" myVotes={myVotes} />
               </Route>
               <Route path="/vote/:poll">
                 <ProposalDetail
                   activeAccount={ activeAccount }
                   votePower={ votePower }
+                  myVotes={myVotes} 
                 />
               </Route>
               <Route path="/admin" component={CreatePollCard} />

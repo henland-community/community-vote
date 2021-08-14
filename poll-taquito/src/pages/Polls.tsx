@@ -37,7 +37,7 @@ async function fetchPolls(cat: number = 0, datecomp: string = '') {
 //     .then(votes => votes);
 // }
 
-class Polls extends React.Component<{ view: string }, { polls: any[] }> {  
+class Polls extends React.Component<{ view: string, myVotes: any[] }, { polls: any[] }> {  
   viewTitles: any = {
     'proposals': 'Proposals',
     'questions': 'Questions',
@@ -97,7 +97,15 @@ class Polls extends React.Component<{ view: string }, { polls: any[] }> {
         </nav>
         <section className="pageSection polls-cards">
           { this.props.view === 'my' ? 'Vote history coming soon' : 
-            this.state.polls.map((poll: any) => <ProposalCard key={poll.key } poll={poll}/>) }
+            this.state.polls.map((poll: any) => {
+              let voted = 0;
+              this.props.myVotes.forEach(vote => {
+                if (vote.key.string === poll.key)
+                  voted = vote.value;
+              });
+              return <ProposalCard key={poll.key } poll={poll} voted={voted}/>
+            }) 
+          }
         </section>
         <footer className="pageSection polls-pagination">
           {/* <Pagination /> */}
