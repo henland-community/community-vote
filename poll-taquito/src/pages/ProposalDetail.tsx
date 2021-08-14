@@ -235,7 +235,7 @@ export const ProposalDetail = (props: any) => {
               ><Button>FOR <VoteForIcon/></Button></div>
             </div>
             { votePower.tzprof || (
-              <span>Sync your <a href='https://tzprofiles.com/' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
+              <span>Sync your <a href='https://tzprofiles.com/' rel='noreferrer' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
              ) }
           </footer>
         ) : (
@@ -292,7 +292,7 @@ export const ProposalDetail = (props: any) => {
               ) : '' }
             </div>
             { votePower.tzprof || (
-              <span>Sync your <a href='https://tzprofiles.com/' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
+              <span>Sync your <a href='https://tzprofiles.com/' rel='noreferrer' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
              ) }
           </footer>
         )}
