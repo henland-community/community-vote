@@ -30,14 +30,15 @@ export const Faq = () => {
         </ul>
         <p>
           The weight of each voter can be amplified by 3, at maximum.<br></br>
-          Voters won’t be able to vote unless their profile is verified with TzProfiles.
+          Voters won’t be able to vote unless their profile is verified with <a href="https://tzprofiles.com/" target="_blank" rel="noreferrer">TzProfiles</a>.
         </p>
       </section>
       <section className="pageSection">
         <h2>How are people voting?</h2>
         <p>People may vote for any available option on any open proposal until the end of its voting period, and change their vote as many times as they like during the voting period (before it ends). Voting in version 1, will not include a token, or a representation of a token but a vote will simply be added to the tally of the voting results.</p>
         <p>This function should only work during a voting period.</p>
-        <p>Gas fees for voting will be paid by voters (but really ought to be minimal).</p>
+        <p>Gas fees for voting will be paid by voters. Current cost for an initial vote is ~0.017 tez (about 5 cents USD at the time of writing), the cost to change your vote is 0.0007 tez.</p>
+        <p>Any voting cost is intrinsic to the blockchain, we charge no fee for voting. We aim to reduce gas prices even further in our next contract.</p>
       </section>
       <section className="pageSection">
         <h2>How is Quorum achieved?</h2>
