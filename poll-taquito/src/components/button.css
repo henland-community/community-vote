@@ -16,3 +16,7 @@
 .button.disabled {
   background: var(--gray-50);
 }
+
+.button.voted {
+  border: 5px solid var(--gray-50);
+}

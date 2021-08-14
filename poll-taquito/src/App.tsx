@@ -164,7 +164,7 @@ function App() {
               </Route>
               <Route path="/vote/:poll">
                 <ProposalDetail
-                  activeAccount={ activeAccount ? activeAccount.address : ""}
+                  activeAccount={ activeAccount }
                   votePower={ votePower }
                 />
               </Route>

@@ -64,7 +64,7 @@ function sumVotes(votes: any) {
 }
 
 export const ProposalDetail = (props: any) => {
-  const activeAccount = props.activeAccount
+  const activeAccount = props.activeAccount && props.activeAccount.address
   const votePower = props.votePower
 
   const params = useParams<{poll: string}>();
@@ -84,7 +84,7 @@ export const ProposalDetail = (props: any) => {
     },
     totals: {}
   });
-  const [voteData, setVoteData] = React.useState([]);
+  const [voteData, setVoteData] = React.useState({votes:[],myvote:0});
   const [voteSums, setVoteSums] = React.useState({
     1: 0,
     2: 0,
@@ -126,13 +126,17 @@ export const ProposalDetail = (props: any) => {
     getVoteData(params.poll)
       .then(votes =>{
         // console.log(votes)
+        var myvote = 0
         for (let i = 0; i < votes.length; i++) {
-          if (votes[i].key.address === activeAccount.address) {
-            votes.myvote = votes[i].value;
+          console.log([votes[i].key.address, activeAccount])
+          if (votes[i].key.address === activeAccount) {
+            myvote = votes[i].value * 1;
           }
         }
-        // votes.myvote = 
-        setVoteData(votes)
+        setVoteData({
+          votes: votes,
+          myvote: myvote
+        })
         setVoteSums(sumVotes(votes))
       })
       .catch(err => console.error(err));
@@ -209,7 +213,7 @@ export const ProposalDetail = (props: any) => {
         { discourseThreadUrl }
         </div> */}
         <hr />
-        { console.log(voteData) }
+        { console.log(['voteData',voteData]) }
         { console.log(votePower) }
         { pollIpfs.opt1 === "" ? (
           <footer className="proposalDetail-voteStatus">
@@ -225,14 +229,14 @@ export const ProposalDetail = (props: any) => {
               Discuss on Discourse 
             </a>
             <div className="proposalDetail-yourVote">
-              <div 
+              <Button
+                voted={ voteData.myvote === 2 }
                 onClick={()=>{handleVote(2)}}
-                className={ votePower.tzprof ? "":"disabled" }
-              ><Button>AGAINST <VoteAgainstIcon/></Button></div>
-              <div 
+                className={ votePower.tzprof ? "":"disabled" }>AGAINST <VoteAgainstIcon/></Button>
+              <Button
+                voted={ voteData.myvote === 1 }
                 onClick={()=>{handleVote(1)}}
-                className={ votePower.tzprof ? "":"disabled" }
-              ><Button>FOR <VoteForIcon/></Button></div>
+                className={ votePower.tzprof ? "":"disabled" }>FOR <VoteForIcon/></Button>
             </div>
             { votePower.tzprof || (
               <span>Sync your <a href='https://tzprofiles.com/' rel='noreferrer' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
@@ -253,39 +257,46 @@ export const ProposalDetail = (props: any) => {
             </a>
             <div className="proposalDetail-yourVote">
               <Button
+                voted={ voteData.myvote === 1 }
                 onClick={()=>{handleVote(1)}} 
                 disabled={ !votePower.tzprof }
               >{ pollIpfs.opt1 }</Button>
               <Button
+                voted={ voteData.myvote === 2 }
                 onClick={()=>{handleVote(2)}} 
                 disabled={ !votePower.tzprof }
               >{ pollIpfs.opt2 }</Button>
               { pollData.metadata.numOptions > 2 ? (
                 <Button
+                  voted={ voteData.myvote === 3 }
                   onClick={()=>{handleVote(3)}} 
                   disabled={ !votePower.tzprof }
                 >{ pollIpfs.opt3 }</Button>
                 ) : '' }
               { pollData.metadata.numOptions > 3 ? (
                 <Button
+                  voted={ voteData.myvote === 4 }
                   onClick={()=>{handleVote(4)}} 
                   disabled={ !votePower.tzprof }
                 >{ pollIpfs.opt4 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 4 ? (
                 <Button
+                  voted={ voteData.myvote === 5 }
                   onClick={()=>{handleVote(5)}} 
                   disabled={ !votePower.tzprof }
                 >{ pollIpfs.opt5 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 5 ? (
                 <Button
+                  voted={ voteData.myvote === 6 }
                   onClick={()=>{handleVote(6)}} 
                   disabled={ !votePower.tzprof }
                 >{ pollIpfs.opt6 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 6 ? (
                 <Button
+                  voted={ voteData.myvote === 7 }
                   onClick={()=>{handleVote(7)}} 
                   disabled={ !votePower.tzprof }
                 >{ pollIpfs.opt7 }</Button>
@@ -346,7 +357,7 @@ export const ProposalDetail = (props: any) => {
             <span className="proposalDetail-sidebarHeader-text text-s-medium" id="votes">Votes</span>
           </p>
           <p className="text-s-light">
-            { voteData.map((vote: any) => 
+            { voteData.votes.map((vote: any) => 
               <div className="voteRow" key={vote.id}>
                 {/* { vote.key.address.substr(0,4)+"..."+vote.key.address.substr(vote.key.address.length - 4,vote.key.address.length) } voted { vote.value === "1" ? 'for' : 'against' } */}
                 { vote.key.address }
