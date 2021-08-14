@@ -234,7 +234,9 @@ export const ProposalDetail = (props: any) => {
                 className={ votePower.tzprof ? "":"disabled" }
               ><Button>FOR <VoteForIcon/></Button></div>
             </div>
-            { votePower.tzprof || "Sync your TzProfiles verified wallet to enable voting" }
+            { votePower.tzprof || (
+              <span>Sync your <a href='https://tzprofiles.com/' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
+             ) }
           </footer>
         ) : (
           <footer className="proposalDetail-voteStatus">
@@ -289,7 +291,9 @@ export const ProposalDetail = (props: any) => {
                 >{ pollIpfs.opt7 }</Button>
               ) : '' }
             </div>
-            { votePower.count === 0 && "Sync your TzProfiles verified wallet to enable voting" }
+            { votePower.tzprof || (
+              <span>Sync your <a href='https://tzprofiles.com/' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
+             ) }
           </footer>
         )}
       </header>
