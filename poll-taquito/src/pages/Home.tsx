@@ -49,7 +49,7 @@ export const Home = () => {
           <li>Click on one proposal or question, see the different voting options, how many votes have been done, discuss them via the Forum</li>
           <li>For the proposals, vote by selecting one option and then click on XX. For the questions, vote by clicking on “Against” or “For”. </li>
           <li>Results are tabulated at the end of the voting period, to determine whether it met quorum and was successful.</li>
-          <li>Hic et nunc’s founder will be able to decide if some of the projects will be adopted for the website or not.</li>
+          <li>Hic et nunc will be able to decide if projects will be adopted for the website or not.</li>
           {/* <li><b>Proposals are submitted</b> either by working groups, or by *you* through the Discourse.</li>
           <li><b>Votes are cast</b> once the proposal is live for voting.</li>
           <li><b>Results are tabulated</b> at the end of the voting period, to determine whether it met quorum and was successful.</li>
