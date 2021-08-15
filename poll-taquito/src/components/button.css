@@ -15,7 +15,7 @@
 }
 
 .button:not(.disabled):hover {
-  outline: 3px double var(--gray-100);
+  background: var(--gray-80);
 }
 
 .button.disabled {
