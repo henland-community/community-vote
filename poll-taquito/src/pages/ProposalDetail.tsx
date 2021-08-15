@@ -187,7 +187,7 @@ export const ProposalDetail = (props: any) => {
     <article className="proposalDetail pageContents">
       <header className="proposalDetail-header pageHeader">
         <div className="proposalDetail-meta">
-          <div className="proposalDetail-metaPrimary">
+          <div className="proposalDetail-metaPrimary text-s">
             <div className="proposalDetail-idAndType">
               { pollData.metadata.category === '1' && (
                 <>Proposal{/* <ProposalIcon /> */}</>
@@ -200,8 +200,8 @@ export const ProposalDetail = (props: any) => {
               <OtherIcon /> DAO
             </div> */}
           </div>
-          <div className="proposalDetail-countdown">
-            Ending { pollData ? pollData.metadata.endDate.substr(0,10) : '...' }
+          <div className="proposalDetail-countdown text-s">
+            Ends { pollData ? pollData.metadata.endDate.substr(0,10) : '...' }
           </div>
         </div>
         <h1>

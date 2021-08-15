@@ -1,16 +1,21 @@
 .button {
-  display: inline-block;
   --button-height: calc(var(--grid-unit) * 4);
+  display: inline-block;
   height: var(--button-height);
-  padding-left: calc(var(--button-height) / 2);
-  padding-right: calc(var(--button-height) / 2);
+  padding-left: var(--button-height);
+  padding-right: var(--button-height);
   color: var(--gray-0);
   background: var(--gray-100);
-  line-height: var(--button-height);
   border: none;
-  font-family: var(--font-family);
-  font-weight: 700;
+  font-family: var(--base-font-family);
+  font-size: var(--font-m); 
+  font-weight: var(--font-normal);
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button:not(.disabled):hover {
+  background: var(--gray-80);
 }
 
 .button.disabled {
