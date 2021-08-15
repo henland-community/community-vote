@@ -230,11 +230,13 @@ export const ProposalDetail = (props: any) => {
               <Button
                 voted={ voteData.myvote === 2 }
                 onClick={()=>{handleVote(2)}}
-                className={ votePower.tzprof ? "":"disabled" }>AGAINST <VoteAgainstIcon/></Button>
+                disabled={ !votePower.tzprof }
+              >AGAINST <VoteAgainstIcon/></Button>
               <Button
                 voted={ voteData.myvote === 1 }
                 onClick={()=>{handleVote(1)}}
-                className={ votePower.tzprof ? "":"disabled" }>FOR <VoteForIcon/></Button>
+                disabled={ !votePower.tzprof }
+              >FOR <VoteForIcon/></Button>
             </div>
             { votePower.tzprof || (
               <span>Sync your <a href='https://tzprofiles.com/' rel='noreferrer' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
