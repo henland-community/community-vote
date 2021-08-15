@@ -8,6 +8,7 @@
   display: block;
   position: relative;
   text-decoration: none;
+  padding-bottom: calc(var(--grid-unit) / 2);
 }
 
 .proposalsNav-item.active {
