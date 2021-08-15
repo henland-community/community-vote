@@ -6,7 +6,10 @@
 .proposalCard-meta {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
+  color: var(--gray-80);
+  font-size: var(--font-s);
+  text-transform: uppercase;
 }
 
 .proposalCard-name {
@@ -16,17 +19,15 @@
   min-height: 2.5em;
 }
 
-.proposalCard-identifiers {
-  color: var(--gray-60);
-}
-
-.proposalCard-yourVote {
-  padding: calc(var(--grid-unit) / 2);
+.proposalCard-yourVote,
+.proposalCard-voteStatus--ended {
+  margin-top: calc(var(--grid-unit) / -4);
+  padding: calc(var(--grid-unit) / 4) var(--grid-unit);
   background: var(--gray-0);
+  color: var(--gray-100);
 }
 
-.proposalCard-voteStatus {
-  padding: calc(var(--grid-unit) / 2);
+.proposalCard-voteStatus--ended {
   background: var(--gray-20);
 }
 
@@ -41,10 +42,19 @@
   align-items: center;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .proposalCard {
     padding: calc(var(--grid-unit) * 5);
   } 
+
+  .proposalCard-identifiers {
+    display: flex;
+  }
+
+  .proposalCard-type {
+    margin-left: var(--grid-unit);
+  }
+
   .proposalCard-footer {
     flex-direction: row;
   }
