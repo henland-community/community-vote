@@ -49,8 +49,8 @@
 }
 
 .proposalDetail-countdown {
-  background: var(--gray-20);
-  padding: 0 calc(var(--grid-unit) / 2);
+  /* background: var(--gray-20);
+  padding: 0 calc(var(--grid-unit) / 2); */
 }
 
 .proposalDetail-voteStatus {
