@@ -50,7 +50,7 @@ export const ProposalCard = ({...props}) => {
         <div className="proposalCard-voteResult">
           { ended ? (
             <>
-              Results <VoteForIcon />
+              {/* Results <VoteForIcon /> */}
             </>
           ) : '' }          
         </div>
