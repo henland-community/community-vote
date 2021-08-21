@@ -7,6 +7,11 @@
 .proposalDetail-adoptionStatus {
   margin-top: calc(var(--grid-unit) * -3);
   background: var(--gray-20);
+  display: flex;
+  justify-content: center;
+}
+.proposalDetail-adoptionStatus * {
+  margin-right: calc(var(--grid-unit) * 2);
 }
 
 .proposalDetail-meta {
@@ -89,6 +94,34 @@
 
 .proposalDetail-details {
   white-space: pre-wrap;
+}
+
+
+.proposalDetail-graph-labels {
+  display: flex;
+  justify-content: space-between;
+}
+.proposalDetail-graph-label {
+  background: var(--gray-20);
+  padding: 0.25em;
+  margin-right: 0.25em;
+}
+.proposalDetail-graph-label:last-of-type {
+  margin-right: 0;
+}
+.proposalDetail-graph-label.winner {
+  background: black;
+  color: white;
+  font-weight: bold;
+}
+
+.proposalDetail-graph-bar {
+  display: flex;
+  margin: 0.5em 0;
+}
+.proposalDetail-graph-bar-part {
+  flex: 1 0 auto;
+  height: 2em;
 }
 
 @media screen and (min-width: 768px) {

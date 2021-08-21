@@ -20,6 +20,10 @@ import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.
 import { vote } from "../contract";
 import { useToasts } from "react-toast-notifications";
 
+function sumVals(obj: any) {
+  return Object.keys(obj).reduce((sum,key)=>sum+parseFloat(obj[key]||0),0);
+}
+
 async function getPollData(key: string) {
   return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys?key=${key}`)
     .then(response => response.json())
@@ -37,16 +41,16 @@ async function getVoteData(key: string) {
 }
 
 async function getIpfs(hash: string) {
-  return await fetch(`https://ipfs.io/ipfs/${hash}`)
+  return await fetch(`https://infura-ipfs.io/ipfs/${hash}`)
     .then(response => response.json())
 }
 
-async function getUpdate(poll: string) {
-  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${(process.env.REACT_APP_BIGMAP_UPDATES ??'12345')}/keys/${poll}/updates`)
+async function getResults(poll: string) {
+  return await fetch(`/results.json`)
     .then(response => response.json())
     .then(data => {
-      console.log(['data',data])
-      return true; 
+      console.log(['data',data[poll], poll])
+      return data[poll];
     });
 }
 
@@ -70,8 +74,8 @@ export const ProposalDetail = (props: any) => {
   const params = useParams<{poll: string}>();
   const { addToast } = useToasts();
 
-  const [hasUpdate, setHasUpdate] = React.useState(false);
-  const [updateIpfs, setUpdateIpfs] = React.useState({} as any);
+  const [hasResults, setHasResults] = React.useState(false);
+  const [resultsData, setResultsData] = React.useState({} as any);
   
   const [pollData, setPollData] = React.useState({
     hash: '',
@@ -123,6 +127,30 @@ export const ProposalDetail = (props: any) => {
         })
       })
       .catch(err => console.error(err));
+    getIpfs(params.poll)
+      .then(ipfs =>{
+        // console.log(ipfs)
+        setPollIpfs(ipfs)
+      }
+    )
+    getResults(params.poll)
+      .then(results =>{
+        if (results !== false) {
+          setHasResults(true)
+          if (typeof results[1] === 'undefined') results[1] = 0;
+          if (typeof results[2] === 'undefined') results[2] = 0;
+          if (typeof results[3] === 'undefined') results[3] = 0;
+          if (typeof results[4] === 'undefined') results[4] = 0;
+          if (typeof results[5] === 'undefined') results[5] = 0;
+          if (typeof results[6] === 'undefined') results[6] = 0;
+          if (typeof results[7] === 'undefined') results[7] = 0;
+          console.log(['results',results])
+          setResultsData(results)
+        }
+      }
+    )
+  }, [params.poll]);
+  React.useEffect(() => {
     getVoteData(params.poll)
       .then(votes =>{
         // console.log(votes)
@@ -139,20 +167,6 @@ export const ProposalDetail = (props: any) => {
         setVoteSums(sumVotes(votes))
       })
       .catch(err => console.error(err));
-    getIpfs(params.poll)
-      .then(ipfs =>{
-        // console.log(ipfs)
-        setPollIpfs(ipfs)
-      }
-    )
-    getUpdate(params.poll)
-      .then(update =>{
-        if (update !== false) {
-          setHasUpdate(true)
-          setUpdateIpfs(update)
-        }
-      }
-    )
   }, [params.poll, activeAccount]);
 
   async function handleVote(option: number) {
@@ -216,6 +230,18 @@ export const ProposalDetail = (props: any) => {
         { pollIpfs.opt1 === "" ? (
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
+              { hasResults && (
+                <>
+                  <div className="proposalDetail-graph-labels">
+                    <span className={"proposalDetail-graph-label "+(resultsData["1"]>resultsData["2"]?'winner':'') }>For {((resultsData["1"] / (resultsData["1"] + resultsData["2"])) * 100).toFixed(0)}%</span>
+                    <span className="proposalDetail-graph-label">Against {((resultsData["2"] / (resultsData["1"] + resultsData["2"])) * 100).toFixed(0)}%</span>
+                  </div>
+                  <div className="proposalDetail-graph-bar">
+                    <div className="proposalDetail-graph-bar-part" style={{flex: resultsData["1"]+" 0 auto", background: (resultsData["1"]>resultsData["2"]?"black":"var(--gray-20)")}}></div>
+                    <div className="proposalDetail-graph-bar-part" style={{flex: resultsData["2"]+" 0 auto", background: (resultsData["2"]>resultsData["1"]?"black":"var(--gray-20)")}}></div>
+                  </div>
+                </>
+              )}
               <div>
                 <a href="#votes" className="text-s-bold">Votes Submitted:</a>&nbsp;
                 { Object.values(voteSums).reduce((a, b) => a + b, 0) || 0 }
@@ -245,6 +271,48 @@ export const ProposalDetail = (props: any) => {
         ) : (
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
+              { hasResults && resultsData && (
+                <>
+                  <div className="proposalDetail-graph-labels">
+                    {[...Array(pollData.metadata.numOptions)].map((x, i) =>
+                    <span 
+                      key={i} 
+                      className={
+                        "proposalDetail-graph-label "+
+                        (
+                          (parseInt(
+                            Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
+                          ) === (i+1)) ? 'winner' : ''
+                        ) 
+                      }>
+                      {console.log((resultsData[i+1] / sumVals(resultsData) * 100).toFixed(1))}
+                      {i+1} {
+                        (
+                          (
+                            resultsData[i+1] /
+                            sumVals(resultsData)
+                          ) * 100
+                        ).toFixed(1)
+                      }%
+                    </span>
+                    )}
+                  </div>
+                  <div className="proposalDetail-graph-bar">
+                    {[...Array(pollData.metadata.numOptions)].map((x, i) =>
+                      <div 
+                        key={i} 
+                        className="proposalDetail-graph-bar-part" 
+                        style={{
+                          flex: resultsData[i+1]+" 0 auto", 
+                          background: ((parseInt(
+                            Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
+                          ) === (i+1))?"black":`rgb(${200-(i+1)*25},${200-(i+1)*25},${200-(i+1)*25})`)
+                        }}>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
               <div>
                 <a href="#votes" className="text-s-bold">Votes Submitted:</a>&nbsp;
                 { Object.values(voteSums).reduce((a, b) => a + b, 0) || 0 }
@@ -308,12 +376,11 @@ export const ProposalDetail = (props: any) => {
           </footer>
         )}
       </header>
-      { hasUpdate ? (
+      { hasResults ? (
         <div className="pageSection proposalDetail-adoptionStatus">
           <Logo />
           <span className="text-l-light">STATUS</span>
           <span className="text-l-bold">PENDING</span>
-          <a href="#adoptiondoc">{ JSON.stringify(updateIpfs) }</a>
         </div>
       ):'' }
       <section className="pageSection proposalDetail-columns">
