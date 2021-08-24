@@ -54,9 +54,9 @@ export const initPollContract = async (
 
 export const createPoll = async (
   category: string,
-  endDate: Date,
+  endDate: string,
   noOfOptions: number,
-  startDate: Date,
+  startDate: string,
   title: string,
   ipfsMeta: any
 ) => {
@@ -67,9 +67,9 @@ export const createPoll = async (
         .createPoll(
           ipfsResponse.IpfsHash,
           category,
-          endDate.toISOString(),  
+          endDate+"T00:00:00.000Z",  
           noOfOptions,
-          startDate.toISOString(),
+          startDate+"T00:00:00.000Z",
           title
         ).send();
       return op.opHash;

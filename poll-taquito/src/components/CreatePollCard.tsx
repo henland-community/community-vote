@@ -3,9 +3,8 @@ import * as Yup from "yup";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
-import DatePicker from "@material-ui/lab/DatePicker";
 import { Formik, Form, Field } from "formik";
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { useWallet } from "@tz-contrib/react-wallet-provider";
 import { createPoll } from "../contract";
 import { useToasts } from "react-toast-notifications";
@@ -25,8 +24,8 @@ export default function CreatePollCard() {
   const { addToast } = useToasts();
   const validationSchema = Yup.object().shape({
     // pollId: Yup.string().required("Required"),
-    endDate: Yup.date().required("Required"),
-    startDate: Yup.date().required("Required"),
+    endDate: Yup.string().required("Required"),
+    startDate: Yup.string().required("Required"),
     noOfOptions: Yup.number()
       .min(2, "Min 2 options required")
       .max(7, "Max 7 options currently supported")
@@ -47,15 +46,26 @@ export default function CreatePollCard() {
   const handleSubmit = async (values: any, helper: any) => {
     if (connected) {
       try {
-        const hash = await createPoll( 
-          values.category,
-          values.endDate,
-          values.noOfOptions,
-          values.startDate,
-          values.title,
-          {
-            discourse: values.discourse,
-            description: values.description,
+        let pollMetas = {
+          discourse: values.discourse,
+          description: values.description,
+          multi: values.multi
+        }
+        if (pollMetas.multi === "score" ) {
+          pollMetas = {...pollMetas, ...{
+            opt1: "1",
+            opt1desc: "",
+            opt2: "2",
+            opt2desc: "",
+            opt3: "3",
+            opt3desc: "",
+            opt4: "4",
+            opt4desc: "",
+            opt5: "5",
+            opt5desc: ""
+          }}
+        } else {
+          pollMetas = {...pollMetas, ...{
             opt1: values.opt1,
             opt1desc: values.opt1desc,
             opt2: values.opt2,
@@ -69,9 +79,17 @@ export default function CreatePollCard() {
             opt6: values.opt6,
             opt6desc: values.opt6desc,
             opt7: values.opt7,
-            opt7desc: values.opt7desc,
-            multi: values.multi
-          }
+            opt7desc: values.opt7desc
+          }}
+        }
+        console.log([values,pollMetas])
+        const hash = await createPoll( 
+          values.category,
+          values.endDate,
+          values.multi === "score"?5:values.noOfOptions,
+          values.startDate,
+          values.title,
+          pollMetas
         );
         if (hash) {
           addToast("Tx Submitted", {
@@ -90,9 +108,9 @@ export default function CreatePollCard() {
       }
     }
   };
-  const dateStart = new Date()
-  var dateEnd = new Date()
-  dateEnd.setDate(dateEnd.getDate() + 7)
+  // const dateStart = new Date()
+  // var dateEnd = new Date()
+  // dateEnd.setDate(dateEnd.getDate() + 7)
 
   return (
     <Card sx={{ maxWidth: "40rem", margin: "3em auto" }}>
@@ -101,8 +119,8 @@ export default function CreatePollCard() {
         <Formik
           initialValues={{ 
             multi: "false", 
-            startDate: dateStart, 
-            endDate: dateEnd, 
+            startDate: new Date().toISOString().slice(0, 10), 
+            endDate: new Date((new Date()).setDate((new Date()).getDate() + 1)).toISOString().slice(0, 10), 
             noOfOptions: 2,
             title: "",
             category: "",
@@ -141,7 +159,7 @@ export default function CreatePollCard() {
                     value="false"
                   />
                   <label htmlFor="multiNo">SINGLE VOTE</label>
-                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;
                   <Field
                     name="multi"
                     id="multiYes"
@@ -150,6 +168,15 @@ export default function CreatePollCard() {
                     value="true"
                   />
                   <label htmlFor="multiYes">MULTIPLE CHOICE</label>
+                  &nbsp;&nbsp;&nbsp;
+                  <Field
+                    name="multi"
+                    id="multiScore"
+                    type="radio"
+                    label="Scored Vote"
+                    value="score"
+                  />
+                  <label htmlFor="multiScore">SCORED VOTE</label>
                 </Grid>
                 <Grid item>
                   <Field
@@ -165,46 +192,30 @@ export default function CreatePollCard() {
                     name="description"
                     as="textarea"
                     label="Description"
-                    fullWidth
                     placeholder="Description"
                     style={{width: "100%", fontSize: '1em', padding: '0.5em', resize: 'vertical'}}
                   />
                 </Grid>
-                <Grid container item spacing={3}>
+                <Grid container item pt={1} mt={1}>
                   <Grid item md>
+                    Start Date: &nbsp;
                     <Field
                       label="Start Date"
                       name="startDate"
-                      component={DatePicker}
-                      onChange={(value: any) => {
-                        setFieldValue("startDate", value);
-                      }}
-                      renderInput={(params: any) => (
-                        <TextField {...params} fullWidth />
-                      )}
-                      error={touched.startDate && Boolean(errors.startDate)}
-                      helperText={touched.startDate ? errors.startDate : ""}
-                      disablePast
+                      type="date"
                     />
                   </Grid>
                   <Grid item md>
+                    End Date: &nbsp;
                     <Field
                       label="End Date"
                       name="endDate"
-                      component={DatePicker}
-                      onChange={(value: any) => {
-                        setFieldValue("endDate", value);
-                      }}
-                      renderInput={(params: any) => (
-                        <TextField {...params} fullWidth />
-                      )}
-                      error={touched.endDate && Boolean(errors.endDate)}
-                      helperText={touched.endDate ? errors.endDate : ""}
-                      disablePast
+                      type="date"
+
                     />
                   </Grid>
                 </Grid>
-                <Grid container item spacing={3}>
+                <Grid container item spacing={3} pt={1} mt={1}>
                   <Grid item md>
                     <Field
                       name="category"
@@ -242,9 +253,6 @@ export default function CreatePollCard() {
                           name="noOfOptions"
                           type="number"
                           label="Number of options"
-                          onChange={(value: any) => {
-                            setFieldValue("endDate", value);
-                          }}
                           fullWidth
                         />
                       </Grid>

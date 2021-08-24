@@ -69,6 +69,12 @@
   flex-wrap: wrap;
   align-items: stretch;
 }
+.proposalDetail-yourVote.multi-score {
+  flex: 1 0 100%;
+}
+.proposalDetail-yourVote.multi-score > * {
+  flex: 1;
+}
 
 .proposalDetail-yourVote svg {
   height: 1em;

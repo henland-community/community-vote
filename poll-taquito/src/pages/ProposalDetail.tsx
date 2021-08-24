@@ -108,7 +108,7 @@ export const ProposalDetail = (props: any) => {
     opt5: 'Option 5',
     opt6: 'Option 6',
     opt7: 'Option 7',
-    multi: false
+    multi: "false"
   });
   React.useEffect(() => {
     getPollData(params.poll)
@@ -135,7 +135,8 @@ export const ProposalDetail = (props: any) => {
     )
     getResults(params.poll)
       .then(results =>{
-        if (results !== false) {
+        console.log(['results',results])
+        if (results !== undefined) {
           setHasResults(true)
           if (typeof results[1] === 'undefined') results[1] = 0;
           if (typeof results[2] === 'undefined') results[2] = 0;
@@ -252,7 +253,7 @@ export const ProposalDetail = (props: any) => {
               href={ discourseThreadUrl }>
               Discuss on Discourse 
             </a>
-            <div className="proposalDetail-yourVote">
+            <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
               <Button
                 voted={ voteData.myvote === 2 }
                 onClick={()=>{handleVote(2)}}
@@ -323,7 +324,7 @@ export const ProposalDetail = (props: any) => {
               href={ discourseThreadUrl }>
               Discuss on Discourse
             </a>
-            <div className="proposalDetail-yourVote">
+            <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
               <Button
                 voted={ voteData.myvote === 1 }
                 onClick={()=>{handleVote(1)}} 
