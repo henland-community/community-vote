@@ -222,6 +222,9 @@ export const ProposalDetail = (props: any) => {
         <h1>
         { pollData.metadata.title }
         </h1>
+        { pollIpfs.multi === 'score' && (
+          <div><strong>Scored Vote:</strong>  Please rank this proposal from 1 to 5 (5 is the best)</div>
+        )}
         {/* <div className="proposalDetail-url">
         { discourseThreadUrl }
         </div> */}
