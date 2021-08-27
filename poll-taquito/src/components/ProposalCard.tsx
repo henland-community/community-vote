@@ -36,11 +36,16 @@ export const ProposalCard = ({...props}) => {
         </div>
         { voted !== 0 && (
           <div className="proposalCard-yourVote">
-            Voted <b className="text-s-bold">{ poll.value.metadata.category === '1' ? 'Option ' + voted : (voted === "1" ? 'For' : 'Against') }</b>
+            Voted <b className="text-s-bold">{ 
+
+              poll.value.metadata.category === '1' ? 
+              'Option ' + voted : 
+              (voted === "1" ? 'For' : 'Against') 
+            }</b>
           </div>
         )}
         <div className={`proposalCard-voteStatus ${ ended ? 'proposalCard-voteStatus--ended' : ''}`}>
-          { ended?'Ended':'Ends'} { (new Date(poll.value.metadata.end_date)).toDateString() }
+          { ended?'Ended':'Ends'} { (new Date(poll.value.metadata.end_date)).toUTCString().split(` ${(new Date(poll.value.metadata.end_date)).getUTCFullYear()} `)[0] }
         </div>
       </div>
       <div className="proposalCard-name">
