@@ -37,10 +37,10 @@ export const ProposalCard = ({...props}) => {
         { voted !== 0 && (
           <div className="proposalCard-yourVote">
             Voted <b className="text-s-bold">{ 
-
-              poll.value.metadata.category === '1' ? 
-              'Option ' + voted : 
-              (voted === "1" ? 'For' : 'Against') 
+              poll.value.metadata.category === '1' ? 'Option ' + voted : 
+                poll.value.metadata.num_options === '5' ? voted : (
+                  (voted === "1" ? 'For' : 'Against') 
+                )
             }</b>
           </div>
         )}
