@@ -277,6 +277,17 @@ export const ProposalDetail = (props: any) => {
             <div className="proposalDetail-graph">
               { hasResults && resultsData && (
                 <>
+                  { pollIpfs.multi === 'score' && (
+                    <strong className="proposalDetail-graph-score">
+                      Total Weighted Score: {(
+                        resultsData[1] * 1 +
+                        resultsData[2] * 2 +
+                        resultsData[3] * 3 +
+                        resultsData[4] * 4 +
+                        resultsData[5] * 5
+                      )}
+                    </strong>
+                  )}
                   <div className="proposalDetail-graph-labels">
                     {[...Array(pollData.metadata.numOptions)].map((x, i) =>
                     <span 
