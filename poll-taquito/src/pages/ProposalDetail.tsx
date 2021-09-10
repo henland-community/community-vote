@@ -222,6 +222,9 @@ export const ProposalDetail = (props: any) => {
         <h1>
         { pollData.metadata.title }
         </h1>
+        { pollIpfs.multi === 'score' && (
+          <div><strong>Scored Vote:</strong>  Please rank this proposal from 1 to 5 (5 is the best)</div>
+        )}
         {/* <div className="proposalDetail-url">
         { discourseThreadUrl }
         </div> */}
@@ -274,6 +277,17 @@ export const ProposalDetail = (props: any) => {
             <div className="proposalDetail-graph">
               { hasResults && resultsData && (
                 <>
+                  { pollIpfs.multi === 'score' && (
+                    <strong className="proposalDetail-graph-score">
+                      Total Weighted Score: {(
+                        resultsData[1] * 1 +
+                        resultsData[2] * 2 +
+                        resultsData[3] * 3 +
+                        resultsData[4] * 4 +
+                        resultsData[5] * 5
+                      )}
+                    </strong>
+                  )}
                   <div className="proposalDetail-graph-labels">
                     {[...Array(pollData.metadata.numOptions)].map((x, i) =>
                     <span 

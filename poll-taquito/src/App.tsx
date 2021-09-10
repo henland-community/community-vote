@@ -32,7 +32,7 @@ export async function getTzProfiles(address: string) {
 
 export async function hasTzProfiles(address: string) {
   return await getTzProfiles(address).then(res => {
-    // console.log(res.data);
+    // console.log([res.data, res.data.data.tzprofiles_by_pk && res.data.data.tzprofiles_by_pk.valid_claims.length > 0]);
     return res.data.data.tzprofiles_by_pk && res.data.data.tzprofiles_by_pk.valid_claims.length > 0;
   });
 }
@@ -101,21 +101,35 @@ function App() {
           votePower.count++
           votePower.tzprof = true
         }
+      }).then(() => {
+        setVotePower(votePower);
+      }).catch(err => {
+        console.error(err);
       }),
       checkBadge(address).then(has => {
         if (has) {
           votePower.count++
           votePower.badge = true
         }
+      }).then(() => {
+        setVotePower(votePower);
+      }).catch(err => {
+        console.error(err);
       }),
       checkHDAO(address).then(has =>  {
         if (has) {
           votePower.count++
           votePower.hDAO = true
         }
+      }).then(() => {
+        setVotePower(votePower);
+      }).catch(err => {
+        console.error(err);
       })
     ]).then(() => {
       setVotePower(votePower);
+    }).catch(err => {
+      console.error(err);
     });
   };
   React.useEffect(() => {
