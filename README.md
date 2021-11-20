@@ -1,5 +1,5 @@
-# Hicvote
-### A voting tool for Hicathon and Hic Et Nunc
+# Hencvote
+### A voting tool for "Hic Et Nunc Community"
 
 More info coming soon.
 
@@ -33,4 +33,4 @@ Michelson https://tezos.gitlab.io/active/michelson.html
 ### Public nodes
 - a list from the Taquito team https://tezostaquito.io/docs/rpc_nodes/
 
-Developed with the help of [TzConnect](https://github.com/tzConnectBerlin) and Hicathon
+Originally developed with the help of [TzConnect](https://github.com/tzConnectBerlin) and Hicathon for hicetnunc
