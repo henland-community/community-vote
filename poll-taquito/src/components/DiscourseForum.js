@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export default function DiscourseForum({thread = '1'}) {
   useEffect(() => {
     window.DiscourseEmbed = {
-      discourseUrl: 'https://community.hicetnunc.xyz/',
+      discourseUrl: 'https://discourse.hencommunity.quest/',
       topicId: thread,
     };
 

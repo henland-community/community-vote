@@ -55,7 +55,7 @@ export const SyncMenu = ({
             <section className="syncMenu-section mobileOnly">
               <Link to="/about" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>About</Link>
               <Link to="/faq" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>FAQ</Link>
-              <a target="_blank" rel="noreferrer" href="https://community.hicetnunc.xyz" className="syncMenu-item">Forum ↪</a>
+              <a target="_blank" rel="noreferrer" href="https://discourse.hencommunity.quest" className="syncMenu-item">Forum ↪</a>
             </section>
             <section className="syncMenu-section">
               <div className="syncMenu-item">
