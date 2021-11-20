@@ -1,4 +1,4 @@
-# Hencvote
+# Community Vote
 ### A voting tool for "Hic Et Nunc Community"
 
 More info coming soon.
