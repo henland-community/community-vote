@@ -1,6 +1,6 @@
 # React-Taquito app to interact with poll smart contract
 
-[Hicvote on Vercel](https://hicvote.vercel.app/)
+Currently deployed on granadanet (testnet) at [https://vote.hencommunity.quest]()
 
 ## Prerequisite
 
