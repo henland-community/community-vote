@@ -63,7 +63,10 @@ function sumVotes(votes: any) {
     4: votes.filter((v: any) => v.value === "4").length,
     5: votes.filter((v: any) => v.value === "5").length,
     6: votes.filter((v: any) => v.value === "6").length,
-    7: votes.filter((v: any) => v.value === "7").length
+    7: votes.filter((v: any) => v.value === "7").length,
+    8: votes.filter((v: any) => v.value === "8").length,
+    9: votes.filter((v: any) => v.value === "9").length,
+    10: votes.filter((v: any) => v.value === "10").length
   };
 }
 
@@ -96,7 +99,10 @@ export const ProposalDetail = (props: any) => {
     4: 0,
     5: 0,
     6: 0,
-    7: 0
+    7: 0,
+    8: 0,
+    9: 0,
+    10: 0
   });
   const [pollIpfs, setPollIpfs] = React.useState({
     discourse: '',
@@ -148,6 +154,9 @@ export const ProposalDetail = (props: any) => {
           if (typeof results[5] === 'undefined') results[5] = 0;
           if (typeof results[6] === 'undefined') results[6] = 0;
           if (typeof results[7] === 'undefined') results[7] = 0;
+          if (typeof results[8] === 'undefined') results[8] = 0;
+          if (typeof results[8] === 'undefined') results[9] = 0;
+          if (typeof results[10] === 'undefined') results[10] = 0;
           console.log(['results',results])
           setResultsData(results)
         }
