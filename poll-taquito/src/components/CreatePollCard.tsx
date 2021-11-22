@@ -28,7 +28,7 @@ export default function CreatePollCard() {
     startDate: Yup.string().required("Required"),
     noOfOptions: Yup.number()
       .min(2, "Min 2 options required")
-      .max(7, "Max 7 options currently supported")
+      .max(10, "Max 10 options currently supported")
       .required("Required"),
     title: Yup.string().required("Required"),
     category: Yup.string().required("Required"),
@@ -79,7 +79,13 @@ export default function CreatePollCard() {
             opt6: values.opt6,
             opt6desc: values.opt6desc,
             opt7: values.opt7,
-            opt7desc: values.opt7desc
+            opt7desc: values.opt7desc,
+            opt8: values.opt8,
+            opt8desc: values.opt8desc,
+            opt9: values.opt9,
+            opt9desc: values.opt9desc,
+            opt10: values.opt10,
+            opt10desc: values.opt10desc
           }}
         }
         console.log([values,pollMetas])
@@ -139,7 +145,13 @@ export default function CreatePollCard() {
             opt6: '',
             opt6desc: '',
             opt7: '',
-            opt7desc: ''
+            opt7desc: '',
+            opt8: '',
+            opt8desc: '',
+            opt9: '',
+            opt9desc: '',
+            opt10: '',
+            opt10desc: ''
           }}
           enableReinitialize={true}
           onSubmit={handleSubmit}
@@ -409,6 +421,75 @@ export default function CreatePollCard() {
                             name="opt7desc"
                             type="text"
                             label="Description (Option 7)"
+                            fullWidth
+                          />
+                        </Grid>
+                      </Grid>
+                    )}
+                    { values.noOfOptions > 7 && (
+                      <Grid container item className="opt8wrap">
+                        <Grid lg item>
+                          <Field
+                            component={FormikTextField}
+                            name="opt8"
+                            type="text"
+                            label="Title (Option 8)"
+                            fullWidth
+                          />
+                        </Grid>
+                        &nbsp;
+                        <Grid lg item>
+                          <Field
+                            component={FormikTextField}
+                            name="opt8desc"
+                            type="text"
+                            label="Description (Option 8)"
+                            fullWidth
+                          />
+                        </Grid>
+                      </Grid>
+                    )}
+                    { values.noOfOptions > 8 && (
+                      <Grid container item className="opt9wrap">
+                        <Grid lg item>
+                          <Field
+                            component={FormikTextField}
+                            name="opt9"
+                            type="text"
+                            label="Title (Option 9)"
+                            fullWidth
+                          />
+                        </Grid>
+                        &nbsp;
+                        <Grid lg item>
+                          <Field
+                            component={FormikTextField}
+                            name="opt9desc"
+                            type="text"
+                            label="Description (Option 9)"
+                            fullWidth
+                          />
+                        </Grid>
+                      </Grid>
+                    )}
+                    { values.noOfOptions > 9 && (
+                      <Grid container item className="opt10wrap">
+                        <Grid lg item>
+                          <Field
+                            component={FormikTextField}
+                            name="opt10"
+                            type="text"
+                            label="Title (Option 10)"
+                            fullWidth
+                          />
+                        </Grid>
+                        &nbsp;
+                        <Grid lg item>
+                          <Field
+                            component={FormikTextField}
+                            name="opt10desc"
+                            type="text"
+                            label="Description (Option 10)"
                             fullWidth
                           />
                         </Grid>

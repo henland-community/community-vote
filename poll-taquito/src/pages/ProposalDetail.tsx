@@ -108,6 +108,9 @@ export const ProposalDetail = (props: any) => {
     opt5: 'Option 5',
     opt6: 'Option 6',
     opt7: 'Option 7',
+    opt8: 'Option 8',
+    opt9: 'Option 9',
+    opt10: 'Option 10',
     multi: "false"
   });
   React.useEffect(() => {
@@ -383,6 +386,27 @@ export const ProposalDetail = (props: any) => {
                   onClick={()=>{handleVote(7)}} 
                   disabled={ !votePower.tzprof }
                 >{ pollIpfs.opt7 }</Button>
+              ) : '' }
+              { pollData.metadata.numOptions > 7 ? (
+                <Button
+                  voted={ voteData.myvote === 8 }
+                  onClick={()=>{handleVote(8)}} 
+                  disabled={ !votePower.tzprof }
+                >{ pollIpfs.opt8 }</Button>
+              ) : '' }
+              { pollData.metadata.numOptions > 8 ? (
+                <Button
+                  voted={ voteData.myvote === 9 }
+                  onClick={()=>{handleVote(9)}} 
+                  disabled={ !votePower.tzprof }
+                >{ pollIpfs.opt9 }</Button>
+              ) : '' }
+              { pollData.metadata.numOptions > 9 ? (
+                <Button
+                  voted={ voteData.myvote === 10 }
+                  onClick={()=>{handleVote(10)}} 
+                  disabled={ !votePower.tzprof }
+                >{ pollIpfs.opt10 }</Button>
               ) : '' }
             </div>
             { votePower.tzprof || (
