@@ -83,17 +83,24 @@ export async function checkHDAO(address: string) {
   // console.log(result);
   return result.data.length > 0 ? result.data[0].value > 0 : false;
 }
+export async function checkHenOG(address: string) {
+  // return true if wallet was a hen OG (interacted with contracts before discontinuation)
+  // load in hen-users.json
+  const result = await axios.get(`/hen-users.json`);
+  // console.log(result);
+  return result.data.includes(address);
+}
 
 function App() {
   const { connected, disconnect, activeAccount, connect } = useWallet();
   const beaconWallet = useBeaconWallet();
   const [votePower, setVotePower] = React.useState({
-    count: 0, tzprof: false, hDAO: false, badge: false
+    count: 0, tzprof: false, hDAO: false, henOG: false, badge: false
   });
   const [myVotes, setMyVotes] = React.useState([]);
   function getVotePower(address: string) {
     var votePower = {
-      count: 0, tzprof: false, hDAO: false, badge: false
+      count: 0, tzprof: false, hDAO: false, henOG: false, badge: false
     };
     Promise.all([
       hasTzProfiles(address).then(has => {
@@ -120,6 +127,16 @@ function App() {
         if (has) {
           votePower.count++
           votePower.hDAO = true
+        }
+      }).then(() => {
+        setVotePower(votePower);
+      }).catch(err => {
+        console.error(err);
+      }),
+      checkHenOG(address).then(has =>  {
+        if (has) {
+          votePower.count++
+          votePower.henOG = true
         }
       }).then(() => {
         setVotePower(votePower);

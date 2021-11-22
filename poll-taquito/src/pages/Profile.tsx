@@ -18,6 +18,7 @@ export const Profile = (props: any) => {
           <strong>{ props.votes.count } VOTE WEIGHT:</strong> 
           <span style={{opacity: props.votes.tzprof?'1.0':'0.5'}}>{ props.votes.tzprof?<IconFor/>:<IconAgainst/>} Tezos Profiles</span>
           <span style={{opacity: props.votes.hDAO?'1.0':'0.5'}}>{ props.votes.hDAO?<IconFor/>:<IconAgainst/>} hDAO</span>
+          <span style={{opacity: props.votes.henOG?'1.0':'0.5'}}>{ props.votes.henOG?<IconFor/>:<IconAgainst/>} h=n OG</span>
           <span style={{opacity: props.votes.badge?'1.0':'0.5'}}>{ props.votes.badge?<IconFor/>:<IconAgainst/>} Hicathon Badge</span>
         </div>
       </section>

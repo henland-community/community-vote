@@ -263,17 +263,20 @@ export const ProposalDetail = (props: any) => {
               <Button
                 voted={ voteData.myvote === 2 }
                 onClick={()=>{handleVote(2)}}
-                disabled={ !votePower.tzprof }
+                disabled={ !votePower.henOG }
               >AGAINST <VoteAgainstIcon/></Button>
               <Button
                 voted={ voteData.myvote === 1 }
                 onClick={()=>{handleVote(1)}}
-                disabled={ !votePower.tzprof }
+                disabled={ !votePower.henOG }
               >FOR <VoteForIcon/></Button>
             </div>
-            { votePower.tzprof || (
+            {/* { votePower.tzprof || (
               <span>Sync your <a href='https://tzprofiles.com/' rel='noreferrer' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
-             ) }
+             ) } */}
+             { votePower.henOG || (
+               <span>Sync your hicetnunc wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued.</span>
+              ) }
           </footer>
         ) : (
           <footer className="proposalDetail-voteStatus">
@@ -345,73 +348,76 @@ export const ProposalDetail = (props: any) => {
               <Button
                 voted={ voteData.myvote === 1 }
                 onClick={()=>{handleVote(1)}} 
-                disabled={ !votePower.tzprof }
+                disabled={ !votePower.henOG }
               >{ pollIpfs.opt1 }</Button>
               <Button
                 voted={ voteData.myvote === 2 }
                 onClick={()=>{handleVote(2)}} 
-                disabled={ !votePower.tzprof }
+                disabled={ !votePower.henOG }
               >{ pollIpfs.opt2 }</Button>
               { pollData.metadata.numOptions > 2 ? (
                 <Button
                   voted={ voteData.myvote === 3 }
                   onClick={()=>{handleVote(3)}} 
-                  disabled={ !votePower.tzprof }
+                  disabled={ !votePower.henOG }
                 >{ pollIpfs.opt3 }</Button>
                 ) : '' }
               { pollData.metadata.numOptions > 3 ? (
                 <Button
                   voted={ voteData.myvote === 4 }
                   onClick={()=>{handleVote(4)}} 
-                  disabled={ !votePower.tzprof }
+                  disabled={ !votePower.henOG }
                 >{ pollIpfs.opt4 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 4 ? (
                 <Button
                   voted={ voteData.myvote === 5 }
                   onClick={()=>{handleVote(5)}} 
-                  disabled={ !votePower.tzprof }
+                  disabled={ !votePower.henOG }
                 >{ pollIpfs.opt5 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 5 ? (
                 <Button
                   voted={ voteData.myvote === 6 }
                   onClick={()=>{handleVote(6)}} 
-                  disabled={ !votePower.tzprof }
+                  disabled={ !votePower.henOG }
                 >{ pollIpfs.opt6 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 6 ? (
                 <Button
                   voted={ voteData.myvote === 7 }
                   onClick={()=>{handleVote(7)}} 
-                  disabled={ !votePower.tzprof }
+                  disabled={ !votePower.henOG }
                 >{ pollIpfs.opt7 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 7 ? (
                 <Button
                   voted={ voteData.myvote === 8 }
                   onClick={()=>{handleVote(8)}} 
-                  disabled={ !votePower.tzprof }
+                  disabled={ !votePower.henOG }
                 >{ pollIpfs.opt8 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 8 ? (
                 <Button
                   voted={ voteData.myvote === 9 }
                   onClick={()=>{handleVote(9)}} 
-                  disabled={ !votePower.tzprof }
+                  disabled={ !votePower.henOG }
                 >{ pollIpfs.opt9 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 9 ? (
                 <Button
                   voted={ voteData.myvote === 10 }
                   onClick={()=>{handleVote(10)}} 
-                  disabled={ !votePower.tzprof }
+                  disabled={ !votePower.henOG }
                 >{ pollIpfs.opt10 }</Button>
               ) : '' }
             </div>
-            { votePower.tzprof || (
+            {/* { votePower.tzprof || (
               <span>Sync your <a href='https://tzprofiles.com/' rel='noreferrer' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
-             ) }
+             ) } */}
+            { votePower.henOG || (
+              <span>Sync your hicetnunc wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued.</span>
+            ) }
           </footer>
         )}
       </header>
