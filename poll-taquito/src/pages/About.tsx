@@ -10,8 +10,8 @@ export const About = () => {
         <h1>ABOUT</h1>
       </header>
       <section className="pageSection">
-        <p><Link to="/">H=N VOTE</Link> is an experimental collaboration between TZ Connect, 
-          hicathon org team, Hicathon Working Group 5.4 &amp; the H=N VOTE dev team.</p>
+        <p><Link to="/">H=N Community Vote</Link> is an experimental collaboration between TZ Connect, 
+          hicathon org team, Hicathon Working Group 5.4, the H=N VOTE dev team, and the Hen Community discord.</p>
         <p>This voting DAO is an experiment born from the hicathon, which was the first hackathon 
           organised by and with the community of the Tezos-based marketplace hic et nunc. 
           You can find more info about the <a href="https://www.hicathon.xyz/" target="_blank" rel="noreferrer">hicathon here</a>.
@@ -44,27 +44,6 @@ export const About = () => {
           (voting framework and feature requirements list) and Diane Drubay (as a project manager).</p>
         <p>Our success will be measured by the community involvement in the voting process, 
           plus the ease to vote.</p>
-      </section>
-      <section className="pageSection">
-        <h2>Key dates</h2>
-        <dl>
-          <dt>11-16 August 2021: “Calling for Feedback!” Community Vote</dt> 
-          <dd>The working groups of the hicathon are asking for feedback and reactions.</dd>
-          <dt>08-11 August 2021: Let’s select the WGs of the post-hicathon</dt>
-          <dd>As representatives of the hic et nunc community, let us know which working groups 
-            should be part of the post-hicathon.</dd>
-          <dt>08-11 August 2021: Let’s vote the post-hicathon budget</dt>
-          <dd>The orga team of the hicathon is asking your feedback to decide how the budget 
-            will be distributed among the team.</dd>
-          <dt>12 August - 12 September: Post-hicathon</dt>
-          <dd>The working groups are working towards their final milestone. </dd>
-          <dt>12 September: Final Post-Hicathon Livestream</dt>
-          <dd>All the hicathon community meets online to hear about the achievements of the 
-            working groups.</dd>
-        </dl>
-        <p>See the timeline of the post-hicathon <a href="https://miro.com/app/board/o9J_lELpu8c=/?moveToWidget=3074457361752103305&cot=10"
-            target="_blank" 
-            rel="noreferrer">here</a>.</p>
       </section>
     </article>
   );

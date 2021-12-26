@@ -299,7 +299,12 @@ export const ProposalDetail = (props: any) => {
                         resultsData[2] * 2 +
                         resultsData[3] * 3 +
                         resultsData[4] * 4 +
-                        resultsData[5] * 5
+                        resultsData[5] * 5 +
+                        resultsData[6] * 6 +
+                        resultsData[7] * 7 +
+                        resultsData[8] * 8 +
+                        resultsData[9] * 9 +
+                        resultsData[10] * 10
                       )}
                     </strong>
                   )}
