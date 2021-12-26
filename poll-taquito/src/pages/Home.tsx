@@ -1,7 +1,7 @@
 import '../assets/styles/utility-classes.css';
 import './home.css';
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
