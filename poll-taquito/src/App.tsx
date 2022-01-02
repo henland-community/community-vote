@@ -103,36 +103,36 @@ function App() {
       count: 0, tzprof: false, hDAO: false, henOG: false, badge: false
     };
     Promise.all([
-      hasTzProfiles(address).then(has => {
-        if (has) {
-          votePower.count++
-          votePower.tzprof = true
-        }
-      }).then(() => {
-        setVotePower(votePower);
-      }).catch(err => {
-        console.error(err);
-      }),
-      checkBadge(address).then(has => {
-        if (has) {
-          votePower.count++
-          votePower.badge = true
-        }
-      }).then(() => {
-        setVotePower(votePower);
-      }).catch(err => {
-        console.error(err);
-      }),
-      checkHDAO(address).then(has =>  {
-        if (has) {
-          votePower.count++
-          votePower.hDAO = true
-        }
-      }).then(() => {
-        setVotePower(votePower);
-      }).catch(err => {
-        console.error(err);
-      }),
+      // hasTzProfiles(address).then(has => {
+      //   if (has) {
+      //     votePower.count++
+      //     votePower.tzprof = true
+      //   }
+      // }).then(() => {
+      //   setVotePower(votePower);
+      // }).catch(err => {
+      //   console.error(err);
+      // }),
+      // checkBadge(address).then(has => {
+      //   if (has) {
+      //     votePower.count++
+      //     votePower.badge = true
+      //   }
+      // }).then(() => {
+      //   setVotePower(votePower);
+      // }).catch(err => {
+      //   console.error(err);
+      // }),
+      // checkHDAO(address).then(has =>  {
+      //   if (has) {
+      //     votePower.count++
+      //     votePower.hDAO = true
+      //   }
+      // }).then(() => {
+      //   setVotePower(votePower);
+      // }).catch(err => {
+      //   console.error(err);
+      // }),
       checkHenOG(address).then(has =>  {
         if (has) {
           votePower.count++
