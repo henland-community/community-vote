@@ -284,7 +284,7 @@ export const ProposalDetail = (props: any) => {
               <span>Sync your <a href='https://tzprofiles.com/' rel='noreferrer' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
              ) } */}
              { votePower.henOG || (
-               <span>Sync your hicetnunc wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued.</span>
+               <span>Sync your hicetnunc wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued (11/11/21).</span>
               ) }
           </footer>
         ) : (
