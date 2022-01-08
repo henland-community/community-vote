@@ -10,7 +10,7 @@ import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
 import { ToastProvider } from "react-toast-notifications";
 
-const network = process.env.REACT_APP_NETWORK || "FLORENCENET";
+const network = process.env.REACT_APP_NETWORK || "HANGZHOUNET";
 export const NETWORK: WalletProviderProps["network"] =
   network.toUpperCase() as WalletProviderProps["network"];
 
