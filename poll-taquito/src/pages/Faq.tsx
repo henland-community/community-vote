@@ -12,27 +12,11 @@ export const Faq = () => {
         <p>Everyone who used hicetnunc before the website shutdown will have one vote in the initial rounds of h=n community voting.</p>
       </section>
       <section className="pageSection">
-        <h2>What is the voting rule?</h2>
-        <p><b>Rule 1:</b> Each account can vote for one option per proposal.</p>
-        <p><b>Rule 2:</b> Votes need to be within the voting period - time period as determined by Hicathon orga team (consider having to bring this to the attention of all participants of the hicathon and in the ecosystem generally in deciding on the start, length and end of the voting period).</p>
-      </section>
-      <section className="pageSection">
         <h2>How are people voting?</h2>
         <p>People may vote for any available option on any open proposal until the end of its voting period, and change their vote as many times as they like during the voting period (before it ends). Voting in version 1, will not include a token, or a representation of a token but a vote will simply be added to the tally of the voting results.</p>
         <p>This function should only work during a voting period.</p>
         <p>Gas fees for voting will be paid by voters. Current cost for an initial vote is ~0.017 tez (about 5 cents USD at the time of writing), the cost to change your vote is 0.0007 tez.</p>
         <p>Any voting cost is intrinsic to the blockchain, we charge no fee for voting. We aim to reduce gas prices even further in our next contract.</p>
-      </section>
-      <section className="pageSection">
-        <h2>How is Quorum achieved?</h2>
-        <p>After the voting period has ended, votes will be compiled with their according weight.</p>
-        <p>For a vote to pass quorum, by the end of the voting period 30 or more accounts must vote on it.</p>
-        <p>If a proposal does not meet quorum it does not pass and the proposal will need to be adjusted/resubmitted for another round of voting at a later time.</p>
-      </section>
-      <section className="pageSection">
-        <h2>Who can enter the options?</h2>
-        <p>The hicathon orga team has been compiling the info from the WGs and entered the data directly in the voting tool. Only a very short title describing the proposal and questions are on-chain, the rest is hosted in the IPFS to avoid website slowdown.</p>
-        <p>Hicathon orga team provides here the link to the document they took the information from to fill in the voting system.</p>
       </section>
       <section className="pageSection">
         <h2>Can I delegate my vote?</h2>
