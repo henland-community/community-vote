@@ -48,14 +48,19 @@ export const SyncMenu = ({
               </section>
             }
             { admin && 
-            <section className="syncMenu-section">
-              <Link to="/admin" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Create</Link>
-              <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Settings</Link>
-            </section> }
+              <section className="syncMenu-section">
+                <Link to="/admin" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Create</Link>
+                <Link to="/profile" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Settings</Link>
+              </section> 
+            }
             <section className="syncMenu-section mobileOnly">
               <Link to="/about" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>About</Link>
               <Link to="/faq" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>FAQ</Link>
               <a target="_blank" rel="noreferrer" href="https://discourse.hencommunity.quest" className="syncMenu-item">Forum ↪</a>
+            </section>
+            <section className="syncMenu-section">
+              <a target="_blank" rel="noreferer" href="https://github.com/hen-community/community-vote/issues" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Report Issues</a>
+              <a target="_blank" rel="noreferer" href="https://github.com/hen-community/community-vote" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Contribute</a>
             </section>
             <section className="syncMenu-section">
               <div className="syncMenu-item">
