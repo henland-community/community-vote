@@ -19,6 +19,9 @@ import { ProposalDetail } from "./pages/ProposalDetail";
 
 import './components/pageLayout.css';
 
+import { Footer } from './components/Footer';
+
+
 const RPC_URL =
   process.env.REACT_APP_RPC_URL || "https://florencenet.smartpy.io/";
 const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
@@ -213,6 +216,7 @@ function App() {
               <Route path="/admin" component={CreatePollCard} />
             </Switch>
           </div>
+          <Footer />
         </div>
       </div>
     </Router>

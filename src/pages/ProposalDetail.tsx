@@ -465,12 +465,12 @@ export const ProposalDetail = (props: any) => {
           </p>
           <p className="text-s-light">
             Hash:<br/>
-            { params.poll }
+            <a target="_blank" rel="noreferer" href={"https://ipfs.io/ipfs/"+ params.poll }>{ params.poll }</a>
           </p>
-          <p className="text-s-light">
+          {/* <p className="text-s-light">
             Proposer:<br/>
-            Hicathon
-          </p>
+            pollData.metadata.proposer
+          </p> */}
           <p className="proposalDetail-sidebarHeader">
           <span className="proposalDetail-sidebarHeader-line"></span>
             <span className="proposalDetail-sidebarHeader-text text-s-medium">Help</span>
@@ -483,10 +483,11 @@ export const ProposalDetail = (props: any) => {
             <span className="proposalDetail-sidebarHeader-text text-s-medium" id="votes">Votes</span>
           </p>
           <p className="text-s-light">
+            { console.log(voteData) }
             { voteData.votes.map((vote: any) => 
               <div className="voteRow" key={vote.id}>
                 {/* { vote.key.address.substr(0,4)+"..."+vote.key.address.substr(vote.key.address.length - 4,vote.key.address.length) } voted { vote.value === "1" ? 'for' : 'against' } */}
-                { vote.key.address }
+                <a target="_blank" rel="noreferer" href={"https://better-call.dev/mainnet/big_map/"+process.env.REACT_APP_BIGMAP_VOTES+"/"+vote.hash }>{ vote.key.address }</a>
               </div>
             )}
           </p>
