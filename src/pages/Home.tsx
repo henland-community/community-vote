@@ -12,7 +12,7 @@ export const Home = () => {
       </header>
       <section className="pageSection">
         <h2>Let's build the next hicetnunc</h2>
-        <p>The founder of hicetnunc, crzypatchwork, announced the end of his experimental NFT platform on 11/11/2021. The original domain (hicetnunc.xyz) is since unreachable and the rights to the hicetnunc name have not been made available. The hen community has organized itself to begin a new chapter in the history of hicetnunc. We aim to continue the spirit of hicetnunc on the tezos blockchain for those that rely on its accessibility and to step further into decentralization of the platform.</p>
+        <p>The founder of hicetnunc, crzypatchwork, announced the end of his experimental NFT platform on 11/11/2021. The original domain (hicetnunc.xyz) is since unreachable. To preserve the history and artwork of hicetnunc, and to continue the decentralized mission, members of the community have organized to begin a new chapter in the history of hicetnunc, with the same philosophy and a new name. We aim to continue the spirit of hicetnunc on the tezos blockchain for those that rely on its accessibility and to step further into decentralization of the platform.</p>
       </section>
       <section className="pageSection">
         <h2>What can I do here?</h2>
