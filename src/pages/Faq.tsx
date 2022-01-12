@@ -32,6 +32,21 @@ export const Faq = () => {
         <p>At the time this contract was written it was determined we couldn't tally all of the needed information on-chain, and would have to tally votes offline. A script is run that validates voters and tallies their votes and this information is uploaded to the website by a developer.<br/>
         These results can be independently verified by the voters using the unchangeable blockchain data.</p>
       </section>
+      <section className="pageSection">
+        <h2>Who is behind this platform now?</h2>
+        <p>Right after the discontinuation of hicetnunc.xyz on November 11th, 2021, a group of people (initially mainly participants of the first “hicathon” event) joined forces to organize the future of the platform. The main discussion platform is the new “hen_community” (HENC) discord server and the community forum.</p>
+        <p>We are currently working to form a DAO in order to make this platform fully decentralized. Our main goals are to keep the core values and spirit of hicetnunc alive and to update the marketplace smart contract so that the fees can be used to keep the platform running.</p>
+        <p>The discord is always open for any kind of participation, and we will also continue to do our best to communicate and engage with the community on platforms other than discord.</p>
+      </section>
+      <section className="pageSection">
+        <h2>How to participate?</h2>
+        <ul>
+          <li>You can join the HENC discord here: Discord</li>
+          <li>You can also participate without joining the discord via the community forum: <a href="https://discourse.hencommunity.quest/" target="_blank" rel="noreferrer">discourse.hencommunity.quest</a></li>
+          <li>For updates, you can follow our current twitter account: <a href="https://twitter.com/hen_community" target="_blank" rel="noreferrer">@hen_community</a></li>
+          <li>Volunteer opportunities are available! If you are interested, please <a href="https://forms.gle/75QHgUC5EZTReceK7" target="_blank" rel="noreferrer">fill out this form</a> so we can get a overview and start coordinating the working groups (Note: This is not a prerequisite for participation; Anyone can join and participate, discuss, and look up past discussions.)</li>
+        </ul>
+      </section>
     </article>
   );
 }
