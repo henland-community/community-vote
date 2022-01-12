@@ -465,7 +465,7 @@ export const ProposalDetail = (props: any) => {
           </p>
           <p className="text-s-light">
             Hash:<br/>
-            <a target="_blank" rel="noreferer" href={"https://ipfs.io/ipfs/"+ params.poll }>{ params.poll }</a>
+            <a target="_blank" rel="noreferrer" href={"https://ipfs.io/ipfs/"+ params.poll }>{ params.poll }</a>
           </p>
           {/* <p className="text-s-light">
             Proposer:<br/>
@@ -487,7 +487,7 @@ export const ProposalDetail = (props: any) => {
             { voteData.votes.map((vote: any) => 
               <div className="voteRow" key={vote.id}>
                 {/* { vote.key.address.substr(0,4)+"..."+vote.key.address.substr(vote.key.address.length - 4,vote.key.address.length) } voted { vote.value === "1" ? 'for' : 'against' } */}
-                <a target="_blank" rel="noreferer" href={"https://better-call.dev/mainnet/big_map/"+process.env.REACT_APP_BIGMAP_VOTES+"/"+vote.hash }>{ vote.key.address }</a>
+                <a target="_blank" rel="noreferrer" href={"https://better-call.dev/mainnet/big_map/"+process.env.REACT_APP_BIGMAP_VOTES+"/"+vote.hash }>{ vote.key.address }</a>
               </div>
             )}
           </p>
