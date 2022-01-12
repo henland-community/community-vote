@@ -341,7 +341,7 @@ export const ProposalDetail = (props: any) => {
                           flex: resultsData[i+1]+" 0 auto", 
                           background: ((parseInt(
                             Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
-                          ) === (i+1))?"black":`rgb(${200-(i+1)*25},${200-(i+1)*25},${200-(i+1)*25})`)
+                          ) === (i+1))?"black":`rgb(${200-(i+1)*20},${200-(i+1)*20},${200-(i+1)*20})`)
                         }}>
                       </div>
                     )}
