@@ -32,8 +32,7 @@ export default function CreatePollCard() {
       .required("Required"),
     title: Yup.string().required("Required"),
     category: Yup.string().required("Required"),
-    description: Yup.string().required("Required"),
-    discourse: Yup.string().url().required("Required")
+    description: Yup.string().required("Required")
   });
   // const [nextPollId, setNextPollId] = React.useState("1");
   // React.useEffect(() => {
@@ -47,7 +46,6 @@ export default function CreatePollCard() {
     if (connected) {
       try {
         let pollMetas = {
-          discourse: values.discourse,
           description: values.description,
           multi: values.multi
         }
@@ -131,7 +129,6 @@ export default function CreatePollCard() {
             title: "",
             category: "",
             description: "",
-            discourse: '',
             opt1: '',
             opt1desc: '',
             opt2: '',
@@ -241,15 +238,6 @@ export default function CreatePollCard() {
                       <option value="1">Proposal</option>
                       <option value="2">Question</option>
                     </Field>
-                  </Grid>
-                  <Grid item md>
-                    <Field
-                      component={FormikTextField}
-                      name="discourse"
-                      type="text"
-                      label="Discourse Topic URL"
-                      fullWidth
-                    />
                   </Grid>
                 </Grid>
                 { values.multi === "true" && (

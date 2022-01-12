@@ -105,7 +105,6 @@ export const ProposalDetail = (props: any) => {
     10: 0
   });
   const [pollIpfs, setPollIpfs] = React.useState({
-    discourse: '',
     description: '',
     opt1: 'Option 1',
     opt2: 'Option 2',
@@ -203,13 +202,6 @@ export const ProposalDetail = (props: any) => {
       }
     }
   }
-  const discourseThreadUrl = pollIpfs.discourse
-  let discourseThreadBits: any
-  if (typeof discourseThreadUrl !== 'number')
-    discourseThreadBits = discourseThreadUrl.split('/')
-  const discourseThread = typeof discourseThreadUrl !== 'number' ? 
-    (discourseThreadBits[discourseThreadBits.length - 1] === "1" ? discourseThreadBits[discourseThreadBits.length - 2] : discourseThreadBits[discourseThreadBits.length - 1])
-    : ''
   return (
     <article className="proposalDetail pageContents">
       <header className="proposalDetail-header pageHeader">
@@ -264,10 +256,10 @@ export const ProposalDetail = (props: any) => {
                 <small className="text-s-light"> &nbsp; (30 votes required)</small>
               </div>
             </div>
-            <a className="proposalDetail-discussionLink"
+            {/* <a className="proposalDetail-discussionLink"
               href={ discourseThreadUrl }>
               Discuss on Discourse 
-            </a>
+            </a> */}
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
               <Button
                 voted={ voteData.myvote === 2 }
@@ -354,10 +346,10 @@ export const ProposalDetail = (props: any) => {
                 <small className="text-s-light"> (30 votes required)</small>
               </div>
             </div>
-            <a className="proposalDetail-discussionLink"
+            {/* <a className="proposalDetail-discussionLink"
               href={ discourseThreadUrl }>
               Discuss on Discourse
-            </a>
+            </a> */}
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
               <Button
                 voted={ voteData.myvote === 1 }
@@ -446,9 +438,7 @@ export const ProposalDetail = (props: any) => {
         <section className="proposalDetail-details">
           {/* <p className="text-m-medium">{ pollData.metadata.title }</p> */}
           <p>{ pollIpfs.description }</p>
-          { discourseThread && (
-            <DiscourseForum thread={ discourseThread }/>
-          )}
+          <DiscourseForum/>
         </section>
         <section className="proposalDetail-sidebar">
           <p className="proposalDetail-sidebarHeader">
