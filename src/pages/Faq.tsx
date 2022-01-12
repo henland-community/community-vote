@@ -9,7 +9,7 @@ export const Faq = () => {
       </header>
       <section className="pageSection">
         <h2>Who can vote?</h2>
-        <p>Everyone who used hicetnunc before the website shutdown will have one vote in the initial rounds of h=n community voting.</p>
+        <p>Everyone who used hicetnunc before the website shutdown (November 11, 2021) will have one vote in the initial rounds of h=n community voting. Audit the voter list <a href="https://vote.hencommunity.quest/hen-users.json" target="_blank" rel="noreferrer">here</a>.</p>
       </section>
       <section className="pageSection">
         <h2>How are people voting?</h2>
@@ -20,12 +20,17 @@ export const Faq = () => {
       </section>
       <section className="pageSection">
         <h2>Can I delegate my vote?</h2>
-        <p>Not yet. This option will be unlocked in an upcoming version of our voting DAO.</p>
+        <p>Not yet. This option is planned for further updates. Contribute to the planning, UI, and contract development work on <a href="https://github.com/hen-community/community-vote">GitHub</a>.</p>
       </section>
       <section className="pageSection">
         <h2>Where are the discussion and debates being held?</h2>
-        <p>We are using the tool discourse to give space for discussion and debate. You will be able to join the conversation there, or just read it, to make up your mind before voting. This tool is off-chain.</p>
+        <p>We are using Discourse to give space for discussion and debate. You will be able to join the conversation there, or just read it, to make up your mind before voting. This tool is off-chain (hosted by <a href="https://twitter.com/_ufffd" target="_blank" rel="noreferrer">UFFFD</a>).</p>
         <p>On this discussion tool, you will be able to comment on a proposal, like a comment or a reply, share links and ideas.</p>
+      </section>
+      <section className="pageSection">
+        <h2>How are votes tallied?</h2>
+        <p>At the time this contract was written it was determined we couldn't tally all of the needed information on-chain, and would have to tally votes offline. A script is run that validates voters and tallies their votes and this information is uploaded to the website by a developer.<br/>
+        These results can be independently verified by the voters using the unchangeable blockchain data.</p>
       </section>
     </article>
   );
