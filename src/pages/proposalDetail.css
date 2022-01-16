@@ -87,7 +87,14 @@
   margin: calc(var(--grid-unit) * 2);
   margin-right: 0;
   margin-bottom: var(--grid-unit);
-  flex: 1 0 250px;
+  flex: 1 0 15%;
+  max-width: 20%;
+}
+@media (max-width: 1000px) {
+  .proposalDetail-yourVote > * {
+    flex: 1 0 40%;
+    max-width: 50%;
+  }
 }
 .proposalDetail-yourVote button {
   height: auto;
