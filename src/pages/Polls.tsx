@@ -18,7 +18,7 @@ async function fetchPolls(datecomp: string = '') {
   return await fetch(fetchUrl)
     .then(response => response.json())
     .then(polls => {
-      return polls.filter((poll: any) => !['QmPg6xvJM5RcDmsmNSX5WRo5A2TmbqdDPGTQeU6KuesNS5'].includes(poll.key))
+      return polls.filter((poll: any) => !['QmUk9b7icTECyUBzvCqUVtv5Y5fRZBA7KBmJrne7BEEyks','Qmeq6bAxpVyrhm4nb4RbPg8dFxWedZBrZun9nU9o5aTgRS',''].includes(poll.key))
     });
 }
 
