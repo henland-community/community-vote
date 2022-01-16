@@ -1,5 +1,5 @@
 .appHeader {
-  /* background: var(--gray-0); */
+  background: var(--gray-0);
   display: flex;
   flex-direction: column;
   position: sticky;
