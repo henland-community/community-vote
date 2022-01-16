@@ -6,7 +6,7 @@ import './header.css';
 // import { ReactComponent as Logo } from '../assets/icons/henc-vote-logo.svg';
 
 import { SyncMenu } from './SyncMenu';
-import { ProposalsNav } from './ProposalsNav';
+// import { ProposalsNav } from './ProposalsNav';
 
 interface HeaderProps {
   votes: any;
@@ -74,7 +74,7 @@ export const Header = ({
           <div className="appHeader-votingStatus">
             <div className="votingStatus">
               <Link to="/profile" className="votingStatus-count">
-                Vote Weight: { votes.count }
+                Voter Status: { votes.count > 0 ? '✅' : '❌' }
               </Link>
             </div>
           </div>
@@ -91,7 +91,6 @@ export const Header = ({
           />
         </section>
       </nav>
-      <ProposalsNav className="appHeader-proposalsNav" />
     </header>
   );
 };

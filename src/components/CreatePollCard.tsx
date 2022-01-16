@@ -31,7 +31,6 @@ export default function CreatePollCard() {
       .max(10, "Max 10 options currently supported")
       .required("Required"),
     title: Yup.string().required("Required"),
-    category: Yup.string().required("Required"),
     description: Yup.string().required("Required")
   });
   // const [nextPollId, setNextPollId] = React.useState("1");
@@ -88,7 +87,6 @@ export default function CreatePollCard() {
         }
         console.log([values,pollMetas])
         const hash = await createPoll( 
-          values.category,
           values.endDate,
           values.multi === "score"?5:values.noOfOptions,
           values.startDate,
@@ -127,7 +125,6 @@ export default function CreatePollCard() {
             endDate: new Date((new Date()).setDate((new Date()).getDate() + 1)).toISOString().slice(0, 10), 
             noOfOptions: 2,
             title: "",
-            category: "",
             description: "",
             opt1: '',
             opt1desc: '',
@@ -222,22 +219,6 @@ export default function CreatePollCard() {
                       type="date"
 
                     />
-                  </Grid>
-                </Grid>
-                <Grid container item spacing={3} pt={1} mt={1}>
-                  <Grid item md>
-                    <Field
-                      name="category"
-                      as="select"
-                      style={{ padding: '16.5px 14px',
-                        borderColor: 'var(--gray-50)',
-                        borderRadius: '5px',
-                        width: '100%'}}
-                    >
-                      <option value="">Select Category</option>
-                      <option value="1">Proposal</option>
-                      <option value="2">Question</option>
-                    </Field>
                   </Grid>
                 </Grid>
                 { values.multi === "true" && (

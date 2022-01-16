@@ -35,7 +35,6 @@ export async function getTzProfiles(address: string) {
 
 export async function hasTzProfiles(address: string) {
   return await getTzProfiles(address).then(res => {
-    // console.log([res.data, res.data.data.tzprofiles_by_pk && res.data.data.tzprofiles_by_pk.valid_claims.length > 0]);
     return res.data.data.tzprofiles_by_pk && res.data.data.tzprofiles_by_pk.valid_claims.length > 0;
   });
 }
@@ -66,7 +65,6 @@ async function fetchGraphQL(operationsDoc: string, operationName: string, variab
           })
       }
   );
-  // console.log(result);
   return await result.json();
 }
 export async function checkBadge(address: string) {
@@ -76,7 +74,6 @@ export async function checkBadge(address: string) {
   if (errors) console.error(errors);
 
   const result = data.hic_et_nunc_token[0].token_holders.length > 0;
-  // console.log(`checkBadge: ${result}`)
   return result
 }
 export async function checkHDAO(address: string) {
@@ -90,7 +87,6 @@ export async function checkHenOG(address: string) {
   // return true if wallet was a hen OG (interacted with contracts before discontinuation)
   // load in hen-users.json
   const result = await axios.get(`/hen-users.json`);
-  // console.log(result);
   return result.data.includes(address);
 }
 
@@ -182,7 +178,7 @@ function App() {
           <div className="pageLayout-body">
             <Switch>
               <Route exact path="/">
-                <Home />
+                <Home myVotes={myVotes} />
               </Route>
               <Route path="/about" component={About} />
               <Route path="/faq" component={Faq} />

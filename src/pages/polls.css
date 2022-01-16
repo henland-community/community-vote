@@ -15,7 +15,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .polls-cards {
+  .polls-cards-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: calc(var(--grid-unit) * 3);
@@ -25,4 +25,13 @@
   .polls-cards > * {
     margin-bottom: unset;
   }
+}
+
+.polls-footer {
+  text-align: center;
+}
+
+.homePage .polls {
+  border: 3px solid var(--gray-20);
+  margin-bottom: calc(var(--grid-unit) * 5);
 }
