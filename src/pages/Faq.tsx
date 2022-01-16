@@ -9,7 +9,7 @@ export const Faq = () => {
       </header>
       <section className="pageSection">
         <h2>Who can vote?</h2>
-        <p>Everyone who has used hicetnunc before the snapshot date (January 16, 2022) will have one vote in the initial rounds of h=n community voting. Audit the voter list <a href="https://vote.hencommunity.quest/hen-users-snapshot-16-01-2022.json" target="_blank" rel="noreferrer">here</a>.</p>
+        <p>Everyone who has used hicetnunc before the snapshot date (January 16, 2022) will have one vote in the initial rounds of h=n community voting. The community can audit <a href="https://vote.hencommunity.quest/hen-users-snapshot-16-01-2022.json" target="_blank" rel="noreferrer">the voter list</a>. Thanks to <a target="_blank" rel="noreferrer" href="https://twitter.com/jagracar">jagracar</a> for compiling this list, you can also audit <a target="_blank" rel="noreferrer" href="https://github.com/jagracar/hen-utils/blob/main/python/henUtils/henUsersSnapshot.py">his python script</a>.</p>
       </section>
       <section className="pageSection">
         <h2>How are people voting?</h2>
