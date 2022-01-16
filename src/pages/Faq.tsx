@@ -9,7 +9,7 @@ export const Faq = () => {
       </header>
       <section className="pageSection">
         <h2>Who can vote?</h2>
-        <p>Everyone who used hicetnunc before the website shutdown (November 11, 2021) will have one vote in the initial rounds of h=n community voting. Audit the voter list <a href="https://vote.hencommunity.quest/hen-users.json" target="_blank" rel="noreferrer">here</a>.</p>
+        <p>Everyone who has used hicetnunc before the snapshot date (January 16, 2022) will have one vote in the initial rounds of h=n community voting. Audit the voter list <a href="https://vote.hencommunity.quest/hen-users-snapshot-16-01-2022.json" target="_blank" rel="noreferrer">here</a>.</p>
       </section>
       <section className="pageSection">
         <h2>How are people voting?</h2>

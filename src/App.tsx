@@ -85,8 +85,8 @@ export async function checkHDAO(address: string) {
 }
 export async function checkHenOG(address: string) {
   // return true if wallet was a hen OG (interacted with contracts before discontinuation)
-  // load in hen-users.json
-  const result = await axios.get(`/hen-users.json`);
+  // load in hen-users-snapshot-16-01-2022.json (or hen-ogs.json)
+  const result = await axios.get(`/hen-users-snapshot-16-01-2022.json`);
   return result.data.includes(address);
 }
 
