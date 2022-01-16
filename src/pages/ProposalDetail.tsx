@@ -332,17 +332,20 @@ export const ProposalDetail = (props: any) => {
                 voted={ voteData.myvote === 1 }
                 onClick={()=>{handleVote(1)}} 
                 disabled={ !votePower.henOG || hasResults }
+                style={{border: '3px solid hsl(0 70% 50%)'}}
               >{ pollIpfs.opt1 }</Button>
               <Button
                 voted={ voteData.myvote === 2 }
                 onClick={()=>{handleVote(2)}} 
                 disabled={ !votePower.henOG || hasResults }
+                style={{border: '3px solid hsl(36 70% 50%)'}}
               >{ pollIpfs.opt2 }</Button>
               { pollData.metadata.numOptions > 2 ? (
                 <Button
                   voted={ voteData.myvote === 3 }
                   onClick={()=>{handleVote(3)}} 
                   disabled={ !votePower.henOG || hasResults }
+                  style={{border: '3px solid hsl(72 70% 50%)'}}
                 >{ pollIpfs.opt3 }</Button>
                 ) : '' }
               { pollData.metadata.numOptions > 3 ? (
@@ -350,6 +353,7 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 4 }
                   onClick={()=>{handleVote(4)}} 
                   disabled={ !votePower.henOG || hasResults }
+                  style={{border: '3px solid hsl(108 70% 50%)'}}
                 >{ pollIpfs.opt4 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 4 ? (
@@ -357,6 +361,7 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 5 }
                   onClick={()=>{handleVote(5)}} 
                   disabled={ !votePower.henOG || hasResults }
+                  style={{border: '3px solid hsl(144 70% 50%)'}}
                 >{ pollIpfs.opt5 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 5 ? (
@@ -364,6 +369,7 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 6 }
                   onClick={()=>{handleVote(6)}} 
                   disabled={ !votePower.henOG || hasResults }
+                  style={{border: '3px solid hsl(180 70% 50%)'}}
                 >{ pollIpfs.opt6 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 6 ? (
@@ -371,6 +377,7 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 7 }
                   onClick={()=>{handleVote(7)}} 
                   disabled={ !votePower.henOG || hasResults }
+                  style={{border: '3px solid hsl(216 70% 50%)'}}
                 >{ pollIpfs.opt7 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 7 ? (
@@ -378,6 +385,7 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 8 }
                   onClick={()=>{handleVote(8)}} 
                   disabled={ !votePower.henOG || hasResults }
+                  style={{border: '3px solid hsl(252 70% 50%)'}}
                 >{ pollIpfs.opt8 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 8 ? (
@@ -385,6 +393,7 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 9 }
                   onClick={()=>{handleVote(9)}} 
                   disabled={ !votePower.henOG || hasResults }
+                  style={{border: '3px solid hsl(288 70% 50%)'}}
                 >{ pollIpfs.opt9 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 9 ? (
@@ -392,6 +401,7 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 10 }
                   onClick={()=>{handleVote(10)}} 
                   disabled={ !votePower.henOG || hasResults }
+                  style={{border: '3px solid hsl(324 70% 50%)'}}
                 >{ pollIpfs.opt10 }</Button>
               ) : '' }
             </div>
