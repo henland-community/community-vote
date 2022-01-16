@@ -392,7 +392,7 @@ export const ProposalDetail = (props: any) => {
                 <Button
                   voted={ voteData.myvote === 10 }
                   onClick={()=>{handleVote(10)}} 
-                  disabled={ !votePower.henOG || true }
+                  disabled={ !votePower.henOG }
                 >{ pollIpfs.opt10 }</Button>
               ) : '' }
             </div>
