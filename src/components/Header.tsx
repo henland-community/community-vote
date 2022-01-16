@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import '../assets/styles/design-tokens.css';
 import './header.css';
 
-import { ReactComponent as Logo } from '../assets/icons/henc-vote-logo.svg';
+// import { ReactComponent as Logo } from '../assets/icons/henc-vote-logo.svg';
 
 import { SyncMenu } from './SyncMenu';
 import { ProposalsNav } from './ProposalsNav';

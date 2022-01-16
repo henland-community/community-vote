@@ -10,7 +10,7 @@ import DiscourseForum from "../components/DiscourseForum";
 
 import { Button } from '../components/Button';
 
-import { ReactComponent as Logo } from '../assets/icons/hen-logo.svg';
+// import { ReactComponent as Logo } from '../assets/icons/hen-logo.svg';
 import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
 import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
 // import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
@@ -209,15 +209,12 @@ export const ProposalDetail = (props: any) => {
           <div className="proposalDetail-metaPrimary text-s">
             <div className="proposalDetail-idAndType">
               { pollData.metadata.category === '1' && (
-                <>Proposal{/* <ProposalIcon /> */}</>
+                <>Proposal</>
               )}
               { pollData.metadata.category === '2' && (
                 <>Question</>
               )}
             </div>
-            {/* <div className="proposalDetail-subCategory">
-              <OtherIcon /> DAO
-            </div> */}
           </div>
           <div className="proposalDetail-countdown text-s">
             Ends { pollData ? pollData.metadata.endDate.substr(0,10) : '...' }
@@ -405,7 +402,7 @@ export const ProposalDetail = (props: any) => {
                 <Button
                   voted={ voteData.myvote === 10 }
                   onClick={()=>{handleVote(10)}} 
-                  disabled={ !votePower.henOG }
+                  disabled={ !votePower.henOG || true }
                 >{ pollIpfs.opt10 }</Button>
               ) : '' }
             </div>
@@ -415,16 +412,8 @@ export const ProposalDetail = (props: any) => {
           </footer>
         )}
       </header>
-      { hasResults ? (
-        <div className="pageSection proposalDetail-adoptionStatus">
-          <Logo />
-          <span className="text-l-light">STATUS</span>
-          <span className="text-l-bold">PENDING</span>
-        </div>
-      ):'' }
       <section className="pageSection proposalDetail-columns">
         <section className="proposalDetail-details">
-          {/* <p className="text-m-medium">{ pollData.metadata.title }</p> */}
           <p>{ pollIpfs.description }</p>
           <DiscourseForum/>
         </section>
@@ -445,10 +434,6 @@ export const ProposalDetail = (props: any) => {
             Hash:<br/>
             <a target="_blank" rel="noreferrer" href={"https://ipfs.io/ipfs/"+ params.poll }>{ params.poll }</a>
           </p>
-          {/* <p className="text-s-light">
-            Proposer:<br/>
-            pollData.metadata.proposer
-          </p> */}
           <p className="proposalDetail-sidebarHeader">
           <span className="proposalDetail-sidebarHeader-line"></span>
             <span className="proposalDetail-sidebarHeader-text text-s-medium">Help</span>
@@ -461,7 +446,6 @@ export const ProposalDetail = (props: any) => {
             <span className="proposalDetail-sidebarHeader-text text-s-medium" id="votes">Votes</span>
           </p>
           <p className="text-s-light">
-            { console.log(voteData) }
             { voteData.votes.map((vote: any) => 
               <div className="voteRow" key={vote.id}>
                 {/* { vote.key.address.substr(0,4)+"..."+vote.key.address.substr(vote.key.address.length - 4,vote.key.address.length) } voted { vote.value === "1" ? 'for' : 'against' } */}
