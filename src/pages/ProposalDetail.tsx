@@ -236,7 +236,7 @@ export const ProposalDetail = (props: any) => {
               <div>
                 <a href="#votes" className="text-s-bold">Votes Submitted:</a>&nbsp;
                 { Object.values(voteSums).reduce((a, b) => a + b, 0) || 0 }
-                <small className="text-s-light"> &nbsp; (30 votes required)</small>
+                {/* <small className="text-s-light"> &nbsp; (30 votes required)</small> */}
               </div>
             </div>
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
@@ -325,7 +325,7 @@ export const ProposalDetail = (props: any) => {
               <div>
                 <a href="#votes" className="text-s-bold">Votes Submitted:</a>&nbsp;
                 { Object.values(voteSums).reduce((a, b) => a + b, 0) || 0 }
-                <small className="text-s-light"> (30 votes required)</small>
+                {/* <small className="text-s-light"> (30 votes required)</small> */}
               </div>
             </div>
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
