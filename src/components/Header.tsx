@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import '../assets/styles/design-tokens.css';
 import './header.css';
 
-import { ReactComponent as Logo } from '../assets/icons/hen-vote-logo.svg';
+import { ReactComponent as Logo } from '../assets/icons/henc-vote-logo.svg';
 
 import { SyncMenu } from './SyncMenu';
 import { ProposalsNav } from './ProposalsNav';
@@ -62,12 +62,12 @@ export const Header = ({
       <nav className="appHeader-primaryNav">
         <section className="appHeader-primaryNav-left">
           <div className="appHeader-logo">
-            <Link to="/"><Logo/></Link>
+            <Link to="/">Community Vote</Link>
           </div>
           <nav className="appHeader-resources">
             <Link to="/about">About</Link>
             <Link to="/faq">FAQ</Link>
-            <a target="_blank" rel="noreferrer" href="https://community.hicetnunc.xyz">Forum ↪</a>
+            <a target="_blank" rel="noreferrer" href="https://discourse.hencommunity.quest">Forum ↪</a>
           </nav>
         </section>
         <section className="appHeader-primaryNav-right">

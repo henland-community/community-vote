@@ -311,7 +311,12 @@ export const ProposalDetail = (props: any) => {
                             Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
                           ) === (i+1)) ? 'winner' : ''
                         ) 
-                      }>
+                      }
+                      style={{
+                        border: "3px solid "+((parseInt(
+                          Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
+                        ) === (i+1))?"black":`hsl(${i*36} 67% 75%)`)
+                      }}>
                       {console.log((resultsData[i+1] / sumVals(resultsData) * 100).toFixed(1))}
                       {i+1} {
                         (
@@ -330,10 +335,10 @@ export const ProposalDetail = (props: any) => {
                         key={i} 
                         className="proposalDetail-graph-bar-part" 
                         style={{
-                          flex: resultsData[i+1]+" 0 auto", 
+                          flex: resultsData[i+1] +" 0 auto", 
                           background: ((parseInt(
                             Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
-                          ) === (i+1))?"black":`rgb(${200-(i+1)*20},${200-(i+1)*20},${200-(i+1)*20})`)
+                          ) === (i+1))?"black":`hsl(${i*36} 70% 70%)`)
                         }}>
                       </div>
                     )}
