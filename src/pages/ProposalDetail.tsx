@@ -369,7 +369,11 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 6 }
                   onClick={()=>{handleVote(6)}} 
                   disabled={ !votePower.henOG || hasResults }
-                  style={{border: '3px solid hsl(180 70% 50%)'}}
+                  style={{
+                    border: ((parseInt(
+                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b)
+                      ) === 6)?"5px solid black":`3px solid hsl(${5*36} 70% 60%)`)
+                  }}
                 >{ pollIpfs.opt6 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 6 ? (
@@ -377,7 +381,11 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 7 }
                   onClick={()=>{handleVote(7)}} 
                   disabled={ !votePower.henOG || hasResults }
-                  style={{border: '3px solid hsl(216 70% 50%)'}}
+                  style={{
+                    border: ((parseInt(
+                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b)
+                    ) === 7)?"5px solid black":`3px solid hsl(${6*36} 70% 60%)`)
+                  }}
                 >{ pollIpfs.opt7 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 7 ? (
@@ -401,7 +409,11 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 10 }
                   onClick={()=>{handleVote(10)}} 
                   disabled={ !votePower.henOG || hasResults }
-                  style={{border: '3px solid hsl(324 70% 50%)'}}
+                  style={{
+                    border: '3px solid '+((parseInt(
+                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b)
+                    ) === 10)?"black":`hsl(${9*36} 70% 60%)`)
+                  }}
                 >{ pollIpfs.opt10 }</Button>
               ) : '' }
             </div>
