@@ -260,6 +260,7 @@ export const ProposalDetail = (props: any) => {
             <div className="proposalDetail-graph">
               { hasResults && resultsData && (
                 <>
+                  {console.log(resultsData)}
                   { pollIpfs.multi === 'score' && (
                     <strong className="proposalDetail-graph-score">
                       Total Weighted Score: {(
@@ -371,7 +372,7 @@ export const ProposalDetail = (props: any) => {
                   disabled={ !votePower.henOG || hasResults }
                   style={{
                     border: ((parseInt(
-                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b)
+                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b, "0")
                       ) === 6)?"5px solid black":`3px solid hsl(${5*36} 70% 60%)`)
                   }}
                 >{ pollIpfs.opt6 }</Button>
@@ -383,7 +384,7 @@ export const ProposalDetail = (props: any) => {
                   disabled={ !votePower.henOG || hasResults }
                   style={{
                     border: ((parseInt(
-                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b)
+                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b, "0")
                     ) === 7)?"5px solid black":`3px solid hsl(${6*36} 70% 60%)`)
                   }}
                 >{ pollIpfs.opt7 }</Button>
@@ -411,7 +412,7 @@ export const ProposalDetail = (props: any) => {
                   disabled={ !votePower.henOG || hasResults }
                   style={{
                     border: '3px solid '+((parseInt(
-                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b)
+                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b, "0")
                     ) === 10)?"black":`hsl(${9*36} 70% 60%)`)
                   }}
                 >{ pollIpfs.opt10 }</Button>
