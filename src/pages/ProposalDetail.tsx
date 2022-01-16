@@ -229,9 +229,6 @@ export const ProposalDetail = (props: any) => {
         { pollIpfs.multi === 'score' && (
           <div><strong>Scored Vote:</strong>  Please rank this proposal from 1 to 5 (5 is the best)</div>
         )}
-        {/* <div className="proposalDetail-url">
-        { discourseThreadUrl }
-        </div> */}
         <hr />
         { console.log(['voteData',voteData]) }
         { console.log(votePower) }
@@ -256,10 +253,6 @@ export const ProposalDetail = (props: any) => {
                 <small className="text-s-light"> &nbsp; (30 votes required)</small>
               </div>
             </div>
-            {/* <a className="proposalDetail-discussionLink"
-              href={ discourseThreadUrl }>
-              Discuss on Discourse 
-            </a> */}
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
               <Button
                 voted={ voteData.myvote === 2 }
@@ -272,9 +265,6 @@ export const ProposalDetail = (props: any) => {
                 disabled={ !votePower.henOG }
               >FOR <VoteForIcon/></Button>
             </div>
-            {/* { votePower.tzprof || (
-              <span>Sync your <a href='https://tzprofiles.com/' rel='noreferrer' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
-             ) } */}
              { votePower.henOG || (
                <span>Sync your hicetnunc wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued (11/11/21).</span>
               ) }
@@ -351,10 +341,6 @@ export const ProposalDetail = (props: any) => {
                 <small className="text-s-light"> (30 votes required)</small>
               </div>
             </div>
-            {/* <a className="proposalDetail-discussionLink"
-              href={ discourseThreadUrl }>
-              Discuss on Discourse
-            </a> */}
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
               <Button
                 voted={ voteData.myvote === 1 }
@@ -423,9 +409,6 @@ export const ProposalDetail = (props: any) => {
                 >{ pollIpfs.opt10 }</Button>
               ) : '' }
             </div>
-            {/* { votePower.tzprof || (
-              <span>Sync your <a href='https://tzprofiles.com/' rel='noreferrer' target='_blank'>TzProfiles</a> verified wallet to enable voting</span>
-             ) } */}
             { votePower.henOG || (
               <span>Sync your hicetnunc wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued.</span>
             ) }
