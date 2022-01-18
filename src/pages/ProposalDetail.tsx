@@ -36,7 +36,7 @@ async function getPollData(key: string) {
     });
 }
 async function getVoteData(key: string) {
-  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys?key.string=${key}`)
+  return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_VOTES}/keys?key.string=${key}&limit=10000`)
     .then(response => response.json())
 }
 
