@@ -458,12 +458,13 @@ export const ProposalDetail = (props: any) => {
             <span className="proposalDetail-sidebarHeader-text text-s-medium" id="votes">Votes</span>
           </p>
           <p className="text-s-light">
-            { voteData.votes.map((vote: any) => 
+            { voteData.votes.slice(0,50).map((vote: any) => 
               <div className="voteRow" key={vote.id}>
                 {/* { vote.key.address.substr(0,4)+"..."+vote.key.address.substr(vote.key.address.length - 4,vote.key.address.length) } voted { vote.value === "1" ? 'for' : 'against' } */}
                 <a target="_blank" rel="noreferrer" href={"https://better-call.dev/mainnet/big_map/"+process.env.REACT_APP_BIGMAP_VOTES+"/"+vote.hash }>{ vote.key.address }</a>
               </div>
             )}
+            <a href={"https://better-call.dev/mainnet/big_map/"+process.env.REACT_APP_BIGMAP_VOTES }>View all votes</a>
           </p>
         </section>
       </section>
