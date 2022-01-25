@@ -8,21 +8,13 @@ import DiscourseForum from "../components/DiscourseForum";
 
 // import { ReactComponent as ProposalIcon } from '../assets/icons/other.svg';
 
-import { Button } from '../components/Button';
+import { VoteButton } from '../components/VoteButton';
+import { ResultsGraph } from '../components/ResultsGraph';
 
 // import { ReactComponent as Logo } from '../assets/icons/hen-logo.svg';
-import { ReactComponent as VoteForIcon } from '../assets/icons/vote-for.svg';
-import { ReactComponent as VoteAgainstIcon } from '../assets/icons/vote-against.svg';
 // import { ReactComponent as VoteDrawIcon } from '../assets/icons/vote-draw.svg';
 // import { ReactComponent as ViewsIcon } from '../assets/icons/views.svg';
 // import { ReactComponent as OtherIcon } from '../assets/icons/other.svg';
-
-import { vote } from "../contract";
-import { useToasts } from "react-toast-notifications";
-
-function sumVals(obj: any) {
-  return Object.keys(obj).reduce((sum,key)=>sum+parseFloat(obj[key]||0),0);
-}
 
 async function getPollData(key: string) {
   return await fetch(`https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys?key=${key}`)
@@ -49,13 +41,11 @@ async function getResults(poll: string) {
   return await fetch(`/results.json`)
     .then(response => response.json())
     .then(data => {
-      console.log(['data',data[poll], poll])
       return data[poll];
     });
 }
 
 function sumVotes(votes: any) {
-  // console.log(votes)
   return {
     1: votes.filter((v: any) => v.value === "1").length,
     2: votes.filter((v: any) => v.value === "2").length,
@@ -75,7 +65,6 @@ export const ProposalDetail = (props: any) => {
   const votePower = props.votePower
 
   const params = useParams<{poll: string}>();
-  const { addToast } = useToasts();
 
   const [hasResults, setHasResults] = React.useState(false);
   const [resultsData, setResultsData] = React.useState({} as any);
@@ -121,7 +110,6 @@ export const ProposalDetail = (props: any) => {
   React.useEffect(() => {
     getPollData(params.poll)
       .then(poll =>{
-        // console.log(poll)
         setPollData({ 
           hash: poll.hash,
           metadata: {
@@ -137,25 +125,16 @@ export const ProposalDetail = (props: any) => {
       .catch(err => console.error(err));
     getIpfs(params.poll)
       .then(ipfs =>{
-        // console.log(ipfs)
         setPollIpfs(ipfs)
       }
     )
     getResults(params.poll)
-      .then(results =>{
+      .then((results:any) =>{
         if (results !== undefined) {
           setHasResults(true)
-          if (typeof results[1] === 'undefined') results[1] = 0;
-          if (typeof results[2] === 'undefined') results[2] = 0;
-          if (typeof results[3] === 'undefined') results[3] = 0;
-          if (typeof results[4] === 'undefined') results[4] = 0;
-          if (typeof results[5] === 'undefined') results[5] = 0;
-          if (typeof results[6] === 'undefined') results[6] = 0;
-          if (typeof results[7] === 'undefined') results[7] = 0;
-          if (typeof results[8] === 'undefined') results[8] = 0;
-          if (typeof results[8] === 'undefined') results[9] = 0;
-          if (typeof results[10] === 'undefined') results[10] = 0;
-          console.log(['results',results])
+          for(let i = 1; i <= 10; i++) {
+            if (results[i] === 'undefined') results[i] = 0;
+          }
           setResultsData(results)
         }
       }
@@ -164,7 +143,6 @@ export const ProposalDetail = (props: any) => {
   React.useEffect(() => {
     getVoteData(params.poll)
       .then(votes =>{
-        // console.log(votes)
         var myvote = 0
         for (let i = 0; i < votes.length; i++) {
           if (votes[i].key.address === activeAccount) {
@@ -180,33 +158,12 @@ export const ProposalDetail = (props: any) => {
       .catch(err => console.error(err));
   }, [params.poll, activeAccount]);
 
-  async function handleVote(option: number) {
-    
-    if (params.poll) {
-      try {
-        const hash = await vote(params.poll, option);
-        if (hash) {
-          addToast("Tx Submitted", {
-            appearance: "success",
-            autoDismiss: true,
-          });
-        }
-      } catch (error) {
-        console.error(error);
-        const errorMessage = error?.message || error?.data[1]?.with?.string || "Tx Failed";
-        addToast(errorMessage, {
-          appearance: "error",
-          autoDismiss: true,
-        });
-      }
-    }
-  }
   return (
     <article className="proposalDetail pageContents">
       <header className="proposalDetail-header pageHeader">
         <div className="proposalDetail-meta">
           <div className="proposalDetail-countdown text-s">
-            Ends { pollData ? pollData.metadata.endDate.substr(0,10) : '...' }
+            Ends { pollData ? pollData.metadata.endDate.substring(0,10) : '...' }
           </div>
         </div>
         <h1>
@@ -216,8 +173,6 @@ export const ProposalDetail = (props: any) => {
           <div><strong>Scored Vote:</strong>  Please rank this proposal from 1 to 5 (5 is the best)</div>
         )}
         <hr />
-        { console.log(['voteData',voteData]) }
-        { console.log(votePower) }
         { pollIpfs.opt1 === "" ? (
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
@@ -240,16 +195,14 @@ export const ProposalDetail = (props: any) => {
               </div>
             </div>
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
-              <Button
-                voted={ voteData.myvote === 2 }
-                onClick={()=>{handleVote(2)}}
+              <VoteButton
+                optionNumber={2}
                 disabled={ !votePower.henOG }
-              >AGAINST <VoteAgainstIcon/></Button>
-              <Button
-                voted={ voteData.myvote === 1 }
-                onClick={()=>{handleVote(1)}}
+              />
+              <VoteButton
+                optionNumber={1}
                 disabled={ !votePower.henOG }
-              >FOR <VoteForIcon/></Button>
+              />
             </div>
              { votePower.henOG || (
                <span>Sync your hicetnunc wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued (11/11/21).</span>
@@ -258,70 +211,12 @@ export const ProposalDetail = (props: any) => {
         ) : (
           <footer className="proposalDetail-voteStatus">
             <div className="proposalDetail-graph">
-              { hasResults && resultsData && (
-                <>
-                  {console.log(resultsData)}
-                  { pollIpfs.multi === 'score' && (
-                    <strong className="proposalDetail-graph-score">
-                      Total Weighted Score: {(
-                        resultsData[1] * 1 +
-                        resultsData[2] * 2 +
-                        resultsData[3] * 3 +
-                        resultsData[4] * 4 +
-                        resultsData[5] * 5 +
-                        resultsData[6] * 6 +
-                        resultsData[7] * 7 +
-                        resultsData[8] * 8 +
-                        resultsData[9] * 9 +
-                        resultsData[10] * 10
-                      )}
-                    </strong>
-                  )}
-                  <div className="proposalDetail-graph-labels">
-                    {[...Array(pollData.metadata.numOptions)].map((x, i) =>
-                    <span 
-                      key={i} 
-                      className={
-                        "proposalDetail-graph-label "+
-                        (
-                          (parseInt(
-                            Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
-                          ) === (i+1)) ? 'winner' : ''
-                        ) 
-                      }
-                      style={{
-                        border: "3px solid "+((parseInt(
-                          Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
-                        ) === (i+1))?"black":`hsl(${i*36} 67% 75%)`)
-                      }}>
-                      {console.log((resultsData[i+1] / sumVals(resultsData) * 100).toFixed(1))}
-                      {i+1} {
-                        (
-                          (
-                            resultsData[i+1] /
-                            sumVals(resultsData)
-                          ) * 100
-                        ).toFixed(1)
-                      }%
-                    </span>
-                    )}
-                  </div>
-                  <div className="proposalDetail-graph-bar">
-                    {[...Array(pollData.metadata.numOptions)].map((x, i) =>
-                      <div 
-                        key={i} 
-                        className="proposalDetail-graph-bar-part" 
-                        style={{
-                          flex: resultsData[i+1] +" 0 auto", 
-                          background: ((parseInt(
-                            Object.keys(resultsData).reduce((a,b)=> resultsData[a] > resultsData[b] ? a : b)
-                          ) === (i+1))?"black":`hsl(${i*36} 70% 70%)`)
-                        }}>
-                      </div>
-                    )}
-                  </div>
-                </>
-              )}
+              <ResultsGraph
+                pollData={pollData}
+                resultsData={resultsData}
+                hasResults={hasResults}
+                pollIpfs={pollIpfs}
+              />
               <div>
                 <a href="#votes" className="text-s-bold">Votes Submitted:</a>&nbsp;
                 { Object.values(voteSums).reduce((a, b) => a + b, 0) || 0 }
@@ -329,98 +224,14 @@ export const ProposalDetail = (props: any) => {
               </div>
             </div>
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
-              <Button
-                voted={ voteData.myvote === 1 }
-                onClick={()=>{handleVote(1)}} 
-                disabled={ !votePower.henOG || hasResults }
-                style={{border: '3px solid hsl(0 70% 50%)'}}
-              >{ pollIpfs.opt1 }</Button>
-              <Button
-                voted={ voteData.myvote === 2 }
-                onClick={()=>{handleVote(2)}} 
-                disabled={ !votePower.henOG || hasResults }
-                style={{border: '3px solid hsl(36 70% 50%)'}}
-              >{ pollIpfs.opt2 }</Button>
-              { pollData.metadata.numOptions > 2 ? (
-                <Button
-                  voted={ voteData.myvote === 3 }
-                  onClick={()=>{handleVote(3)}} 
+              { [1,2,3,4,5,6,7,8,9,10].map(i => (
+                pollData.metadata.numOptions > i-1 && <VoteButton
+                  optionNumber={i}
                   disabled={ !votePower.henOG || hasResults }
-                  style={{border: '3px solid hsl(72 70% 50%)'}}
-                >{ pollIpfs.opt3 }</Button>
-                ) : '' }
-              { pollData.metadata.numOptions > 3 ? (
-                <Button
-                  voted={ voteData.myvote === 4 }
-                  onClick={()=>{handleVote(4)}} 
-                  disabled={ !votePower.henOG || hasResults }
-                  style={{border: '3px solid hsl(108 70% 50%)'}}
-                >{ pollIpfs.opt4 }</Button>
-              ) : '' }
-              { pollData.metadata.numOptions > 4 ? (
-                <Button
-                  voted={ voteData.myvote === 5 }
-                  onClick={()=>{handleVote(5)}} 
-                  disabled={ !votePower.henOG || hasResults }
-                  style={{border: '3px solid hsl(144 70% 50%)'}}
-                >{ pollIpfs.opt5 }</Button>
-              ) : '' }
-              { pollData.metadata.numOptions > 5 ? (
-                <Button
-                  voted={ voteData.myvote === 6 }
-                  onClick={()=>{handleVote(6)}} 
-                  disabled={ !votePower.henOG || hasResults }
-                  style={{
-                    border: ((parseInt(
-                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b, "0")
-                      ) === 6)?"5px solid black":`3px solid hsl(${5*36} 70% 60%)`)
-                  }}
-                >{ pollIpfs.opt6 }</Button>
-              ) : '' }
-              { pollData.metadata.numOptions > 6 ? (
-                <Button
-                  voted={ voteData.myvote === 7 }
-                  onClick={()=>{handleVote(7)}} 
-                  disabled={ !votePower.henOG || hasResults }
-                  style={{
-                    border: ((parseInt(
-                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b, "0")
-                    ) === 7)?"5px solid black":`3px solid hsl(${6*36} 70% 60%)`)
-                  }}
-                >{ pollIpfs.opt7 }</Button>
-              ) : '' }
-              { pollData.metadata.numOptions > 7 ? (
-                <Button
-                  voted={ voteData.myvote === 8 }
-                  onClick={()=>{handleVote(8)}} 
-                  disabled={ !votePower.henOG || hasResults }
-                  style={{border: '3px solid hsl(252 70% 50%)'}}
-                >{ pollIpfs.opt8 }</Button>
-              ) : '' }
-              { pollData.metadata.numOptions > 8 ? (
-                <Button
-                  voted={ voteData.myvote === 9 }
-                  onClick={()=>{handleVote(9)}} 
-                  disabled={ !votePower.henOG || hasResults }
-                  style={{
-                    border: ((parseInt(
-                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b, "0")
-                    ) === 9)?"5px solid black":`3px solid hsl(${8*36} 70% 60%)`)
-                  }}
-                >{ pollIpfs.opt9 }</Button>
-              ) : '' }
-              { pollData.metadata.numOptions > 9 ? (
-                <Button
-                  voted={ voteData.myvote === 10 }
-                  onClick={()=>{handleVote(10)}} 
-                  disabled={ !votePower.henOG || hasResults }
-                  style={{
-                    border: '3px solid '+((parseInt(
-                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b, "0")
-                    ) === 10)?"black":`hsl(${9*36} 70% 60%)`)
-                  }}
-                >{ pollIpfs.opt10 }</Button>
-              ) : '' }
+                  resultsData={resultsData}
+                  pollIpfs={pollIpfs}
+                />
+              ))}
             </div>
             { votePower.henOG || (
               <span>Sync your hicetnunc wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued.</span>
