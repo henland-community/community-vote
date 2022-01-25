@@ -20,19 +20,7 @@ export const ProposalCard = ({...props}) => {
     >
       <div className="proposalCard-meta">
         <div className="proposalCard-identifiers">
-          <div className="proposalCard-id">#{ poll.key.substr(0,8) }...</div>
-          <div className="proposalCard-type">
-            { poll.value.metadata.category === '1' && (
-              <>Proposal 
-                {/* <ProposalIcon /> */}
-              </>
-            )}
-            { poll.value.metadata.category === '2' && (
-              <>Question 
-                {/* <ProposalIcon /> */}
-              </>
-            )}
-          </div>
+          <div className="proposalCard-id">#{ poll.key.substring(0,8) }...</div>
         </div>
         { voted !== 0 && (
           <div className="proposalCard-yourVote">
