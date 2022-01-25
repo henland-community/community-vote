@@ -402,7 +402,11 @@ export const ProposalDetail = (props: any) => {
                   voted={ voteData.myvote === 9 }
                   onClick={()=>{handleVote(9)}} 
                   disabled={ !votePower.henOG || hasResults }
-                  style={{border: '3px solid hsl(288 70% 50%)'}}
+                  style={{
+                    border: ((parseInt(
+                      Object.keys(resultsData).reduce((a,b) => resultsData[a] > resultsData[b] ? a : b, "0")
+                    ) === 9)?"5px solid black":`3px solid hsl(${8*36} 70% 60%)`)
+                  }}
                 >{ pollIpfs.opt9 }</Button>
               ) : '' }
               { pollData.metadata.numOptions > 9 ? (
