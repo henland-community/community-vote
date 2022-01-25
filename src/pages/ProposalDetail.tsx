@@ -174,7 +174,7 @@ export const ProposalDetail = (props: any) => {
         )}
         <hr />
         { pollIpfs.opt1 === "" ? (
-          <footer className="proposalDetail-voteStatus">
+          <footer className="proposalDetail-voteStatus proposalDetail-yesNo">
             <div className="proposalDetail-graph">
               { hasResults && (
                 <>
@@ -209,7 +209,7 @@ export const ProposalDetail = (props: any) => {
               ) }
           </footer>
         ) : (
-          <footer className="proposalDetail-voteStatus">
+          <footer className="proposalDetail-voteStatus proposalDetail-multi">
             <div className="proposalDetail-graph">
               <ResultsGraph
                 pollData={pollData}

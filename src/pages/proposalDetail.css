@@ -68,6 +68,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
+  
+  flex: 1 0 50%;
+  justify-content: flex-end;
 }
 .proposalDetail-yourVote.multi-score {
   flex: 1 0 100%;
@@ -87,15 +90,17 @@
   margin: calc(var(--grid-unit) * 2);
   margin-right: 0;
   margin-bottom: var(--grid-unit);
-  flex: 1 0 15%;
+  flex: 1 0 17%;
   max-width: 20%;
 }
+
 @media (max-width: 1000px) {
   .proposalDetail-yourVote > * {
     flex: 1 0 40%;
     max-width: 50%;
   }
 }
+
 .proposalDetail-yourVote button {
   height: auto;
   border: none;
@@ -180,3 +185,11 @@
     padding-bottom: calc(var(--grid-unit) * 5);
   }
 }
+
+/* .proposalDetail-yesNo {
+
+}
+
+.proposalDetail-multi {
+
+} */
