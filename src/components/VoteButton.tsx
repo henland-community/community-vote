@@ -64,7 +64,7 @@ export const VoteButton = ({...props}) => {
         )
       }}
     >
-      { getTitle(props.optionNumber, props.pollIpfs) }
+      { getTitle(props.optionNumber, props.pollIpfs) }{ props.myvote === props.optionNumber && " ✔" }
     </Button>
   );
 };

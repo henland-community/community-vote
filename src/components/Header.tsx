@@ -6,6 +6,7 @@ import './header.css';
 // import { ReactComponent as Logo } from '../assets/icons/henc-vote-logo.svg';
 
 import { SyncMenu } from './SyncMenu';
+import { Button } from './Button';
 // import { ProposalsNav } from './ProposalsNav';
 
 interface HeaderProps {
@@ -72,15 +73,20 @@ export const Header = ({
         </section>
         <section className="appHeader-primaryNav-right">
           <div className="appHeader-votingStatus">
-            <div className="votingStatus">
-              <Link to="/profile" className="votingStatus-count">
-                Voter Status: { votes.count > 0 ? '✅' : '❌' }
-              </Link>
+            <div className="syncMenu-item">
+              <div>{ activeAccount ? (
+                <>
+                  <div className="votingStatus">
+                    <Link to="/profile" className="votingStatus-count">
+                      Voter Status: { votes.count > 0 ? '✅' : '❌' } {addr}
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <Button onClick={connect}>Sync</Button>
+              )}</div>
             </div>
           </div>
-          <Link to='/profile' className="appHeader-walletAddress">
-            {addr}
-          </Link>
           <SyncMenu 
             admin={activeAccount.address === process.env.REACT_APP_ADMIN || admin}
             connect={connect}

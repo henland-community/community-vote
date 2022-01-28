@@ -196,10 +196,12 @@ export const ProposalDetail = (props: any) => {
             </div>
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
               <VoteButton
+                myvote={voteData.myvote}
                 optionNumber={2}
                 disabled={ !votePower.henOG }
               />
               <VoteButton
+                myvote={voteData.myvote}
                 optionNumber={1}
                 disabled={ !votePower.henOG }
               />
@@ -226,6 +228,7 @@ export const ProposalDetail = (props: any) => {
             <div className={"proposalDetail-yourVote multi-"+(pollIpfs.multi)}>
               { [1,2,3,4,5,6,7,8,9,10].map(i => (
                 pollData.metadata.numOptions > i-1 && <VoteButton
+                  myvote={voteData.myvote}
                   optionNumber={i}
                   disabled={ !votePower.henOG || hasResults }
                   resultsData={resultsData}
