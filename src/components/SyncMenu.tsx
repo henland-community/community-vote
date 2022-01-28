@@ -8,6 +8,7 @@ import { ReactComponent as MenuOpen } from '../assets/icons/menu-open.svg';
 import { ReactComponent as MenuClose } from '../assets/icons/menu-close.svg';
 // import { truncateSync } from 'fs';
 import { Button } from './Button';
+import { DarkModeToggle } from './DarkModeToggle';
 
 interface SyncProps {
   admin: boolean,
@@ -73,6 +74,7 @@ export const SyncMenu = ({
                 )}</div>
               </div>
             </section>
+            <div className="syncMenu-darkmode"><DarkModeToggle /></div>
           </section>
         </div>
       }
