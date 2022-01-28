@@ -49,6 +49,10 @@
   border-bottom: 1px solid var(--gray-100);
 }
 
+.appHeader-votingStatus {
+  margin-right: calc(var(--grid-unit) * 2);
+}
+
 .votingStatus {
   align-items: center;
   display: flex;
