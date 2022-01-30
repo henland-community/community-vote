@@ -7,6 +7,8 @@ import { ReactComponent as Logo } from '../assets/icons/hen-vote-logo.svg';
 import { ReactComponent as MenuOpen } from '../assets/icons/menu-open.svg';
 import { ReactComponent as MenuClose } from '../assets/icons/menu-close.svg';
 // import { truncateSync } from 'fs';
+import { Button } from './Button';
+import { DarkModeToggle } from './DarkModeToggle';
 
 interface SyncProps {
   admin: boolean,
@@ -66,12 +68,13 @@ export const SyncMenu = ({
               <div className="syncMenu-item">
                 { activeAccount && <div>{addr}</div> }
                 <div>{ activeAccount ? (
-                  <button onClick={disconnect}>Unsync</button>
-                 ) : (
-                   <button onClick={connect}>Sync</button>
-                 )}</div>
+                  <Button onClick={disconnect}>Unsync</Button>
+                ) : (
+                  <Button onClick={connect}>Sync</Button>
+                )}</div>
               </div>
             </section>
+            <div className="syncMenu-darkmode"><DarkModeToggle /></div>
           </section>
         </div>
       }

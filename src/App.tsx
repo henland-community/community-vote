@@ -21,6 +21,8 @@ import './components/pageLayout.css';
 
 import { Footer } from './components/Footer';
 
+import { DarkModeLoader } from "./components/DarkModeToggle";
+
 
 const RPC_URL =
   process.env.REACT_APP_RPC_URL || "https://florencenet.smartpy.io/";
@@ -166,6 +168,7 @@ function App() {
   
   return (
     <Router>
+      <DarkModeLoader />
       <div className="pageLayout">
         <div className="pageLayout-contents">
           <Header 

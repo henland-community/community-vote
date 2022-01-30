@@ -8,6 +8,22 @@
   z-index: 10000;
 }
 
+.syncMenu * {
+  stroke: var(--gray-100);
+}
+
+.syncMenu-darkmode {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+.syncMenu-darkmode button {
+  margin: calc(var(--grid-unit) * 2);
+  margin-top: 0;
+  margin-left: 0;
+  padding: var(--grid-unit);
+}
+
 .syncMenu-mobileOnly {
   padding: calc(var(--grid-unit) * 2);
   background: var(--gray-20);

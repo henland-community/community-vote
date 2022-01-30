@@ -3,11 +3,18 @@
 .pageLayout {
   display: flex;
   justify-content: center;
+  background: var(--gray-0);
+  color: var(--gray-100);
+  min-height: 100vh;
 }
 
 .pageLayout-contents {
   width: 100%;
   max-width: 1240px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .pageLayout-body {

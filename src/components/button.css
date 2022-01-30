@@ -23,5 +23,6 @@
 }
 
 .button.voted {
-  border: 5px solid var(--gray-50);
+  /* border: 5px solid var(--gray-50); */
+  box-shadow: 0 0 0 3px white inset;
 }

@@ -63,6 +63,26 @@
   --outer-padding: calc(var(--grid-unit) * 2);
 }
 
+
+/**
+  * @tokens DarkMode
+  */
+
+html.mode-dark {
+
+  --gray-100: #fff;
+  --gray-90: #F3F3F3;
+  --gray-80: #DBDBDB;
+  /* --gray-70: xxx; */
+  --gray-60: #A1A1A1;
+  --gray-50: #9a9a9a;
+  /* --gray-40: xxx; */
+  /* --gray-30: xxx; */
+  --gray-20: #5E5E5E;
+  --gray-10: #272727;
+  --gray-0: #000;
+}
+
 /**
   * @tokens DesktopOverrides
   */
@@ -73,6 +93,21 @@
     --font-xl: 26px;
     --font-h2: 28px;
     --font-h1: 48px;
+
+    --outer-padding: calc(var(--grid-unit) * 3) calc(var(--grid-unit) * 4);
+  }
+}
+
+/**
+  * @tokens FullDesktopOverrides
+  */
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --font-l: 26px;
+    --font-xl: 30px;
+    --font-h2: 36px;
+    --font-h1: 52px;
 
     --outer-padding: calc(var(--grid-unit) * 3) calc(var(--grid-unit) * 4);
   }
