@@ -1,0 +1,45 @@
+:root, html.mode-light {
+  --shade-0: #000;
+  --shade-1: #272727;
+  --shade-2: #5E5E5E;
+  --shade-3: #9a9a9a; 
+  --shade-4: #A1A1A1;
+  --shade-5: #DBDBDB;
+  --shade-6: #F3F3F3;
+  --shade-7: #fff;
+}
+
+html.mode-dark {
+    --shade-0: #fff;
+    --shade-1: #F3F3F3;
+    --shade-2: #DBDBDB;
+    --shade-3: #A1A1A1;
+    --shade-4: #9a9a9a;
+    --shade-5: #5E5E5E;
+    --shade-6: #272727;
+    --shade-7: #000;
+}
+
+html.mode-uwu {
+    --shade-0: white;
+    --shade-1: #ff00d0;
+    --shade-2: #ff00ee;
+    --shade-3: #ff00ff;
+    --shade-4: #0d0046;
+    --shade-5: #34005f;
+    --shade-6: #8200ec;
+    --shade-7: rgb(179, 18, 194);
+}
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: var(--shade-6);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--shade-2);
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--shade-5);
+}

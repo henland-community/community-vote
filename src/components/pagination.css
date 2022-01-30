@@ -13,5 +13,5 @@
 }
 
 .pagination-page--active {
-  background: var(--gray-10);
+  background: var(--shade-6);
 }

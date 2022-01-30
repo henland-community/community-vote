@@ -2,6 +2,7 @@
 @import 'assets/styles/design-tokens.css';
 @import 'assets/styles/utility-classes.css';
 @import 'assets/styles/typography.css';
+@import 'assets/styles/themes.css';
 
 body {
   margin: 0;
@@ -24,7 +25,7 @@ code {
 }
 
 hr {
-  border-color: var(--gray-20);
+  border-color: var(--shade-5);
   border-style: solid;
   border-bottom: 0;
   margin-top: calc(var(--grid-unit) * 2);

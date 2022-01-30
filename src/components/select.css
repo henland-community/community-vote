@@ -25,7 +25,7 @@
   font-size: inherit;
   cursor: inherit;
   line-height: inherit;
-  border-bottom: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--shade-0);
 }
 
 .select-input::-ms-expand {
@@ -41,6 +41,6 @@
 }
 
 .select--disabled .select-input {
-  color: var(--gray-50);
-  border-color: var(--gray-50);
+  color: var(--shade-4);
+  border-color: var(--shade-4);
 }

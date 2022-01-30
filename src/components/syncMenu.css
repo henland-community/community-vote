@@ -4,12 +4,12 @@
   top: 0;
   left: 0;
   bottom: 0;
-  background: var(--gray-10);
+  background: var(--shade-6);
   z-index: 10000;
 }
 
 .syncMenu * {
-  stroke: var(--gray-100);
+  stroke: var(--shade-0);
 }
 
 .syncMenu-darkmode {
@@ -26,18 +26,18 @@
 
 .syncMenu-mobileOnly {
   padding: calc(var(--grid-unit) * 2);
-  background: var(--gray-20);
+  background: var(--shade-5);
 }
 
 .syncMenu-mainOptions {
   padding: calc(var(--grid-unit) * 2);
-  background: var(--gray-10);
+  background: var(--shade-6);
   box-shadow: 0 100vh 0 100vh #999a;
 }
 
 .syncMenu-section {
   padding: calc(var(--grid-unit) * 2) 0;
-  border-bottom: 1px solid var(--gray-20);
+  border-bottom: 1px solid var(--shade-5);
 }
 
 .syncMenu-section:first-child {

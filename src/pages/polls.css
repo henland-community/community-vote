@@ -32,6 +32,6 @@
 }
 
 .homePage .polls {
-  border: 3px solid var(--gray-20);
+  border: 3px solid var(--shade-5);
   margin-bottom: calc(var(--grid-unit) * 5);
 }

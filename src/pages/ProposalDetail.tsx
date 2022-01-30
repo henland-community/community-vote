@@ -183,8 +183,8 @@ export const ProposalDetail = (props: any) => {
                     <span className="proposalDetail-graph-label">Against {((resultsData["2"] / (resultsData["1"] + resultsData["2"])) * 100).toFixed(0)}%</span>
                   </div>
                   <div className="proposalDetail-graph-bar">
-                    <div className="proposalDetail-graph-bar-part" style={{flex: resultsData["1"]+" 0 auto", background: (resultsData["1"]>resultsData["2"]?"black":"var(--gray-20)")}}></div>
-                    <div className="proposalDetail-graph-bar-part" style={{flex: resultsData["2"]+" 0 auto", background: (resultsData["2"]>resultsData["1"]?"black":"var(--gray-20)")}}></div>
+                    <div className="proposalDetail-graph-bar-part" style={{flex: resultsData["1"]+" 0 auto", background: (resultsData["1"]>resultsData["2"]?"black":"var(--shade-5)")}}></div>
+                    <div className="proposalDetail-graph-bar-part" style={{flex: resultsData["2"]+" 0 auto", background: (resultsData["2"]>resultsData["1"]?"black":"var(--shade-5)")}}></div>
                   </div>
                 </>
               )}

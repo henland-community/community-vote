@@ -18,7 +18,7 @@ dt,.text-l-bold    { font-size: var(--font-l); font-weight: var(--font-bold); te
 h1, .text-h1    { font-size: var(--font-h1); font-weight: var(--font-bold); text-transform: uppercase; }
 h2, .text-h2    { font-size: var(--font-h2); font-weight: var(--font-bold); text-transform: uppercase; }
 
-a               { color: var(--gray-100); font-weight: var(--font-normal); }
+a               { color: var(--shade-0); font-weight: var(--font-normal); }
 a:active,
 a.active        { text-decoration: underline; }
 
