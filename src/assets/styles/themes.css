@@ -30,6 +30,18 @@ html.mode-uwu {
     --shade-6: #8200ec;
     --shade-7: rgb(179, 18, 194);
 }
+
+html.mode-matrix {
+    --shade-0: rgb(0, 209, 0);
+    --shade-1: #a8a8a8;
+    --shade-2: #239400;
+    --shade-3: #747474;
+    --shade-4: #26ff00;
+    --shade-5: #272727;
+    --shade-6: #000000;
+    --shade-7: #000;
+}
+
 ::-webkit-scrollbar {
     width: 12px;
     background-color: var(--shade-6);

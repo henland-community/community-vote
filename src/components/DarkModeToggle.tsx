@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 
+
+
+
 export const DarkModeToggle = ({...props}) => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'system');
   function toggleTheme(newmode: string) {
@@ -7,9 +10,21 @@ export const DarkModeToggle = ({...props}) => {
     setTheme(newmode);
     if (newmode === 'system')
       newmode = getSystemTheme()
-    document.getElementsByTagName('html')[0].classList.remove('mode-light');
-    document.getElementsByTagName('html')[0].classList.remove('mode-dark');
-    document.getElementsByTagName('html')[0].classList.add('mode-'+newmode);
+    let root = document.documentElement;
+    while (root.classList.length > 0)
+      root.classList.remove(root.classList[0]);
+    root.classList.add('mode-'+newmode);
+  }
+  
+  const ModeToggle = ({...props}) => {
+    return (
+      <button {...props}
+      onClick={()=>{ toggleTheme(props.mode) }}
+      className={ `mode-${props.mode}-toggle` }
+      title={ props.title }
+      disabled={ theme === props.mode }
+    >{ props.emoji }</button>
+    )
   }
 
   useEffect(() => {
@@ -19,24 +34,36 @@ export const DarkModeToggle = ({...props}) => {
 
   return (
     <>
-      <button {...props}
-        onClick={()=>{ toggleTheme('light') }}
-        className={ `mode-light-toggle` }
-        disabled={ theme === 'light' }
+      <ModeToggle
+        mode="light"
         title="Light Mode"
-      >🌞</button>
-      <button {...props}
-        onClick={()=>{ toggleTheme('dark') }}
-        className={ `mode-dark-toggle` }
-        disabled={ theme === 'dark' }
+        emoji="🌞"
+        theme={ theme }
+      />
+      <ModeToggle
+        mode="dark"
         title="Dark Mode"
-      >😎</button>
-      <button {...props}
-        onClick={()=>{ toggleTheme('system') }}
-        className={ `mode-system-toggle` }
-        disabled={ theme === 'system' }
-        title="System Default"
-      >💻</button>
+        emoji="😎"
+        theme={ theme }
+      />
+      <ModeToggle
+        mode="matrix"
+        title="h=nter the Matrix"
+        emoji="🕴"
+        theme={ theme }
+      />
+      <ModeToggle
+        mode="uwu"
+        title="uwu owo"
+        emoji="🎀"
+        theme={ theme }
+      />
+      <ModeToggle
+        mode="system"
+        title="Use device default theme"
+        emoji="💻"
+        theme={ theme }
+      />
     </>
   );
 };
