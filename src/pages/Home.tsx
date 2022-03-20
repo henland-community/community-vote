@@ -9,7 +9,7 @@ export const Home = (myVotes:any) => {
   return (
     <article className="pageContents--centered homePage">
       <header className="pageHeader pageHeader--centered">
-        <h1>H=N Community Vote</h1>
+        <h1>Teia Community Vote</h1>
         <h3 className="text-xl">The voice of the Teia community, amplified.</h3>
       </header>
       <Polls view="home" myVotes={myVotes} />

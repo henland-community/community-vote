@@ -19,7 +19,7 @@ ReactDOM.render(
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <ToastProvider placement="bottom-right">
         <WalletProvider
-          name="H=NC VOTE"
+          name="Teia Vote"
           clientType="taquito"
           network={NETWORK}
         >
