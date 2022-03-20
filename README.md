@@ -1,5 +1,5 @@
 # Community Vote
-### A voting tool for "Hic Et Nunc Community"
+### A voting tool for Teia
 
 Originally developed with the help of [TzConnect](https://github.com/tzConnectBerlin) and Hicathon for hicetnunc
 
