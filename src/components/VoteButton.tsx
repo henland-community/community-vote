@@ -35,8 +35,8 @@ export const VoteButton = ({...props}) => {
     }
   }
   function getTitle(i: number, pollIpfs: any) {
-    if (pollIpfs.opt1 === "") return i===0 ? <>FOR <VoteForIcon/></> : <>AGAINST <VoteAgainstIcon/></>;
-    if (!pollIpfs || pollIpfs.opt1==='Option 1') return "Option " + i
+    if (!pollIpfs || (pollIpfs.opt1 && pollIpfs.opt1 === "")) return i===1 ? <>FOR <VoteForIcon/></> : <>AGAINST <VoteAgainstIcon/></>;
+    if (!pollIpfs || (pollIpfs.opt1 && pollIpfs.opt1==='Option 1')) return "Option " + i
     if (i === 1) return pollIpfs.opt1
     if (i === 2) return pollIpfs.opt2
     if (i === 3) return pollIpfs.opt3
@@ -56,12 +56,12 @@ export const VoteButton = ({...props}) => {
       className={props.className}
       onClick={()=>{handleVote(props.optionNumber)}} 
       style={{
-        border: ((parseInt(
-            Object.keys(props.resultsData).reduce((a,b) => props.resultsData[a] > props.resultsData[b] ? a : b, "0")
-          ) === props.optionNumber) ?
-            "5px solid black" :
-            `3px solid hsl(${(props.optionNumber-1)*36} 70% 60%)`
-        )
+          border: (props.resultsData && props.resultsData.length > 0) ? ((parseInt(
+              Object.keys(props.resultsData).reduce((a,b) => props.resultsData[a] > props.resultsData[b] ? a : b, "0")
+            ) === props.optionNumber) ?
+              "5px solid black" :
+              `3px solid hsl(${(props.optionNumber-1)*36} 70% 60%)`
+          ):''
       }}
     >
       { getTitle(props.optionNumber, props.pollIpfs) }{ props.myvote === props.optionNumber && " ✔" }
