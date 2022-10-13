@@ -5,7 +5,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import { Formik, Form, Field } from "formik";
 import { Button, Grid } from "@material-ui/core";
-import { useWallet } from "@tz-contrib/react-wallet-provider";
+import { useWallet } from "@tezos-contrib/react-wallet-provider";
 import { createPoll } from "../contract";
 import { useToasts } from "react-toast-notifications";
 import { FormikTextField } from "./FormikTextField";
