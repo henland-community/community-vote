@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useBeaconWallet, useWallet } from "@tz-contrib/react-wallet-provider";
+import { useBeaconWallet, useWallet } from "@tezos-contrib/react-wallet-provider";
 import { initPollContract, initTezos, setWalletProvider } from "./contract";
 import CreatePollCard from "./components/CreatePollCard";
 import { Header } from "./components/Header";
