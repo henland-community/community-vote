@@ -9,7 +9,7 @@ export const Faq = () => {
       </header>
       <section className="pageSection">
         <h2>Who can vote?</h2>
-        <p> The list of addresses of which cast votes will be counted includes all wallets that interacted with the teia or hicetnunc marketplace contracts or held hDAO before the last snapshot date (October 13th, 2022). Every eligible address has one vote. The community can audit <a href="https://raw.githubusercontent.com/teia-community/community-vote/master/public/teia_and_hen_users_snapshot_13-10-2022.json" target="_blank" rel="noreferrer">the voter list</a>. Thanks to <a target="_blank" rel="noreferrer" href="https://twitter.com/jagracar">jagracar</a> for compiling this list. It was generated based on <a target="_blank" rel="noreferrer" href="https://github.com/teia-community/teia-stats/blob/main/python/scripts/teiaStatistics.py">this python script</a>.</p>
+        <p> The list of addresses of which cast votes will be counted includes all wallets that interacted with the teia or hicetnunc marketplace contracts or held hDAO before the last snapshot date (October 13th, 2022). Every eligible address has one vote. The community can audit <a href="https://raw.githubusercontent.com/teia-community/community-vote/master/public/teia_and_hen_users_snapshot_13-10-2022.json" target="_blank" rel="noreferrer">the voter list</a>. Thanks to <a target="_blank" rel="noreferrer" href="https://twitter.com/jagracar">jagracar</a> for compiling this list. It was generated based on <a target="_blank" rel="noreferrer" href="https://github.com/teia-community/teia-stats/blob/main/python/scripts/teiaStatistics.py">this "teia stats" python script</a>.</p>
       </section>
       <section className="pageSection">
         <h2>How are people voting?</h2>
