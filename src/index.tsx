@@ -5,7 +5,7 @@ import App from "./App";
 import {
   WalletProvider,
   WalletProviderProps,
-} from "@tz-contrib/react-wallet-provider";
+} from "@tezos-contrib/react-wallet-provider";
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
 import { ToastProvider } from "react-toast-notifications";
