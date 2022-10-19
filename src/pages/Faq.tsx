@@ -38,7 +38,7 @@ export const Faq = () => {
         <ul>
           <li>You can join the <a href="https://discord.gg/fmNTjfBdyV">Teia Discord Server</a></li> 
           <li>You can also participate without joining the discord via the community forum <a href="https://discourse.teia.art/" target="_blank" rel="noreferrer">discourse.teia.art</a></li>
-          <li>For updates, you can follow our Blog <a href="https://blog.teia.art/" target="_blank" rel="noreferrer">blog.teia.art</a></li> and the official twitter account <a href="https://twitter.com/TeiaCommunity" target="_blank" rel="noreferrer">@TeiaCommunity</a></li>
+          <li>For updates, you can follow our Blog <a href="https://blog.teia.art/" target="_blank" rel="noreferrer">blog.teia.art</a> and the official twitter account <a href="https://twitter.com/TeiaCommunity" target="_blank" rel="noreferrer">@TeiaCommunity</a></li>
           <li>Anyone can join and participate, discuss, and look up past discussions.</li>
         </ul>
       </section>
