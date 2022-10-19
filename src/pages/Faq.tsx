@@ -14,7 +14,7 @@ export const Faq = () => {
       <section className="pageSection">
         <h2>How are people voting?</h2>
         <p>People may vote for any available option on any open proposal until the end of its voting period, and change their vote as many times as they like during the voting period (before it ends). 
-		Voting with this current setup will not include a token, or a representation of a token but a vote will simply be added to the tally of the voting results. DAO Token votes are planned for the upcoming <a href="https://github.com/teia-community/teia-docs/wiki/Governance-on-Teia" target="_blank">Teia DAO setup (under construction)</a></p>
+		Voting with this current setup will not include a token, or a representation of a token but a vote will simply be added to the tally of the voting results. DAO Token votes are planned for the upcoming <a href="https://github.com/teia-community/teia-docs/wiki/Governance-on-Teia" target="_blank" rel="noreferrer">Teia DAO setup (under construction)</a></p>
         <p>This function should only work during a voting period.</p>
         <p>Gas fees for voting will be paid by voters. Current cost for an initial vote is ~0.017 tez (about 5 cents USD at the time of writing), the cost to change your vote is 0.0007 tez.</p>
         <p>Any voting cost is intrinsic to the blockchain, we charge no fee for voting. We aim to reduce gas prices even further in our next contract.</p>
