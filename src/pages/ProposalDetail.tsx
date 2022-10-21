@@ -198,15 +198,15 @@ export const ProposalDetail = (props: any) => {
               <VoteButton
                 myvote={voteData.myvote}
                 optionNumber={2}
-                disabled={ !votePower.henOG }
+                disabled={ !votePower.teia22 }
               />
               <VoteButton
                 myvote={voteData.myvote}
                 optionNumber={1}
-                disabled={ !votePower.henOG }
+                disabled={ !votePower.teia22 }
               />
             </div>
-             { votePower.henOG || (
+             { votePower.teia22 || (
                <span>Sync your teia wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued (11/11/21).</span>
               ) }
           </footer>
@@ -230,14 +230,14 @@ export const ProposalDetail = (props: any) => {
                 pollData.metadata.numOptions > i-1 && <VoteButton
                   myvote={voteData.myvote}
                   optionNumber={i}
-                  disabled={ !votePower.henOG || hasResults }
+                  disabled={ !votePower.teia22 || hasResults }
                   resultsData={resultsData}
                   pollIpfs={pollIpfs}
                 />
               ))}
             </div>
-            { votePower.henOG || (
-              <span>Sync your teia wallet to vote. Voting currently limited to artists and collectors who interacted with hicetnunc before the website was discontinued.</span>
+            { votePower.teia22 || (
+              <span>Sync your teia wallet to vote.</span>
             ) }
           </footer>
         )}
