@@ -282,7 +282,7 @@ export const ProposalDetail = (props: any) => {
                 <a target="_blank" rel="noreferrer" href={"https://better-call.dev/mainnet/big_map/"+process.env.REACT_APP_BIGMAP_VOTES+"/"+vote.hash }>{ vote.key.address }</a>
               </div>
             )}
-            <a href={"https://better-call.dev/mainnet/KT1FtGBdmmzxeV1cbGP2v7RYWtwm27s9zfEa/storage/big_map/"+process.env.REACT_APP_BIGMAP_VOTES+"/keys" }>View all votes</a>
+            <a href={"https://better-call.dev/mainnet/"+process.env.REACT_APP_CONTRACT_ADDRESS+"/storage/big_map/"+process.env.REACT_APP_BIGMAP_VOTES+"/keys" }>View all votes</a>
           </p>
         </section>
       </section>
