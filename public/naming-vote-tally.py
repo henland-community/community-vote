@@ -7,7 +7,7 @@ def get_query_result(query, timeout=10):
             return json.loads(request.read().decode())
 
 # Get the list of users allowed to vote
-hen_users = get_query_result("https://vote.hencommunity.quest/hen-users-snapshot-16-01-2022.json")
+hen_users = get_query_result("https://vote.teia.art/hen-users-snapshot-16-01-2022.json")
 
 # Get the poll information from ipfs
 poll_id = "QmU7zZepzHiLMUme1xRHZyTdbyD4j2EfUodiGJeA1Rv6QQ"

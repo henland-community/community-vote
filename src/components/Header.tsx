@@ -68,7 +68,7 @@ export const Header = ({
           <nav className="appHeader-resources">
             <Link to="/about">About</Link>
             <Link to="/faq">FAQ</Link>
-            <a target="_blank" rel="noreferrer" href="https://discourse.hencommunity.quest">Forum ↪</a>
+            <a target="_blank" rel="noreferrer" href="https://discourse.teia.art">Forum ↪</a>
           </nav>
         </section>
         <section className="appHeader-primaryNav-right">

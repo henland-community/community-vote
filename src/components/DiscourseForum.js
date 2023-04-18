@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export default function DiscourseForum() {
   useEffect(() => {
     window.DiscourseEmbed = {
-      discourseUrl: 'https://discourse.hencommunity.quest/',
+      discourseUrl: 'https://discourse.teia.art/',
       discourseEmbedUrl: window.location.href,
     };
 
