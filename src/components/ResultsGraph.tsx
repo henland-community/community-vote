@@ -2,7 +2,7 @@
 
 export const ResultsGraph = ({...props}) => {
   var {pollData, hasResults, resultsData, pollIpfs} = props;
-  if (hasResults && resultsData && resultsData !== {}) {} else return <></>;
+  if (!hasResults || !resultsData) return <></>;
   function sumVals(obj: any) {
     return Object.keys(obj).reduce((sum,key)=>sum+parseFloat(obj[key]||0),0);
   }

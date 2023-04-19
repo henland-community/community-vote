@@ -15,7 +15,7 @@ export const Home = (myVotes:any) => {
       <Polls view="home" myVotes={myVotes} />
       <section className="pageSection">
         <h2>Let's build Teia together</h2>
-        <p>You are the voice of the community. The HENC (hen-community) uses this tool for on-chain voting. While we are working on setting up a full DAO structure, this tool will allow us to vote on important decisions with wallets used before the discontinuation of hicetnunc.xyz.</p>
+        <p>You are the voice of the community. Together we can build tools for on-chain voting to openly and collaboratively improve Teia. While we are working on setting up a full DAO structure, this tool will allow us to vote on important decisions with wallets used before the discontinuation of hicetnunc.xyz.</p>
       </section>
       <section className="pageSection">
         <h2>Why this tool?</h2>
@@ -25,9 +25,9 @@ export const Home = (myVotes:any) => {
       <section className="pageSection">
         <h2>How does it work?</h2>
         <ol>
-          <li>Currently, proposals and questions are discussed at the HENC discord and the community ‘discourse’ forum and then put up for a vote here.</li>
+          <li>Currently, proposals and questions are discussed at the Teia discord and the community Discourse forum and then put up for a vote here.</li>
           <li>Check the list of what is to be voted.</li>
-          <li>Click on one proposal or question, see the different voting options, how many votes have been done, discuss them via the ‘discourse’ forum.</li>
+          <li>Click on one proposal or question, see the different voting options, how many votes have been done, discuss them via the Discourse forum.</li>
           <li>For the proposals, vote by selecting one option and then click on XX. For the questions, vote by clicking on “Against” or “For”.</li>
           <li>Results are tabulated at the end of the voting period, to determine whether it met quorum and was successful.</li>
         </ol>

@@ -61,8 +61,8 @@ export const SyncMenu = ({
               <a target="_blank" rel="noreferrer" href="https://discourse.teia.art" className="syncMenu-item">Forum ↪</a>
             </section>
             <section className="syncMenu-section">
-              <a target="_blank" rel="noreferrer" href="https://github.com/hen-community/community-vote/issues" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Report Issues</a>
-              <a target="_blank" rel="noreferrer" href="https://github.com/hen-community/community-vote" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Contribute</a>
+              <a target="_blank" rel="noreferrer" href="https://github.com/teia-community/community-vote/issues" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Report Issues</a>
+              <a target="_blank" rel="noreferrer" href="https://github.com/teia-community/community-vote" className="syncMenu-item" onClick={(event: any) => { setOpen(false); }}>Contribute</a>
             </section>
             <section className="syncMenu-section">
               <div className="syncMenu-item">
