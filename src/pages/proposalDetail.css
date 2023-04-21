@@ -112,8 +112,8 @@
 
 .proposalDetail-details {
   white-space: pre-wrap;
+  flex: 1;
 }
-
 
 .proposalDetail-graph-labels {
   display: flex;
