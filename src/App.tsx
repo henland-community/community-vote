@@ -97,17 +97,22 @@ export async function checkTeia22(address: string) {
   const result = await axios.get(`/teia_and_hen_users_snapshot_13-10-2022.json`);
   return result.data.includes(address);
 }
+export async function checkTeia23(address: string) {
+  // return true if wallet qualifies for any teia dao coins under guidelines:
+  const result = await axios.get(`https://cache.teia.rocks/ipfs/QmNihShvZkXq7aoSSH3Nt1VeLjgGkESr3LoCzShNyV4uzp`);
+  return result.data.includes(address);
+}
 
 function App() {
   const { connected, disconnect, activeAccount, connect } = useWallet();
   const beaconWallet = useBeaconWallet();
   const [votePower, setVotePower] = React.useState({
-    count: 0, tzprof: false, hDAO: false, henOG: false, badge: false, teia22: false
+    count: 0, tzprof: false, hDAO: false, henOG: false, badge: false, teia22: false, teia23: false
   });
   const [myVotes, setMyVotes] = React.useState([]);
   function getVotePower(address: string) {
     var votePower = {
-      count: 0, tzprof: false, hDAO: false, henOG: false, badge: false, teia22: false
+      count: 0, tzprof: false, hDAO: false, henOG: false, badge: false, teia22: false, teia23: false
     };
     Promise.all([
       // hasTzProfiles(address).then(has => {
@@ -145,7 +150,7 @@ function App() {
 //           votePower.count++
 //           votePower.henOG = true
 //         },
-      checkTeia22(address).then(has =>  {
+      checkTeia23(address).then(has =>  {
         if (has) {
           votePower.count++
           votePower.teia22 = true
