@@ -153,7 +153,7 @@ function App() {
       checkTeia23(address).then(has =>  {
         if (has) {
           votePower.count++
-          votePower.teia22 = true
+          votePower.teia23 = true
         }
       }).then(() => {
         setVotePower(votePower);
