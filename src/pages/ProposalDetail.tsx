@@ -33,7 +33,7 @@ async function getVoteData(key: string) {
 }
 
 async function getIpfs(hash: string) {
-  return await fetch(`https://infura-ipfs.io/ipfs/${hash}`)
+  return await fetch(`https://ipfs.io/ipfs/${hash}`)
     .then(response => response.json())
 }
 
