@@ -1,6 +1,6 @@
 // from https://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object
 // should probably move to some common functions file
-function isEmpty(obj) {
+function isEmpty(obj: object): boolean {
   for (const prop in obj) {
     if (Object.hasOwn(obj, prop)) {
       return false;
