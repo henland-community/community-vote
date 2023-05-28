@@ -1,8 +1,18 @@
+// from https://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object
+// should probably move to some common functions file
+function isEmpty(obj) {
+  for (const prop in obj) {
+    if (Object.hasOwn(obj, prop)) {
+      return false;
+    }
+  }
 
+  return true;
+}
 
 export const ResultsGraph = ({...props}) => {
   var {pollData, hasResults, resultsData, pollIpfs} = props;
-  if (!hasResults || !resultsData) return <></>;
+  if (!hasResults || !resultsData || isEmpty(resultsData)) return <></>;
   function sumVals(obj: any) {
     return Object.keys(obj).reduce((sum,key)=>sum+parseFloat(obj[key]||0),0);
   }
