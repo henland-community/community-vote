@@ -2,7 +2,7 @@
 // should probably move to some common functions file
 function isEmpty(obj: object): boolean {
   for (const prop in obj) {
-    if (Object.hasOwn(obj, prop)) {
+    if (Object.prototype.hasOwnProperty.call(obj, prop)) {
       return false;
     }
   }
