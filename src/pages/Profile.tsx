@@ -20,6 +20,7 @@ export const Profile = (props: any) => {
           <span style={{opacity: props.votes.henOG?'1.0':'0.5'}}>{ props.votes.henOG?<IconFor/>:<IconAgainst/>} h=n OG</span>
           <span style={{opacity: props.votes.badge?'1.0':'0.5'}}>{ props.votes.badge?<IconFor/>:<IconAgainst/>} Hicathon Badge</span>
           <span style={{opacity: props.votes.teia22?'1.0':'0.5'}}>{ props.votes.teia22?<IconFor/>:<IconAgainst/>} Teia Users 2022</span>
+          <span style={{opacity: props.votes.teia23?'1.0':'0.5'}}>{ props.votes.teia23?<IconFor/>:<IconAgainst/>} Teia Users 2023</span>
         </div>
       </section>
       <section className="pageSection">
