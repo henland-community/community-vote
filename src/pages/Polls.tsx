@@ -24,7 +24,12 @@ async function fetchPolls(datecomp: string = '') {
   return await fetch(fetchUrl)
     .then(response => response.json())
     .then(polls => {
-      return polls.filter((poll: any) => !['QmUk9b7icTECyUBzvCqUVtv5Y5fRZBA7KBmJrne7BEEyks','Qmeq6bAxpVyrhm4nb4RbPg8dFxWedZBrZun9nU9o5aTgRS','Qma3nG4LxXre5tbYCpvMy9TtsviD3S678PywAy15qdUbcn',''].includes(poll.key))
+      return polls.filter((poll: any) => ![
+        'QmUk9b7icTECyUBzvCqUVtv5Y5fRZBA7KBmJrne7BEEyks',
+        'Qmeq6bAxpVyrhm4nb4RbPg8dFxWedZBrZun9nU9o5aTgRS',
+        'Qma3nG4LxXre5tbYCpvMy9TtsviD3S678PywAy15qdUbcn',
+        'Qmb5QYPhXSYVUeSnx4jetRorwjjrVjmtbxqDLjhdCFF2ce', // COMMUNITY VOTE ON TEIA DAO TOKEN DISTRIBUTION
+        ''].includes(poll.key))
     });
 }
 
