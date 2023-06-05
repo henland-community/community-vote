@@ -7,14 +7,11 @@ import { ProposalCard } from '../components/ProposalCard';
 async function fetchPolls(datecomp: string = '') {
   let fetchUrl = `https://api.${process.env.REACT_APP_NETWORK}.tzkt.io/v1/bigmaps/${process.env.REACT_APP_BIGMAP_POLLS}/keys`
   let params: any = {}
-
   if (datecomp === 'gt' || datecomp === 'lt') {
-    var tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    var utcdate = String(tomorrow.getUTCFullYear())
-    utcdate += '-'+String((new Date().getUTCMonth()+1)).padStart(2,'0')
-    utcdate += '-'+tomorrow.getUTCDate()
-    params[`value.metadata.end_date.${datecomp}`] = utcdate
+    const nowUTC = new Date(Date.now() + new Date().getTimezoneOffset() * 60 * 1000);
+    const tomorrowUTC = new Date(nowUTC.getFullYear(), nowUTC.getMonth(), nowUTC.getDate() + 1);
+    const utcdate = tomorrowUTC.toISOString().slice(0, 10);
+    params[`value.metadata.end_date.${datecomp}`] = utcdate;
   }
   
   // params['value.metadata.start_date.gt'] = '2021-08-08' // hide past polls
