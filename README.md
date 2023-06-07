@@ -1,5 +1,6 @@
 # Community Vote
-### A voting tool for Teia
+
+### A voting tool for Henland
 
 Originally developed with the help of [TzConnect](https://github.com/tzConnectBerlin) and Hicathon for hicetnunc
 
