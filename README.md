@@ -3,7 +3,7 @@
 
 Originally developed with the help of [TzConnect](https://github.com/tzConnectBerlin) and Hicathon for hicetnunc
 
-Currently deployed on mainnet at [https://vote.teia.art]()
+Currently deployed on mainnet at [https://vote.henland.xyz]()
 
 ## Prerequisite
 
